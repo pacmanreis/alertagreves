@@ -42,17 +42,17 @@ ActiveRecord::Schema.define(version: 2019_09_02_145929) do
     t.string "descrpition"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.bigint "syndicate_id"
+    t.bigint "union_id"
     t.bigint "category_id"
     t.bigint "sector_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_strikes_on_category_id"
     t.index ["sector_id"], name: "index_strikes_on_sector_id"
-    t.index ["syndicate_id"], name: "index_strikes_on_syndicate_id"
+    t.index ["union_id"], name: "index_strikes_on_syndicate_id"
   end
 
-  create_table "syndicates", force: :cascade do |t|
+  create_table "unions", force: :cascade do |t|
     t.string "name"
     t.string "initials"
     t.string "url"
@@ -79,5 +79,5 @@ ActiveRecord::Schema.define(version: 2019_09_02_145929) do
   add_foreign_key "reminders", "users"
   add_foreign_key "strikes", "categories"
   add_foreign_key "strikes", "sectors"
-  add_foreign_key "strikes", "syndicates"
+  add_foreign_key "strikes", "unions"
 end
