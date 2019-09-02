@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_145929) do
   create_table "strikes", force: :cascade do |t|
     t.string "country"
     t.string "organization"
-    t.string "descrpition"
+    t.string "description"
     t.datetime "start_date"
     t.datetime "end_date"
     t.bigint "syndicate_id"

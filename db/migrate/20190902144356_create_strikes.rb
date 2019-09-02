@@ -3,7 +3,7 @@ class CreateStrikes < ActiveRecord::Migration[5.2]
     create_table :strikes do |t|
       t.string :country
       t.string :organization
-      t.string :descrpition
+      t.string :description
       t.datetime :start_date
       t.datetime :end_date
       t.references :syndicate, foreign_key: true
