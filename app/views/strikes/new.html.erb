@@ -1,17 +1,26 @@
 <h1>NEW</h1>
 
 <%= simple_form_for @strike do |f| %>
-<div class="form-inputs">
-  <%= f.input :organization %>
-  <%= f.association :category %>
-  <%= f.association :sector %>
-  <%= f.association :union %>
-  <%= f.input :description %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-</div>
-<div class="form-actions">
-  <%= f.submit class: 'btn btn-lg btn-primary' %>
-  <%= link_to 'Cancel', root_path, class: 'btn btn-lg btn-secondary' %>
-</div>
+  <div class="form-inputs">
+    <%= f.input :organization %>
+    <%= f.association :category %>
+    <%= f.association :sector %>
+    <%= f.input :description %>
+    <%= f.association :union %>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#unionCreate">
+      Add new union
+    </button>
+    <!-- TODO: Implement create.js to do ajax so it doesn't refresh whole new page -->
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+
+  </div>
+  <div class="form-actions">
+    <%= f.submit class: 'btn btn-lg btn-primary' %>
+    <%= link_to 'Cancel', root_path, class: 'btn btn-lg btn-secondary' %>
+  </div>
 <% end %>
+
+<!-- Modal -->
+<%= render 'shared/new_union_modal' %>
