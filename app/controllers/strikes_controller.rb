@@ -41,8 +41,7 @@ class StrikesController < ApplicationController
   private
 
   def strike_params
-    params.require(:strike).permit(:sector_id,
-                                   :category_id,
+    params.require(:strike).permit(:category_id,
                                    :union_id,
                                    :organization,
                                    :description,

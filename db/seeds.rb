@@ -17,15 +17,15 @@ Sector.create(name: 'Transportation')
 Sector.create(name: 'Public')
 
 # 1..6
-Category.create(name: 'Train')
-Category.create(name: 'Subway')
-Category.create(name: 'Boat')
-Category.create(name: 'Cab')
-Category.create(name: 'Airplane')
-Category.create(name: 'Bus')
+Category.create(name: 'Train', sector_id: 1)
+Category.create(name: 'Subway', sector_id: 1)
+Category.create(name: 'Boat', sector_id: 1)
+Category.create(name: 'Cab', sector_id: 1)
+Category.create(name: 'Airplane', sector_id: 1)
+Category.create(name: 'Bus', sector_id: 1)
 
 # 7
-Category.create(name: 'Records')
+Category.create(name: 'Records', sector_id: 2)
 
 Union.create(name: 'British Airline Pilots Association',
              initials: 'BALPA',
@@ -42,8 +42,7 @@ Strike.create(country: 'Portugal',
               start_date: '2019-09-02 00:00:00',
               end_date: '2019-09-02 23:59:59',
               union_id: 1,
-              category_id: 5,
-              sector_id: 1)
+              category_id: 5)
 
 Strike.create(country: 'Portugal',
               organization: 'Ryanair',
@@ -51,8 +50,7 @@ Strike.create(country: 'Portugal',
               start_date: '2019-09-03 00:00:00',
               end_date: '2019-09-03 23:59:59',
               union_id: 1,
-              category_id: 5,
-              sector_id: 1)
+              category_id: 5)
 
 Strike.create(country: 'Portugal',
               organization: 'Ryanair',
@@ -60,8 +58,7 @@ Strike.create(country: 'Portugal',
               start_date: '2019-09-04 00:00:00',
               end_date: '2019-09-04 23:59:59',
               union_id: 1,
-              category_id: 5,
-              sector_id: 1)
+              category_id: 5)
 
 Strike.create(country: 'Portugal',
               organization: 'British Airways',
@@ -69,8 +66,7 @@ Strike.create(country: 'Portugal',
               start_date: '2019-09-09 00:00:00',
               end_date: '2019-09-09 23:59:59',
               union_id: 1,
-              category_id: 5,
-              sector_id: 1)
+              category_id: 5)
 
 Strike.create(country: 'Portugal',
               organization: 'British Airways',
@@ -78,8 +74,7 @@ Strike.create(country: 'Portugal',
               start_date: '2019-09-10 00:00:00',
               end_date: '2019-09-10 23:59:59',
               union_id: 1,
-              category_id: 5,
-              sector_id: 1)
+              category_id: 5)
 
 Strike.create(country: 'Portugal',
               organization: 'British Airways',
@@ -87,8 +82,7 @@ Strike.create(country: 'Portugal',
               start_date: '2019-09-27 00:00:00',
               end_date: '2019-09-27 23:59:59',
               union_id: 1,
-              category_id: 5,
-              sector_id: 1)
+              category_id: 5)
 
 Strike.create(country: 'Portugal',
               organization: 'British Airways',
@@ -96,8 +90,7 @@ Strike.create(country: 'Portugal',
               start_date: '2019-09-27 00:00:00',
               end_date: '2019-09-27 23:59:59',
               union_id: 2,
-              category_id: 7,
-              sector_id: 2)
+              category_id: 7)
 
 Strike.create(country: 'Portugal',
               organization: 'British Airways',
@@ -105,8 +98,7 @@ Strike.create(country: 'Portugal',
               start_date: '2019-09-09 00:00:00',
               end_date: '2019-09-09 23:59:59',
               union_id: 2,
-              category_id: 7,
-              sector_id: 2)
+              category_id: 7)
 
 Strike.create(country: 'Portugal',
               organization: 'Institudo do Registos e Notariado',
@@ -114,8 +106,7 @@ Strike.create(country: 'Portugal',
               start_date: '2019-09-16 00:00:00',
               end_date: '2019-09-16 23:59:59',
               union_id: 2,
-              category_id: 7,
-              sector_id: 2)
+              category_id: 7)
 
 Strike.create(country: 'Portugal',
               organization: 'Institudo do Registos e Notariado',
@@ -123,8 +114,7 @@ Strike.create(country: 'Portugal',
               start_date: '2019-09-23 00:00:00',
               end_date: '2019-09-23 23:59:59',
               union_id: 2,
-              category_id: 7,
-              sector_id: 2)
+              category_id: 7)
 
 Strike.create(country: 'Portugal',
               organization: 'Institudo do Registos e Notariado',
@@ -132,7 +122,6 @@ Strike.create(country: 'Portugal',
               start_date: '2019-09-30 00:00:00',
               end_date: '2019-09-30 23:59:59',
               union_id: 2,
-              category_id: 7,
-              sector_id: 2)
+              category_id: 7)
 
 puts 'Done!'
