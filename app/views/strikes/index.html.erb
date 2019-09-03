@@ -1,0 +1,23 @@
+<div class="row">
+        <%= link_to "New Strike", new_strike_path%>
+    <% @strikes.each do |strike| %>
+      <div class="col-xs-12 col-sm-6 col-lg-4">
+        <div class="link">
+        <%= link_to strike_path(strike.id), class: "link" do %>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <p><%= strike.country %></p>
+            <p><%= strike.organization %></p>
+            <p><%= strike.description %></p>
+            <p><%= strike.start_date %></p>
+            <p><%= strike.end_date %></p>
+            <p><%= strike.syndicate_id%></p>
+            <p><%= strike.category_id %></p>
+            <p><%= strike.sector_id %></p>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
