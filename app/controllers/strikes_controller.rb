@@ -1,4 +1,9 @@
 class StrikesController < ApplicationController
+
+  def index
+    @strikes = Strike.all
+  end
+
   def new
     @strike = Strike.new
   end
