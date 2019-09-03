@@ -34,11 +34,13 @@ class StrikesController < ApplicationController
 
   def edit
     @strike = Strike.find(params[:id])
+    authorize @strike
     @union = Union.new
   end
 
   def update
     @strike = Strike.find(params[:id])
+    authorize @strike
     @strike.update(strike_params)
     redirect_to strike_path(@strike)
   end
