@@ -17,6 +17,7 @@ class StrikesController < ApplicationController
     if @strike.save
       redirect_to root_path
     else
+      @strike.build_union
       render :new
     end
   end
@@ -49,7 +50,7 @@ class StrikesController < ApplicationController
   private
 
   def strike_params
-    unless (params.require(:strike).has_key?(:union_attributes))
+    if params[:strike][:union_attributes][:name].blank?
       params.require(:strike).permit(:category_id,
                                     :organization,
                                     :description,
