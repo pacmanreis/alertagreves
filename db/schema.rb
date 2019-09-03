@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_145929) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_strikes_on_category_id"
     t.index ["sector_id"], name: "index_strikes_on_sector_id"
-    t.index ["union_id"], name: "index_strikes_on_syndicate_id"
+    t.index ["union_id"], name: "index_strikes_on_union_id"
   end
 
   create_table "unions", force: :cascade do |t|

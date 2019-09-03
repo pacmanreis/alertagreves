@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SyndicateTest < ActiveSupport::TestCase
+class UnionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
