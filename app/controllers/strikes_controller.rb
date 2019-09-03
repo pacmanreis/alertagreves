@@ -5,7 +5,7 @@ class StrikesController < ApplicationController
 
   def new
     @strike = Strike.new
-    @union = Union.new
+    @strike.build_union
   end
 
   def create
@@ -32,10 +32,10 @@ class StrikesController < ApplicationController
   def strike_params
     params.require(:strike).permit(:sector_id,
                                    :category_id,
-                                   :union_id,
                                    :organization,
                                    :description,
                                    :start_date,
-                                   :end_date)
+                                   :end_date,
+                                   union_attributes: [:id, :name, :initials, :url])
   end
 end
