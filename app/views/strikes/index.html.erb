@@ -1,21 +1,21 @@
+<%= link_to "New Strike", new_strike_path, class: 'btn btn-lg btn-primary'%>
 <div class="row">
-        <%= link_to "New Strike", new_strike_path%>
-    <% @strikes.each do |strike| %>
-      <div class="col-xs-12 col-sm-6 col-lg-4">
-        <div class="link">
-        <%= link_to strike_path(strike.id), class: "link" do %>
+  <% @strikes.each do |strike| %>
+    <div class="col-xs-12 col-sm-6 col-lg-4">
+      <div class="btn">
+      <%= link_to strike_path(strike.id), class: "link" do %>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <p><%= strike.category.name %></p>
+          <p><%= strike.organization %></p>
+          <p><%= strike.union.name%></p>
+          <p><%= strike.description %></p>
+          <p><%= strike.start_date %></p>
+          <p><%= strike.end_date %></p>
         </div>
-        <div class="card">
-          <div class="card-body">
-            <p><%= strike.category.name %></p>
-            <p><%= strike.organization %></p>
-            <p><%= strike.union.name%></p>
-            <p><%= strike.description %></p>
-            <p><%= strike.start_date %></p>
-            <p><%= strike.end_date %></p>
-          </div>
-        </div>
-      <% end %>
       </div>
     <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
