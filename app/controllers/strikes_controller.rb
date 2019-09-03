@@ -14,5 +14,6 @@ class StrikesController < ApplicationController
   def destroy
     @strike = Strike.find(params[:id])
     @strike.destroy
+    redirect_to root_path
   end
 end
