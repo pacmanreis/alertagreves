@@ -1,6 +1,7 @@
 class StrikesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
+
   def index
-    # @strikes = Strike.all
     @strikes = policy_scope(Strike)
   end
 
@@ -13,8 +14,6 @@ class StrikesController < ApplicationController
   def create
     @strike = Strike.new(strike_params)
     authorize @strike
-
-    
     if @strike.save
       redirect_to root_path
     else
