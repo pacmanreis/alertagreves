@@ -50,18 +50,15 @@ class StrikesController < ApplicationController
   private
 
   def strike_params
-    # raise
     unless (params.require(:strike).has_key?(:union_attributes))
-      params.require(:strike).permit(:sector_id,
-                                    :category_id,
+      params.require(:strike).permit(:category_id,
                                     :organization,
                                     :description,
                                     :start_date,
                                     :end_date,
                                     :union_id)
     else
-      params.require(:strike).permit(:sector_id,
-                                    :category_id,
+      params.require(:strike).permit(:category_id,
                                     :organization,
                                     :description,
                                     :start_date,
