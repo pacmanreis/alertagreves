@@ -27,6 +27,17 @@ class StrikesController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    @strike = Strike.find(params[:id])
+    @union = Union.new
+  end
+
+  def update
+    @strike = Strike.find(params[:id])
+    @strike.update(strike_params)
+    redirect_to strike_path(@strike)
+  end
+
   private
 
   def strike_params
