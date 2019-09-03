@@ -7,14 +7,12 @@
         </div>
         <div class="card">
           <div class="card-body">
-            <p><%= strike.country %></p>
+            <p><%= strike.category.name %></p>
             <p><%= strike.organization %></p>
+            <p><%= strike.union.name%></p>
             <p><%= strike.description %></p>
             <p><%= strike.start_date %></p>
             <p><%= strike.end_date %></p>
-            <p><%= strike.union_id%></p>
-            <p><%= strike.category_id %></p>
-            <p><%= strike.sector_id %></p>
           </div>
         </div>
       <% end %>
