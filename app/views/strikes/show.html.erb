@@ -4,3 +4,5 @@
 <p><%= @strike.description %></p>
 
 <%= link_to 'Delete', strike_path(@strike), method: :delete, class: 'btn btn-lg btn-danger' %>
+<%= link_to 'Edit', edit_strike_path, class: 'btn btn-lg btn-warning' %>
+<%= link_to 'Cancel', root_path, class: 'btn btn-lg btn-secondary' %>
