@@ -1,5 +1,6 @@
 class StrikesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
+  before_action :check_if_admin, only: [:new, :create, :destroy, :update, :edit]
 
   def index
     @strikes = policy_scope(Strike)
@@ -65,5 +66,9 @@ class StrikesController < ApplicationController
                                     :end_date,
                                     union_attributes: [:id, :name, :initials, :url])
     end
+  end
+
+  def check_if_admin
+    redirect_to root_path, alert: "dont be a jerk" unless current_user.admin
   end
 end

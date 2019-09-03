@@ -12,6 +12,10 @@ user = User.new(
 )
 user.save!
 
+User.create(email: "admin@gmail.com",
+  password: "testadmin",
+  admin: true)
+
 puts ''
 Sector.create(name: 'Transportation')
 Sector.create(name: 'Public')
