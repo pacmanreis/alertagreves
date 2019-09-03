@@ -2,17 +2,18 @@
 
 <%= simple_form_for @strike do |f| %>
   <div class="form-inputs">
-    <%= f.input :country %>
     <%= f.input :organization %>
+    <%= f.association :category %>
+    <%= f.association :sector %>
     <%= f.input :description %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
     <%= f.association :union %>
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#unionCreate">
       Add new union
     </button>
     <!-- TODO: Implement create.js to do ajax so it doesn't refresh whole new page -->
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
 
   </div>
   <div class="form-actions">

@@ -1,3 +1,6 @@
-<h1><%= @strike.category.name.capitalize  %> strike</h1>
+<h1><%= @strike.category.name.capitalize %> strike</h1>
 
 <p>Today we are witnesing strike by <strong><%= @strike.organization %></strong> which is devastating!</p>
+<p><%= @strike.description %></p>
+
+<%= link_to 'Delete', strike_path(@strike), method: :delete, class: 'btn btn-lg btn-danger' %>
