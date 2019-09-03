@@ -6,6 +6,7 @@ class StrikesController < ApplicationController
 
   def new
     @strike = Strike.new
+    @union = Union.new
   end
 
   def show
