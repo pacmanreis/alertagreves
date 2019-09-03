@@ -6,7 +6,7 @@ class CreateStrikes < ActiveRecord::Migration[5.2]
       t.string :descrpition
       t.datetime :start_date
       t.datetime :end_date
-      t.references :syndicate, foreign_key: true
+      t.references :union, foreign_key: true
       t.references :category, foreign_key: true
       t.references :sector, foreign_key: true
 
