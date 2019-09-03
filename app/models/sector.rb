@@ -1,3 +1,3 @@
 class Sector < ApplicationRecord
-  has_many :strikes
+  has_many :categories
 end
