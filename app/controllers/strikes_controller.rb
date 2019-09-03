@@ -20,6 +20,7 @@ class StrikesController < ApplicationController
     @strike = Strike.find(params[:id])
   end
 
+
   private
 
   def strike_params
@@ -30,5 +31,11 @@ class StrikesController < ApplicationController
                                    :description,
                                    :start_date,
                                    :end_date)
+  end
+  
+  def destroy
+    @strike = Strike.find(params[:id])
+    @strike.destroy
+    redirect_to root_path
   end
 end
