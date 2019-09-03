@@ -1,15 +1,18 @@
 class StrikesController < ApplicationController
   def index
-    @strikes = Strike.all
+    # @strikes = Strike.all
+    @strikes = policy_scope(Strike)
   end
 
   def new
     @strike = Strike.new
     @union = Union.new
+    authorize @strike
   end
 
   def create
     @strike = Strike.new(strike_params)
+    authorize @strike
     if @strike.save
       redirect_to root_path
     else
@@ -19,10 +22,12 @@ class StrikesController < ApplicationController
 
   def show
     @strike = Strike.find(params[:id])
+    authorize @strike
   end
 
   def destroy
     @strike = Strike.find(params[:id])
+    authorize @strike
     @strike.destroy
     redirect_to root_path
   end
