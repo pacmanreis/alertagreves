@@ -23,6 +23,11 @@ class StrikesController < ApplicationController
     end
   end
 
+  def search
+    @strike = Strike.search_by_country_organization_description_and_union_id(params[:query])
+    authorize @strike
+  end
+
   def show
     @strike = Strike.find(params[:id])
     authorize @strike

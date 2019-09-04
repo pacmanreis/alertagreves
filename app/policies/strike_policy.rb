@@ -9,6 +9,10 @@ class StrikePolicy < ApplicationPolicy
     user_is_admin?
   end
 
+  def search?
+    true
+  end
+
   def create?
     user_is_admin?
   end
