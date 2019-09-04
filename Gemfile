@@ -9,7 +9,9 @@ gem 'puma'
 gem 'rails', '5.2.3'
 gem 'redis'
 gem 'pundit'
+gem 'pg_search', '~> 2.3.0'
 gem 'recaptcha'
+
 
 gem 'autoprefixer-rails'
 gem 'country_select'

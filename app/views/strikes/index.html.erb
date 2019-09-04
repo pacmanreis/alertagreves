@@ -1,22 +1,28 @@
 <%= link_to "New Strike", new_strike_path, class: 'btn btn-lg btn-primary'%>
+<div class="search-bar">
+  <%= form_tag search_strikes_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Search for a strike"
+    %>
+    <%= submit_tag "Search", class: "btn btn-lg btn-primary" %>
+  <% end %>
+</div>
 <div class="row">
   <% @strikes.each do |strike| %>
     <div class="col-xs-12 col-sm-6 col-lg-4">
-      <div class="btn">
       <%= link_to strike_path(strike.id), class: "link" do %>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <p><%= strike.category.name %></p>
-          <p><%= strike.category.sector.name %></p>
-          <p><%= strike.organization %></p>
-          <p><%= strike.union.name%></p>
-          <p><%= strike.description %></p>
-          <p><%= strike.start_date %></p>
-          <p><%= strike.end_date %></p>
-        </div>
-      </div>
-    <% end %>
+        <div class="card">
+            <p><strong>Category: </strong><%= strike.category.name %></p>
+            <!-- <p><%= strike.category.sector.name %></p> -->
+            <p><strong>Organization: </strong><%= strike.organization %></p>
+            <p><strong>Union: </strong><%= strike.union.name%></p>
+            <p><strong>Description: </strong><%= strike.description %></p>
+            <p><strong>Starts: </strong><%= strike.start_date %></p>
+            <p><strong>Ends: </strong><%= strike.end_date %></p>
+          </div>
+      <% end %>
     </div>
   <% end %>
 </div>
