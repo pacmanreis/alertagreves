@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
   root to: 'strikes#index'
-
+  
   resources :strikes do
     collection do
       get 'search'
@@ -9,4 +9,9 @@ Rails.application.routes.draw do
   end
   resources :unions, only: :create
   resources :reminders, only: [:index, :create]
+  
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end
