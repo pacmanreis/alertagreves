@@ -1,0 +1,29 @@
+<div class="row ">
+  <% @strikes.each do |strike| %>
+    <div class="col-xs-12 col-sm-6 col-lg-4">
+      <%= link_to strike_path(strike.id) do %>
+        <div class="card-design">
+          <div>
+            <div class="category">
+              <div class="category-logo">
+              <i class="fas fa-<%=strike.category.name.downcase%>"></i>
+              </div>
+              <h3><strong><%= strike.category.name %> Strike</strong></h3>
+            </div>
+            <p><strong>From: </strong><%= strike.start_date %></p>
+            <p><strong>To: </strong><%= strike.end_date %></p>
+            <p><strong>Organization: </strong><%= strike.organization %></p>
+            <p><strong>Union: </strong><%= strike.union.name%></p>
+            <p><strong>Description: </strong><%= strike.description %></p>
+            <hr>
+            <%= simple_form_for @reminder do |f| %>
+              <%= f.hidden_field :strike_id, value: strike.id %>
+              <%= f.submit "Remind me", class: "btn btn-success" %>
+            <% end %>
+            <hr>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

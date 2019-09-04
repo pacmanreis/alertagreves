@@ -24,9 +24,9 @@ Sector.create(name: 'Public')
 # 1..6
 Category.create(name: 'Train', sector_id: 1)
 Category.create(name: 'Subway', sector_id: 1)
-Category.create(name: 'Boat', sector_id: 1)
-Category.create(name: 'Cab', sector_id: 1)
-Category.create(name: 'Airplane', sector_id: 1)
+Category.create(name: 'Ship', sector_id: 1)
+Category.create(name: 'Taxi', sector_id: 1)
+Category.create(name: 'Plane', sector_id: 1)
 Category.create(name: 'Bus', sector_id: 1)
 
 # 7
