@@ -5,16 +5,20 @@
     <%= f.input :organization %>
     <%= f.association :category %>
     <%= f.input :description %>
-    <%= f.association :union %>
-    <p>Or create new union</p>
-    <%= f.simple_fields_for :union do |p| %>
-      <%= p.input :name %>
-      <%= p.input :initials %>
-      <%= p.input :url %>
-    <% end %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
+    <div id="union-select">
+      <%= f.association :union %>
+    </div>
+    <a href=# id="new-union">Or create new union</a>
+    <div id="new-union-form" class="d-none">
+      <%= f.simple_fields_for :union do |p| %>
+        <%= p.input :name, input_html: { class: "union-input-field" } %>
+        <%= p.input :initials, input_html: { class: "union-input-field" } %>
+        <%= p.input :url, input_html: { class: "union-input-field" } %>
+      <% end %>
+    </div>
     <%# TODO: disable option to choose union and create new same time %>
+      <%= f.input :start_date %>
+      <%= f.input :end_date %>
 
   </div>
   <div class="form-actions">

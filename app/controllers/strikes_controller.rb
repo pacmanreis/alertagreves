@@ -1,6 +1,8 @@
 class StrikesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
+  before_action :check_if_admin, only: [:new, :create, :destroy, :update, :edit]
+
   def index
-    # @strikes = Strike.all
     @strikes = policy_scope(Strike)
   end
 
@@ -13,10 +15,10 @@ class StrikesController < ApplicationController
   def create
     @strike = Strike.new(strike_params)
     authorize @strike
-
     if @strike.save
       redirect_to root_path
     else
+      @strike.build_union
       render :new
     end
   end
@@ -54,7 +56,7 @@ class StrikesController < ApplicationController
   private
 
   def strike_params
-    unless (params.require(:strike).has_key?(:union_attributes))
+    if params[:strike][:union_attributes][:name].blank?
       params.require(:strike).permit(:category_id,
                                     :organization,
                                     :description,
@@ -69,5 +71,9 @@ class StrikesController < ApplicationController
                                     :end_date,
                                     union_attributes: [:id, :name, :initials, :url])
     end
+  end
+
+  def check_if_admin
+    redirect_to root_path, alert: "dont be a jerk" unless current_user.admin
   end
 end
