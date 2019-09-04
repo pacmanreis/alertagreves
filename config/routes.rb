@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 
   resources :strikes do
     collection do
-       get 'search'
+      get 'search'
     end
   end
   resources :unions, only: :create
+  resources :reminders, only: [:index, :create]
 end

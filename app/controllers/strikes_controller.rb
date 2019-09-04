@@ -4,6 +4,7 @@ class StrikesController < ApplicationController
 
   def index
     @strikes = policy_scope(Strike)
+    @reminder = Reminder.new
   end
 
   def new

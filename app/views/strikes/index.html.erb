@@ -21,6 +21,10 @@
             <p><strong>Description: </strong><%= strike.description %></p>
             <p><strong>Starts: </strong><%= strike.start_date %></p>
             <p><strong>Ends: </strong><%= strike.end_date %></p>
+            <%= simple_form_for @reminder do |f| %>
+              <%= f.hidden_field :strike_id, value: strike.id %>
+              <%= f.submit "Remind me", class: "btn btn-success" %>
+            <% end %>
           </div>
       <% end %>
     </div>
