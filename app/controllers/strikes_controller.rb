@@ -14,12 +14,16 @@ class StrikesController < ApplicationController
     @strike = Strike.new(strike_params)
     authorize @strike
 
-    
     if @strike.save
       redirect_to root_path
     else
       render :new
     end
+  end
+
+  def search
+    @strike = Strike.search_by_country_organization_description_and_union_id(params[:query])
+    authorize @strike
   end
 
   def show
