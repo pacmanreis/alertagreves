@@ -29,9 +29,10 @@
 }
 
 .language {
-  color: white;
+  color: white !important;
   font-size: 18px;
   vertical-align: middle;
+  text-decoration: none !important;
 }
 
 // Search Form
