@@ -1,29 +1,61 @@
 <div class="row ">
   <% @strikes.each do |strike| %>
-    <div class="col-xs-12 col-sm-6 col-lg-4">
-      <%= link_to strike_path(strike.id) do %>
-        <div class="card-design">
-          <div>
+    <div class="col-xs-12 col-sm-12 col-lg-12">
+      <div class="card-design">
+        <div class="all-content">
+          <%= link_to strike_path(strike.id) do %>
             <div class="category">
-              <div class="category-logo">
-              <i class="fas fa-<%=strike.category.name.downcase%>"></i>
+              <div class="logo">
+                <i class="fas fa-<%=strike.category.name.downcase%>"></i>
               </div>
-              <h3><strong><%= strike.category.name %> Strike</strong></h3>
+              <div><h3><strong><%= strike.category.name %> Strike</strong></h3></div>
             </div>
-            <p><strong>From: </strong><%= strike.start_date %></p>
-            <p><strong>To: </strong><%= strike.end_date %></p>
+            <div class="dates">
+              <p><strong>From: </strong><%= strike.start_date %></p>
+              <% if !strike.end_date.nil? %>
+                <p><strong>To: </strong><%= strike.end_date %></p>
+              <% end %>
+            </div>
+          <%end %>
+          <div class="details">
             <p><strong>Organization: </strong><%= strike.organization %></p>
             <p><strong>Union: </strong><%= strike.union.name%></p>
             <p><strong>Description: </strong><%= strike.description %></p>
-            <hr>
+          </div>
+          <hr width="80%">
+          <div class="action-buttons">
             <%= simple_form_for @reminder do |f| %>
               <%= f.hidden_field :strike_id, value: strike.id %>
-              <%= f.submit "Remind me", class: "btn btn-success" %>
-            <% end %>
-            <hr>
+                <% if user_signed_in? %>
+
+                  <% color = strike.user_has_reminders?(current_user) ? "blue" : ""  %>
+                  <%= button_tag type: "submit", class: "hidden-btn" do %>
+                    <i type="submit" class="fas fa-bell <%= color %>"></i>
+                  <% end %>
+                <% else  %>
+                  <%= link_to user_session_path do %>
+                    <i type="submit" class="fas fa-bell"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <div><i class="fas fa-calendar-plus"></i></div>
+            <div><i class="fas fa-share"></i></div>
           </div>
+          <hr>
         </div>
-      <% end %>
+      </div>
     </div>
   <% end %>
 </div>
+
+
+
+<style>
+  .blue {
+    color: blue;
+  }
+
+    .red {
+    color: red;
+  }
+</style>

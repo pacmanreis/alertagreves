@@ -48,6 +48,13 @@ Strike.create(organization: 'Ryanair',
               union_id: 1,
               category_id: 5)
 
+Strike.create(organization: 'CP',
+              description: 'Para exigir melhorias salariais.',
+              start_date: '2019-09-27 00:00:00',
+              end_date: '2019-09-27 23:59:59',
+              union_id: 1,
+              category_id: 1)
+
 Strike.create(organization: 'Ryanair',
               description: 'Os pilotos da Ryanair no Reino Unido estão em protesto contra as condições laborais e salariais praticadas pela companhia.',
               start_date: '2019-09-03',
@@ -62,6 +69,13 @@ Strike.create(organization: 'Ryanair',
               union_id: 1,
               category_id: 5)
 
+Strike.create(organization: 'Expressos',
+              description: 'Para exigir melhorias salariais.',
+              start_date: '2019-09-27 00:00:00',
+              end_date: '2019-09-27 23:59:59',
+              union_id: 1,
+              category_id: 6)
+
 Strike.create(organization: 'British Airways',
               description: 'Para exigir melhorias salariais.',
               start_date: '2019-09-09',
@@ -69,12 +83,13 @@ Strike.create(organization: 'British Airways',
               union_id: 1,
               category_id: 5)
 
-Strike.create(organization: 'British Airways',
+Strike.create(organization: 'Uber',
               description: 'Para exigir melhorias salariais.',
               start_date: '2019-09-10',
               end_date: '2019-09-10',
               union_id: 1,
-              category_id: 5)
+              category_id: 4)
+
 
 Strike.create(organization: 'British Airways',
               description: 'Para exigir melhorias salariais.',
@@ -83,39 +98,38 @@ Strike.create(organization: 'British Airways',
               union_id: 1,
               category_id: 5)
 
-Strike.create(organization: 'British Airways',
-              description: 'Para exigir melhorias salariais.',
-              start_date: '2019-09-27',
-              end_date: '2019-09-27',
-              union_id: 2,
-              category_id: 7)
 
-Strike.create(organization: 'British Airways',
+Strike.create(organization: 'TAP',
               description: 'Para exigir melhorias salariais.',
               start_date: '2019-09-09',
               end_date: '2019-09-09',
-              union_id: 2,
-              category_id: 7)
+              union_id: 1,
+              category_id: 5)
 
-Strike.create(organization: 'Institudo do Registos e Notariado',
+
+Strike.create(organization: 'Metro',
               description: 'Defende um sistema remuneratório, progressão e promoções na carreira e abertura de novos concursos internos e externos.',
               start_date: '2019-09-16',
               end_date: '2019-09-16',
-              union_id: 2,
-              category_id: 7)
+              union_id: 1,
+              category_id: 2)
 
-Strike.create(organization: 'Institudo do Registos e Notariado',
+Strike.create(organization: 'Shipping PT',
               description: 'Defende um sistema remuneratório, progressão e promoções na carreira e abertura de novos concursos internos e externos.',
               start_date: '2019-09-23',
               end_date: '2019-09-23',
-              union_id: 2,
-              category_id: 7)
+              union_id: 1,
+              category_id: 3)
 
-Strike.create(organization: 'Institudo do Registos e Notariado',
+
+
+Strike.create(organization: 'Expressos',
               description: 'Defende um sistema remuneratório, progressão e promoções na carreira e abertura de novos concursos internos e externos.',
               start_date: '2019-09-30',
               end_date: '2019-09-30',
-              union_id: 2,
-              category_id: 7)
+              union_id: 1,
+              category_id: 6)
+
+
 
 puts 'Done!'

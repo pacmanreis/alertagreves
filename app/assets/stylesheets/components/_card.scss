@@ -1,29 +1,60 @@
 .card-design {
   background-color: white;
-  padding: 5px;
-  color: black;
+  padding: 10px;
   display: flex;
   align-items: center;
-}
 
-.card-design :hover {
-  text-decoration: none;
-}
 
-.card-design .category {
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  height: 100px;
-}
+  .all-content {
+    align-items: center;
+    width: -webkit-fill-available;
 
-.category-logo {
-  padding: 0 10px;
-}
 
-.fas {
-  border-radius: 50%;
-  padding: 6px;
-  font-size: 20px;
-  border: 2px solid black;
+    :hover {
+      text-decoration: none;
+
+    }
+
+    .category {
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      text-decoration: none;
+      color: black;
+
+      .logo {
+        width: 60px;
+
+
+        .fas {
+          border-radius: 50%;
+          padding: 6px;
+          font-size: 20px;
+          width: 40px;
+          height: 40px;
+          text-align: center;
+        }
+      }
+    }
+
+    .dates {
+      color: black;
+
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: space-around;
+      // padding: 5px 70px;
+
+      .fas:focus {
+        color: green;
+      }
+
+      .hidden-btn {
+        background: transparent;
+        border: none;
+      }
+    }
+}
 }
