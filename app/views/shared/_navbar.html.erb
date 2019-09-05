@@ -1,11 +1,15 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <% if locale == :pt %>
-    <%= link_to "🇵🇹", { locale: :en }, class: "flag" %>
+  <div>
+    <%= link_to "PT|EN", { locale: :en }, class: "language" %>
+  </div>
   <% else %>
-    <%= link_to "🇬🇧", { locale: :pt }, class: "flag" %>
+  <div>
+    <%= link_to "EN/PT", { locale: :pt }, class: "language" %>
+  </div>
   <% end %>
 
-  <span class="title">AlertaGreves</span>
+  <span class="title"><strong>AlertaGreves</strong></span>
 
   <button class="custom-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
