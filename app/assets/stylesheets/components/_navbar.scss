@@ -1,7 +1,8 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: #27AE60;
-  font-size: 25px;
+  font-size: 20px;
+  align-items: end;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,7 +10,8 @@
 }
 
 .navbar-light .navbar-toggler {
-  border-color: white !important;
+  border-color: none !important;
+  border-style: hidden;
 }
 
 .custom-toggler .navbar-toggler-icon {
@@ -18,14 +20,18 @@
 
 .title {
   color: white;
+  font-weight: bold;
+  font-size: 25px;
 }
 
 .nav-link {
   color: white !important;
 }
 
-.flag {
-  font-size: 40px;
+.language {
+  color: white;
+  font-size: 18px;
+  vertical-align: middle;
 }
 
 // Search Form
