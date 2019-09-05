@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
-  root to: 'strikes#index'
-  
-  resources :strikes do
-    collection do
-      get 'search'
+
+
+  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+    root to: 'strikes#index'
+    resources :strikes do
+      collection do
+        get 'search'
+      end
     end
+    resources :unions, only: :create
+    resources :reminders, only: [:index, :create]
   end
-  resources :unions, only: :create
-  resources :reminders, only: [:index, :create]
-  
+
   require "sidekiq/web"
   authenticate :user, lambda { |u| u.admin } do
     mount Sidekiq::Web => '/sidekiq'

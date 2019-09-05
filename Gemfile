@@ -13,6 +13,7 @@ gem 'pg_search', '~> 2.3.0'
 gem 'recaptcha'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
+gem 'rails-i18n', '~> 5.1'
 
 gem 'autoprefixer-rails'
 gem 'country_select'
