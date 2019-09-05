@@ -19,10 +19,11 @@
         </li>
       <% end %>
 
+      <li class="nav-item">
+        <%= link_to "#{t(:home)}", root_path, class: "nav-link" %>
+      </li>
+
       <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "#{t(:home)}", root_path, class: "nav-link" %>
-        </li>
 
         <% if current_user.admin %>
           <li class="nav-item">
