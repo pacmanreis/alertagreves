@@ -1,12 +1,15 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-
   <% if locale == :pt %>
-    <%= link_to "🇵🇹", { locale: :en }, class: "flag" %>
+  <div>
+    <%= link_to "PT|EN", { locale: :en }, class: "language" %>
+  </div>
   <% else %>
-    <%= link_to "🇬🇧", { locale: :pt }, class: "flag" %>
+  <div>
+    <%= link_to "EN/PT", { locale: :pt }, class: "language" %>
+  </div>
   <% end %>
 
-  <span class="title">AlertaGreves</span>
+  <span class="title"><strong>AlertaGreves</strong></span>
 
   <button class="custom-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -14,17 +17,17 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <% unless user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "#{t(:login)}", new_user_session_path, class: "nav-link" %>
+        </li>
+      <% end %>
 
-
-  <form action="/strikes/search" accept-charset="UTF-8" method="get" id="expand">
-  <input name="utf8" type="hidden" value="✓">
-  <input type="search" name="query" id="query" placeholder="Search for a strike">
-  </form>
+      <li class="nav-item">
+        <%= link_to "#{t(:home)}", root_path, class: "nav-link" %>
+      </li>
 
       <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "#{t(:home)}", root_path, class: "nav-link" %>
-        </li>
 
         <% if current_user.admin %>
           <li class="nav-item">
@@ -33,13 +36,20 @@
         <% end %>
 
         <li class="nav-item">
+            <%= link_to "#{t(:about_us)}", root_path, class: "nav-link" %>
+        </li>
+
+        <li class="nav-item">
           <%= link_to "#{t(:logout)}", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "#{t(:login)}", new_user_session_path, class: "nav-link" %>
-        </li>
       <% end %>
+
+      <li>
+        <form action="/strikes/search" accept-charset="UTF-8" method="get" id="expand">
+          <input name="utf8" type="hidden" value="✓">
+          <input type="search" name="query" id="query" placeholder="Search for a strike">
+        </form>
+      </li>
     </ul>
   </div>
 </div>

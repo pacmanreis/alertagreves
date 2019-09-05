@@ -1,0 +1,13 @@
+<h1>Hi <%= @user.email %></h1>
+
+<p>
+  We are reminding you that this week u will have this strikes:
+</p>
+<ul>
+  <% @reminders.each do |reminder| %>
+    <li>
+      <%= reminder.strike.description %>
+      <%= reminder.strike.id %>
+    </li>
+  <% end %>
+</ul>

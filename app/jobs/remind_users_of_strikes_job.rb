@@ -2,13 +2,15 @@ class RemindUsersOfStrikesJob < ApplicationJob
   queue_as :default
 
   def perform()
-    # Get users that need to be reminded
-    reminders = Reminder.joins(:strike).where("date(strikes.start_date) = ?", Date.today + 2.days)
-    # iterate over them and send email
-    reminders.each do |reminder|
-      puts "sending emails..."
+    users_reminders_ids = Reminder.joins(:strike)
+                            .where("strikes.start_date >= ? AND strikes.start_date <= ? ", Date.today, Date.today + 7)
+                            .pluck('reminders.user_id')
+                            
+    users_reminders_ids.uniq.each do |user_id|
+      ReminderMailer.remind(user_id).deliver_now
+      puts "sending mails"
     end
-    # set next job executition
-    RemindUsersOfStrikesJob.set(wait: 1.day).perform_later
+
+    RemindUsersOfStrikesJob.set(wait: 1.week).perform_later
   end
 end

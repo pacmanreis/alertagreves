@@ -1,5 +1,5 @@
 class StrikesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:index, :search]
   before_action :check_if_admin, only: [:new, :create, :destroy, :update, :edit]
 
   def index
