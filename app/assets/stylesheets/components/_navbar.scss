@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: green;
+  background: #27AE60;
   font-size: 25px;
 }
 
@@ -77,7 +77,8 @@ input::-webkit-input-placeholder {
 }
 
 #expand input[type=search] {
-  width: -webkit-fill-available;
+  width: 20px;
+  height: 20px;
   padding-left: 10px;
   color: transparent;
   cursor: pointer;
