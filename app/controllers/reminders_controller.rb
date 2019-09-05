@@ -9,6 +9,6 @@ class RemindersController < ApplicationController
     @reminder.user = current_user
     authorize @reminder
     @reminder.save
-    redirect_to root_path
+    redirect_to root_path, notice: "Reminder successfully created"
   end
 end
