@@ -1,28 +1,29 @@
-<h1>CREATE A NEW STRIKE</h1>
+<div class="form-container">
+  <h1>ADD A STRIKE</h1>
 
-<%= simple_form_for @strike do |f| %>
-  <div class="form-inputs">
-    <%= f.input :organization %>
-    <%= f.association :category %>
-    <%= f.input :description %>
-    <div id="union-select">
-      <%= f.association :union %>
+  <%= simple_form_for @strike do |f| %>
+    <div class="form-inputs">
+      <%= f.input :organization %>
+      <%= f.association :category %>
+      <%= f.input :description %>
+      <div id="union-select">
+        <%= f.association :union %>
+      </div>
+      <a href=# id="new-union">Or create new union</a>
+      <div id="new-union-form" class="d-none">
+        <%= f.simple_fields_for :union do |p| %>
+          <%= p.input :name, input_html: { class: "union-input-field" } %>
+          <%= p.input :initials, input_html: { class: "union-input-field" } %>
+          <%= p.input :url, input_html: { class: "union-input-field" } %>
+        <% end %>
+      </div>
+        <%= f.input :start_date %>
+        <%= f.input :end_date %>
+
     </div>
-    <a href=# id="new-union">Or create new union</a>
-    <div id="new-union-form" class="d-none">
-      <%= f.simple_fields_for :union do |p| %>
-        <%= p.input :name, input_html: { class: "union-input-field" } %>
-        <%= p.input :initials, input_html: { class: "union-input-field" } %>
-        <%= p.input :url, input_html: { class: "union-input-field" } %>
-      <% end %>
+    <div class="form-actions text-center">
+      <%= f.submit class: 'btn btn-lg btn-primary' %>
+      <%= link_to 'Cancel', root_path, class: 'btn btn-lg btn-secondary' %>
     </div>
-      <%= f.input :start_date %>
-      <%= f.input :end_date %>
-
-  </div>
-  <div class="form-actions">
-    <%= f.submit class: 'btn btn-lg btn-primary' %>
-    <%= link_to 'Cancel', root_path, class: 'btn btn-lg btn-secondary' %>
-  </div>
-<% end %>
-
+  <% end %>
+</div>
