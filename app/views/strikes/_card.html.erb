@@ -1,6 +1,5 @@
-<div class="row ">
   <% @strikes.each do |strike| %>
-    <div class="col-xs-12 col-sm-12 col-lg-12">
+    <div class="col-xs-12 col-sm-12 col-lg-12 p-0">
       <div class="card-design">
         <div class="all-content">
           <%= link_to strike_path(strike.id) do %>
@@ -46,7 +45,6 @@
       </div>
     </div>
   <% end %>
-</div>
 
 
 
