@@ -31,9 +31,9 @@
 
 en:
   add_strike: "Add Strike"
-  login: "Log In/Register"
+  login: "Log In"
+  sign_up: "Sign Up"
   logout: "Log Out"
-  home: "Home"
   about_us: "About Us"
   search_strike: "Search for a strike"
   settings: "Settings"
