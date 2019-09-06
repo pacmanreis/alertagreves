@@ -1,8 +1,8 @@
 pt:
   add_strike: "Adicionar Greve"
-  login: "Entrar/Registar"
+  login: "Entrar"
+  sign_up: "Criar Conta"
   logout: "Sair"
-  home: "Inicio"
   about_us: "Sobre Nós"
   search_strike: "Procurar Greve"
   settings: "Preferências"
