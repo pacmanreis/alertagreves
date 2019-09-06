@@ -11,6 +11,6 @@ class RemindUsersOfStrikesJob < ApplicationJob
       puts "sending mails"
     end
 
-    RemindUsersOfStrikesJob.set(wait: 1.week).perform_later
+    RemindUsersOfStrikesJob.set(wait: 1.day).perform_later
   end
 end
