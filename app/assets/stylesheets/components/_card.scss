@@ -4,15 +4,12 @@
   display: flex;
   align-items: center;
 
-
   .all-content {
     align-items: center;
     width: -webkit-fill-available;
 
-
     :hover {
       text-decoration: none;
-
     }
 
     .category {
@@ -24,7 +21,6 @@
 
       .logo {
         width: 60px;
-
 
         .fas {
           border-radius: 50%;
@@ -39,22 +35,16 @@
 
     .dates {
       color: black;
-
     }
 
     .action-buttons {
       display: flex;
       justify-content: space-around;
-      // padding: 5px 70px;
-
-      .fas:focus {
-        color: green;
-      }
 
       .hidden-btn {
         background: transparent;
         border: none;
       }
     }
-}
+  }
 }
