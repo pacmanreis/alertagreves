@@ -3,7 +3,8 @@ class StrikesController < ApplicationController
   before_action :check_if_admin, only: [:new, :create, :destroy, :update, :edit]
 
   def index
-    @strikes = policy_scope(Strike)
+    @strikes = policy_scope(Strike).where("start_date >= :date",
+                                          date: Date.today).order(:start_date)
     @reminder = Reminder.new
   end
 
