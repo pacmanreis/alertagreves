@@ -36,6 +36,18 @@
         <% end %>
 
         <li class="nav-item">
+            <%= link_to "#{t(:categories)}", root_path, class: "nav-link" %>
+        </li>
+
+        <li class="nav-item">
+            <%= link_to "#{t(:reminders)}", root_path, class: "nav-link" %>
+        </li>
+
+        <li class="nav-item">
+            <%= link_to "#{t(:settings)}", edit_user_registration_path, class: "nav-link" %>
+        </li>
+
+        <li class="nav-item">
             <%= link_to "#{t(:about_us)}", root_path, class: "nav-link" %>
         </li>
 
