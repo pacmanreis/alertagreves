@@ -1,21 +1,6 @@
 <h1 class="text-center my-4">YOUR SEARCH RESULTS</h1>
-<% if @strike.any? %>
-  <div class="row">
-    <% @strike.each do |strike| %>
-      <div class="col-xs-12 col-sm-6 col-lg-4">
-        <%= link_to strike_path(strike.id), class: "link" do %>
-          <div class="card">
-            <p><strong>Category: </strong><%= strike.category.name %></p>
-            <!-- <p><%= strike.category.sector.name %></p> -->
-            <p><strong>Organization: </strong><%= strike.organization %></p>
-            <p><strong>Union: </strong><%= strike.union.name%></p>
-            <p><strong>Description: </strong><%= strike.description %></p>
-            <p><strong>Starts: </strong><%= strike.start_date %></p>
-            <p><strong>Ends: </strong><%= strike.end_date %></p>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+<% if @strikes.any? %>
+  <%= render 'card', strike: @strike %>
   </div>
 <% else %>
   <h3 class="text-center my-4">No Strikes's found</h3>
