@@ -27,6 +27,7 @@ class StrikesController < ApplicationController
 
   def search
     @strikes = Strike.search_by_country_organization_description_and_union_id(params[:query])
+    @reminder = Reminder.new
     authorize @strikes
   end
 
