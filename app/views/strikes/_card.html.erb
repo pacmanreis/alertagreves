@@ -32,6 +32,9 @@
                     <p><strong>Organization: </strong><%= strike.organization %></p>
                     <p><strong>Union: </strong><%= strike.union.name%></p>
                     <p><strong>Description: </strong><%= strike.description %></p>
+                    <div class="text-center">
+                      <%= link_to "Edit", strike_path(strike) %>
+                    </div>
                 </div>
                 <hr width="80%">
                 <div class="action-buttons">
@@ -59,7 +62,6 @@
                   <div><i class="fas fa-calendar-plus"></i></div>
                   <div><i class="fas fa-share"></i></div>
                 </div>
-                <hr>
               </div>
             </div>
           </div>
