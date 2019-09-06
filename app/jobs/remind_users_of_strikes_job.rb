@@ -3,8 +3,8 @@ class RemindUsersOfStrikesJob < ApplicationJob
 
   def perform()
     users_reminders_ids = Reminder.joins(:strike)
-                            .where("strikes.start_date >= ? AND strikes.start_date <= ? ", Date.today, Date.today + 7)
-                            .pluck('reminders.user_id')
+                                  .where("strikes.start_date >= ? AND strikes.start_date <= ? ", Date.today, Date.today + 7)
+                                  .pluck('reminders.user_id')
                             
     users_reminders_ids.uniq.each do |user_id|
       ReminderMailer.remind(user_id).deliver_now
