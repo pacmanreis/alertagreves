@@ -3,7 +3,7 @@ const showCreateUnionForm = () => {
   const unionForm = document.querySelector("#new-union-form");
   const unionField = document.querySelector("#union-select");
   const newUnionFields = document.querySelectorAll(".union-input-field");
-  
+
   if (createUnion) {
     createUnion.addEventListener('click', (event) => {
       unionForm.classList.toggle('d-none');
@@ -11,10 +11,10 @@ const showCreateUnionForm = () => {
       newUnionFields.forEach ((field) => {
         field.value = "";
       })
-      if (createUnion.innerText === "Or create new union") {
-        createUnion.innerText = "Select union";
+      if (createUnion.innerText === "Create a Union below or choose one here") {
+        createUnion.innerText = "Select one below or create one here";
       } else {
-        createUnion.innerText = "Or create new union";
+        createUnion.innerText = "Create a Union below or choose one here";
       }
       event.preventDefault();
     });

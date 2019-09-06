@@ -6,10 +6,10 @@
       <%= f.input :organization %>
       <%= f.association :category %>
       <%= f.input :description %>
+      <p><a href=# id="new-union">Select Union below or create one here</a></p>
       <div id="union-select">
         <%= f.association :union %>
       </div>
-      <a href=# id="new-union">Or create new union</a>
       <div id="new-union-form" class="d-none">
         <%= f.simple_fields_for :union do |p| %>
           <%= p.input :name, input_html: { class: "union-input-field" } %>
@@ -22,8 +22,8 @@
 
     </div>
     <div class="form-actions text-center">
-      <%= f.submit class: 'btn btn-lg btn-primary' %>
-      <%= link_to 'Cancel', root_path, class: 'btn btn-lg btn-secondary' %>
+      <%= f.submit class: 'btn btn-primary' %>
+      <%= link_to 'Cancel', root_path, class: 'btn btn-secondary' %>
     </div>
   <% end %>
 </div>
