@@ -11,4 +11,11 @@ class RemindersController < ApplicationController
     @reminder.save
     redirect_to root_path, notice: "Reminder successfully created"
   end
+
+  def destroy
+    @reminder = Reminder.find(params[:id])
+    authorize @reminder
+    @reminder.destroy
+    redirect_to root_path, notice: "Reminder successfully removed"
+  end
 end

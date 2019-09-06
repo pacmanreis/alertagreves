@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       end
     end
     resources :unions, only: :create
-    resources :reminders, only: [:index, :create]
+    resources :reminders, only: [:index, :create, :destroy]
   end
 
   require "sidekiq/web"

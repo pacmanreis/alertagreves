@@ -8,4 +8,14 @@ class ReminderPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def destroy?
+    check_if_owner?
+  end
+
+  private
+
+  def check_if_owner?
+    record.user == user
+  end
 end
