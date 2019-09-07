@@ -53,7 +53,7 @@ class StrikesController < ApplicationController
     @strike = Strike.find(params[:id])
     authorize @strike
     @strike.update(strike_params)
-    redirect_to strike_path(@strike)
+    redirect_to root_path
   end
 
   private
