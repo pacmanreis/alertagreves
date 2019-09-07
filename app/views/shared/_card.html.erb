@@ -33,7 +33,7 @@
                     <p><strong>Union: </strong><%= strike.union.name%></p>
                     <p><strong>Description: </strong><%= strike.description %></p>
                     <div class="text-center">
-                      <% if user_signed_in? %>
+                      <% if current_user.admin %>
                       <%= link_to "Edit", edit_strike_path(strike), class: "btn btn-primary btn-sm" %>
                       <%= link_to 'Delete', strike_path(strike.id), method: :delete, class: 'btn btn-danger btn-sm' %>
                       <% end %>

@@ -16,12 +16,12 @@
     <%= render 'shared/flashes' %>
     <div class="main-display">
     <div class="menu">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto menu-desktop">
         <% unless user_signed_in? %>
-          <li class="nav-item">
+          <li>
             <%= link_to "#{t(:login)}", new_user_session_path %>
           </li>
-          <li class="nav-item">
+          <li>
             <%= link_to "#{t(:sign_up)}", new_user_registration_path %>
           </li>
         <% end %>
@@ -29,30 +29,30 @@
         <% if user_signed_in? %>
 
           <% unless current_user.admin %>
-            <li class="nav-item">
+            <li>
               <%= link_to "#{t(:submit_strike)}", new_submitted_strike_path %>
             </li>
           <% end %>
 
           <% if current_user.admin %>
-            <li class="nav-item">
+            <li>
               <%= link_to "#{t(:add_strike)}", new_strike_path %>
             </li>
-            <li class="nav-item">
+            <li>
               <%= link_to "#{t(:approve_strikes)}", submitted_strikes_path %>
             </li>
           <% end %>
 
-          <li class="nav-item">
+          <li>
               <%= link_to "#{t(:reminders)}", reminders_path %>
           </li>
-          <li class="nav-item">
+          <li>
               <%= link_to "#{t(:settings)}", edit_user_registration_path %>
           </li>
-          <li class="nav-item">
+          <li>
               <%= link_to "#{t(:about_us)}", root_path %>
           </li>
-          <li class="nav-item">
+          <li>
             <%= link_to "#{t(:logout)}", destroy_user_session_path, method: :delete %>
           </li>
         <% end %>

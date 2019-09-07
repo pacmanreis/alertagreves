@@ -1,8 +1,8 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: #27AE60;
-  font-size: 20px;
-  align-items: end;
+  font-size: 15px;
+  align-items: center;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -18,31 +18,45 @@
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
+.title-language {
+  display: flex;
+  align-items: baseline;
+}
+
 .title {
   color: white;
-  font-weight: bold;
   font-size: 25px;
-  padding: 0px;
+  font-weight: bold;
+  vertical-align: middle;
+  text-decoration: none !important;
+  margin-right: 10px;
+}
+
+.language {
+  color: white !important;
+  font-size: 11px;
+  font-weight: bold;
+  vertical-align: middle;
+  text-decoration: none !important;
+  border-style: solid;
+  border-radius: 3px;
+  border-width: 1px;
+  padding: 3px;
 }
 
 .nav-link {
   color: white !important;
 }
 
-.language {
-  color: white !important;
-  font-size: 18px;
-  vertical-align: middle;
-  text-decoration: none !important;
-}
 
-@include media-breakpoint-up(xs sm) {
+
+@include media-breakpoint-up(xs) {
   .search-desktop {
     display: none;
   }
 }
 
-@include media-breakpoint-up(md) {
+@include media-breakpoint-up(sm) {
   .toggler-desktop {
     display: none;
   }

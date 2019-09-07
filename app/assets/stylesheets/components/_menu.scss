@@ -2,7 +2,12 @@
   display: none;
 }
 
-@include media-breakpoint-up(md) {
+.menu-desktop {
+  font-size: 20px;
+  padding: 15px;
+}
+
+@include media-breakpoint-up(sm) {
   .menu {
     display: block;
     height: 90vh;
