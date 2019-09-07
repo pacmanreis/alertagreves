@@ -1,6 +1,11 @@
 class RemindersController < ApplicationController
   def index
-    @reminders = Reminder.all
+    @reminders = policy_scope(Reminder).where(user_id: current_user.id)
+    @strikes = []
+    @reminders.each do |strike|
+      @strikes << strike.strike
+    end
+    @reminder = Reminder.new
   end
 
   def create
