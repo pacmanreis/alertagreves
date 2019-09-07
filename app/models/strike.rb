@@ -8,17 +8,16 @@ class Strike < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_country_organization_description_and_union_id,
-    against: [ :country, :organization, :description, :union_id ],
+    against: [:country, :organization, :description, :union_id],
     associated_against: {
-      union: [ :name, :initials],
-      category: [ :name]
+      union: [:name, :initials],
+      category: [:name]
     },
     using: {
       tsearch: { prefix: true }
     }
 
-
-    def user_has_reminders?(user)
-      self.reminders.where(user: user).any?
-    end
+  def user_has_reminders?(user)
+    self.reminders.where(user: user).any?
+  end
 end
