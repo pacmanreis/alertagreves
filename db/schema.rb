@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_05_094127) do
+ActiveRecord::Schema.define(version: 2019_09_07_145343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,23 @@ ActiveRecord::Schema.define(version: 2019_09_05_094127) do
     t.index ["union_id"], name: "index_strikes_on_union_id"
   end
 
+  create_table "submitted_strikes", force: :cascade do |t|
+    t.string "country", default: "Portugal"
+    t.string "organization"
+    t.string "description"
+    t.string "status", default: "Pending"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "union_id"
+    t.bigint "category_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_submitted_strikes_on_category_id"
+    t.index ["union_id"], name: "index_submitted_strikes_on_union_id"
+    t.index ["user_id"], name: "index_submitted_strikes_on_user_id"
+  end
+
   create_table "unions", force: :cascade do |t|
     t.string "name"
     t.string "initials"
@@ -78,4 +95,7 @@ ActiveRecord::Schema.define(version: 2019_09_05_094127) do
   add_foreign_key "reminders", "users"
   add_foreign_key "strikes", "categories"
   add_foreign_key "strikes", "unions"
+  add_foreign_key "submitted_strikes", "categories"
+  add_foreign_key "submitted_strikes", "unions"
+  add_foreign_key "submitted_strikes", "users"
 end
