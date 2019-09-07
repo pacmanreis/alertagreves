@@ -1,0 +1,64 @@
+
+<div id="strikes-container" class="container-fluid">
+  <div class="row ">
+    <% @strikes.each do |strike| %>
+      <div class="col-xs-12 col-sm-12 col-lg-12">
+        <div id="accordion">
+            <div class="card-design">
+              <div class="all-content">
+                <%#= link_to strike_path(strike.id) do %>
+                <div class="card-top" id="heading">
+                  <button class="btn btn-link card-top-content" data-toggle="collapse" data-target="#collapse-<%=strike.id %>" aria-expanded="true" aria-controls="collapseOne">
+                    <div class="category">
+                      <div class="logo">
+                        <i class="fas fa-<%=strike.category.name.downcase%>"></i>
+                      </div>
+                      <h3><strong><%= strike.category.name %> Strike</strong></h3>
+                    </div>
+                    <div class="dates">
+                      <% if strike.start_date == strike.end_date%>
+                        <p><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
+                      <% else %>
+                        <p><strong>From: </strong><%= strike.start_date %></p>
+                        <% if !strike.end_date.nil? %>
+                          <p><strong>To: </strong><%= strike.end_date %></p>
+                        <% end %>
+                      <%end %>
+                    </div>
+                  </button>
+                </div>
+                <%#end %>
+
+                    <p><strong>Organization: </strong><%= strike.organization %></p>
+                    <p><strong>Union: </strong><%= strike.union.name%></p>
+                    <p><strong>Description: </strong><%= strike.description %></p>
+                    <div class="text-center">
+                      <% if user_signed_in? %>
+                      <%= link_to "Edit", edit_strike_path(strike), class: "btn btn-primary btn-sm" %>
+                      <%= link_to 'Delete', submitted_strike_path(strike.id), method: :delete, class: 'btn btn-danger btn-sm' %>
+                      <% end %>
+                      <%= link_to "Approve", "https://news.google.com/search?q=greve+#{strike.organization}", class: "btn btn-success btn-sm text-white" %>
+                    </div>
+
+              </div>
+            </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<style>
+  .green {
+    color: green;
+  }
+
+  #strikes-container {
+    margin-top: 10px;
+  }
+  .card-design {
+      box-shadow: 0px 1px 4px 1px rgba(0,0,0,0.26);
+      border-radius: 3px;
+      margin-bottom: 6px;
+    }
+</style>

@@ -1,6 +1,7 @@
 pt:
   add_strike: "Adicionar Greve"
   submit_strike: "Enviar Greve"
+  approve_strikes: "Aprovar Greves"
   login: "Entrar"
   sign_up: "Criar Conta"
   logout: "Sair"

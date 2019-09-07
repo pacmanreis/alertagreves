@@ -36,24 +36,23 @@
             <li class="nav-item">
               <%= link_to "#{t(:add_strike)}", new_strike_path, class: "nav-link" %>
             </li>
+            <li class="nav-item">
+              <%= link_to "#{t(:approve_strikes)}", submitted_strikes_path, class: "nav-link" %>
+            </li>
           <% end %>
 
           <li class="nav-item">
               <%= link_to "#{t(:categories)}", root_path, class: "nav-link" %>
           </li>
-
           <li class="nav-item">
               <%= link_to "#{t(:reminders)}", reminders_path, class: "nav-link" %>
           </li>
-
           <li class="nav-item">
               <%= link_to "#{t(:settings)}", edit_user_registration_path, class: "nav-link" %>
           </li>
-
           <li class="nav-item">
               <%= link_to "#{t(:about_us)}", root_path, class: "nav-link" %>
           </li>
-
           <li class="nav-item">
             <%= link_to "#{t(:logout)}", destroy_user_session_path, method: :delete, class: "nav-link" %>
           </li>
@@ -74,7 +73,6 @@
       </ul>
     </div>
 
-
   <div class="search-desktop">
     <%= form_tag search_strikes_path, method: :get do %>
       <div class="input-group-append">
@@ -89,5 +87,4 @@
       </div>
     <% end %>
   </div>
-
 </div>
