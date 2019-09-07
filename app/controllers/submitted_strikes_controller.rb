@@ -1,4 +1,10 @@
 class SubmittedStrikesController < ApplicationController
+  before_action :check_if_admin, only: [:index]
+
+  def index
+    @strikes = policy_scope(SubmittedStrike).where("status = 'Pending'")
+  end
+
   def new
     @submitted_strike = SubmittedStrike.new
     @submitted_strike.build_union
@@ -14,6 +20,13 @@ class SubmittedStrikesController < ApplicationController
       @submitted_strike.build_union
       render :new
     end
+  end
+
+  def destroy
+    @strike = SubmittedStrike.find(params[:id])
+    authorize @strike
+    @strike.destroy
+    redirect_to root_path
   end
 
   private
@@ -36,5 +49,9 @@ class SubmittedStrikesController < ApplicationController
                                     :end_date,
                                     union_attributes: [:id, :name, :initials, :url])
     end
+  end
+
+  def check_if_admin
+    redirect_to root_path, alert: "dont be a jerk" unless current_user.admin
   end
 end

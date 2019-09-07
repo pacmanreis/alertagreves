@@ -9,7 +9,7 @@ Rails.application.routes.draw do
         get 'search'
       end
     end
-    resources :submitted_strikes, only: [:new, :create]
+    resources :submitted_strikes, only: [:new, :create, :index, :destroy]
     resources :unions, only: :create
     resources :reminders, only: [:index, :create, :destroy]
   end
