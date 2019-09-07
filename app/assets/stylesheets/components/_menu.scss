@@ -1,0 +1,12 @@
+.menu {
+  display: none;
+}
+
+@include media-breakpoint-up(md) {
+  .menu {
+    display: block;
+    height: 90vh;
+    position: sticky;
+    top: 60px;
+  }
+}

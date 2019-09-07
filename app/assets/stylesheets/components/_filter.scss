@@ -1,0 +1,11 @@
+.filter {
+  display: none;
+}
+@include media-breakpoint-up(lg) {
+  .filter {
+    display: block;
+    height: 90vh;
+    position: sticky;
+    top: 60px;
+  }
+}
