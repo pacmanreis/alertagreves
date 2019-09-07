@@ -11,3 +11,35 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.nav-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.main-display {
+  margin-top: 60px;
+}
+
+@include media-breakpoint-up(sm) {
+  .main-display {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .main-display {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .main-display {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
