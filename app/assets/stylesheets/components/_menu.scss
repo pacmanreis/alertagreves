@@ -6,9 +6,19 @@
   padding: 16px;
 }
 
+.menu li a {
+  color: black;
+  text-decoration: none;
+}
+
+.menu li a:hover {
+  color: darkslategrey;
+  text-decoration: none;
+}
+
 .menu-desktop {
   font-size: 20px;
-  padding: 15px;
+  padding: 5px;
 }
 
 @include media-breakpoint-up(sm) {

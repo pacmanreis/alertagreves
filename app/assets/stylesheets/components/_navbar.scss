@@ -32,16 +32,23 @@
   margin-right: 10px;
 }
 
+.title:hover {
+  color: aliceblue;
+}
+
 .language {
   color: white !important;
   font-size: 11px;
   font-weight: bold;
   vertical-align: middle;
-  text-decoration: none !important;
   border-style: solid;
   border-radius: 3px;
   border-width: 1px;
   padding: 3px;
+}
+
+.language:hover {
+  color: aliceblue !important;
 }
 
 .nav-link {
