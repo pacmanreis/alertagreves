@@ -1,7 +1,8 @@
 .filter {
   display: none;
 }
-@include media-breakpoint-up(md) {
+
+@include media-breakpoint-up(lg) {
   .filter {
     display: block;
     height: 90vh;
