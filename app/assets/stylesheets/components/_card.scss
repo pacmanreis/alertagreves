@@ -8,6 +8,13 @@
     align-items: center;
     width: -webkit-fill-available;
 
+    .card-top-content {
+      justify-content: center;
+      width: 100%;
+      margin-bottom: -10px;
+      padding-bottom: 0px;
+    }
+
     :hover {
       text-decoration: none;
     }
@@ -18,9 +25,10 @@
       overflow: hidden;
       text-decoration: none;
       color: black;
+      justify-content: center;
 
       .logo {
-        width: 60px;
+        width: 40px;
 
         .fas {
           border-radius: 50%;
