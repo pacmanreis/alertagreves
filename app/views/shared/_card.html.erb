@@ -19,9 +19,9 @@
                       <% if strike.start_date == strike.end_date%>
                         <p><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
                       <% else %>
-                        <p><strong>From: </strong><%= strike.start_date %></p>
+                        <p><strong>From: </strong><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
                         <% if !strike.end_date.nil? %>
-                          <p><strong>To: </strong><%= strike.end_date %></p>
+                          <p><strong>To: </strong><%= t strike.end_date.strftime("%A") %>, <%= strike.end_date %></p>
                         <% end %>
                       <%end %>
                     </div>
