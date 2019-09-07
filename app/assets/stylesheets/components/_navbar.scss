@@ -35,3 +35,19 @@
   vertical-align: middle;
   text-decoration: none !important;
 }
+
+@include media-breakpoint-up(xs sm) {
+  .search-desktop {
+    display: none;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .toggler-desktop {
+    display: none;
+  }
+
+  .search-desktop {
+    display: block;
+  }
+}
