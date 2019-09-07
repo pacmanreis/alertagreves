@@ -1,6 +1,6 @@
 class StrikesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :search]
-  before_action :check_if_admin, only: [:new, :create, :destroy, :update, :edit]
+  before_action :check_if_admin, only: [:new, :create, :destroy, :update, :edit, :approval]
 
   def index
     @strikes = policy_scope(Strike).where("start_date >= :date",
@@ -23,6 +23,20 @@ class StrikesController < ApplicationController
       @strike.build_union
       render :new
     end
+  end
+
+  def approval
+    @sub_strike = SubmittedStrike.find(params[:id])
+    @strike = Strike.new(organization: @sub_strike.organization,
+                         description: @sub_strike.description,
+                         category: @sub_strike.category,
+                         union: @sub_strike.union,
+                         start_date: @sub_strike.start_date,
+                         end_date: @sub_strike.end_date)
+    authorize @strike
+    @strike.save
+    @sub_strike.update(status: 'Approved')
+    redirect_to submitted_strikes_path
   end
 
   def search

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :strikes do
       collection do
         get 'search'
+        post 'approval/:id', to: 'strikes#approval', as: :approval
       end
     end
     resources :submitted_strikes, only: [:new, :create, :index, :destroy]

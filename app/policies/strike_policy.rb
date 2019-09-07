@@ -21,6 +21,10 @@ class StrikePolicy < ApplicationPolicy
     true
   end
 
+  def approval?
+    user_is_admin?
+  end
+
   def edit?
     user_is_admin?
   end
