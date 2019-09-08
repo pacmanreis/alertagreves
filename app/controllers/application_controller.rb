@@ -29,6 +29,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options(options = {})
-    { locale: I18n.locale }.merge options
+    { locale: I18n.locale,
+      host: ENV["DOMAIN"] || "localhost:3000" }.merge options
   end
 end
