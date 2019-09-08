@@ -40,12 +40,12 @@
               <%= link_to "#{t(:add_strike)}", new_strike_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "#{t(:approve_strikes)}", submitted_strikes_path, class: "nav-link" %>
+              <%= link_to "#{t(:approve_strikes)} (#{SubmittedStrike.where("status = 'Pending'").count})", submitted_strikes_path, class: "nav-link" %>
             </li>
           <% end %>
 
           <li class="nav-item">
-              <%= link_to "#{t(:reminders)}", reminders_path, class: "nav-link" %>
+              <%= link_to "#{t(:reminders)} (#{Reminder.where(user_id: current_user.id).count})", reminders_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
               <%= link_to "#{t(:settings)}", edit_user_registration_path, class: "nav-link" %>
