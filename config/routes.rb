@@ -10,7 +10,7 @@ Rails.application.routes.draw do
         post 'approval/:id', to: 'strikes#approval', as: :approval
       end
     end
-    resources :submitted_strikes, only: [:new, :create, :index, :destroy]
+    resources :submitted_strikes, except: [:show]
     resources :unions, only: :create
     resources :reminders, only: [:index, :create, :destroy]
   end
