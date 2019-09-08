@@ -2,7 +2,7 @@ class SubmittedStrikesController < ApplicationController
   before_action :check_if_admin, only: [:index]
 
   def index
-    @strikes = policy_scope(SubmittedStrike).where("status = 'Pending'")
+    @strikes = policy_scope(SubmittedStrike).where("status = 'Pending'").order(:start_date)
   end
 
   def new
@@ -20,6 +20,19 @@ class SubmittedStrikesController < ApplicationController
       @submitted_strike.build_union
       render :new
     end
+  end
+
+  def edit
+    @submitted_strike = SubmittedStrike.find(params[:id])
+    authorize @submitted_strike
+    @union = Union.new
+  end
+
+  def update
+    @submitted_strike = SubmittedStrike.find(params[:id])
+    authorize @submitted_strike
+    @submitted_strike.update(submitted_strike_params)
+    redirect_to submitted_strikes_path
   end
 
   def destroy

@@ -34,7 +34,7 @@
                     <p><strong>Description: </strong><%= strike.description %></p>
                     <div class="text-center">
                       <% if user_signed_in? %>
-                      <%= link_to "Edit", edit_strike_path(strike), class: "btn btn-primary btn-sm" %>
+                      <%= link_to "Edit", edit_submitted_strike_path(strike), class: "btn btn-primary btn-sm" %>
                       <%= link_to 'Delete', submitted_strike_path(strike.id), method: :delete, class: 'btn btn-danger btn-sm' %>
                       <% end %>
                       <%= link_to "Approve", approval_strikes_path(strike.id), method: :post, class: "btn btn-success btn-sm text-white" %>

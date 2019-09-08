@@ -1,7 +1,7 @@
 <div class="form-container">
   <p class="text-center h4">EDIT STRIKE</p>
 
-  <%= simple_form_for @strike do |f| %>
+  <%= simple_form_for @submitted_strike do |f| %>
     <div class="form-inputs">
       <%= f.input :organization %>
       <%= f.association :category %>
@@ -22,8 +22,9 @@
 
     </div>
     <div class="form-actions text-center">
-      <%= f.submit class: 'btn btn-primary' %>
-      <%= link_to 'Cancel', root_path, class: 'btn btn-secondary' %>
+      <%= link_to "Approve", approval_strikes_path(@submitted_strike.id), method: :post, class: "btn btn-success btn-sm text-white" %>
+      <%= f.submit class: 'btn btn-sm btn-primary' %>
+      <%= link_to 'Cancel', root_path, class: 'btn-sm btn-secondary' %>
     </div>
   <% end %>
 </div>
