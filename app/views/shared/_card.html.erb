@@ -51,7 +51,7 @@
                   <i class="fas fa-bell <%= color %>"></i>
                 <% end %>
               <% else %>
-                <%= simple_form_for @reminder do |f| %>
+                <%= simple_form_for Reminder.new do |f| %>
                   <%= f.hidden_field :strike_id, value: strike.id %>
                   <%= button_tag type: "submit", class: "hidden-btn" do %>
                     <i class="fas fa-bell"></i>
