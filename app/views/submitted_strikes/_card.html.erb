@@ -11,7 +11,13 @@
                       <div class="logo">
                         <i class="fas fa-<%=strike.category.name.downcase%>"></i>
                       </div>
-                      <h3><strong><%= strike.category.name %> Strike</strong></h3>
+                      <h3><strong>
+                      <% if locale == :en %>
+                        <%= strike.category.name %> <%= "#{t(:strike)}" %>
+                        <% else %>
+                        <%= "#{t(:strike)}" %> <%= strike.category.name %>
+                        <% end %>
+                      </strong></h3>
                     </div>
                     <div class="dates">
                       <% if strike.start_date == strike.end_date%>
@@ -31,7 +37,7 @@
                     <div class="text-center">
                       <% if user_signed_in? %>
                       <%= link_to "Edit", edit_submitted_strike_path(strike), class: "btn btn-primary btn-sm" %>
-                      <%= link_to 'Delete', submitted_strike_path(strike.id), method: :delete, class: 'btn btn-danger btn-sm' %>
+                      <%= link_to 'Delete', submitted_strike_path(strike.id), method: :delete, data: { :confirm => "You Sure?"}, class: 'btn btn-danger btn-sm' %>
                       <% end %>
                       <%= link_to "Approve", approval_strikes_path(strike.id), method: :post, class: "btn btn-success btn-sm text-white" %>
                     </div>

@@ -6,7 +6,7 @@
       <%= f.input :organization %>
       <%= f.association :category %>
       <%= f.input :description %>
-      <p><a href=# id="new-union">Select Union below or create one here</a></p>
+      <p><a href=# id="new-union"><%= "#{t(:select_union)}" %></a></p>
       <div id="union-select">
         <%= f.association :union %>
       </div>
@@ -23,7 +23,7 @@
     </div>
     <div class="form-actions text-center">
       <%= f.submit class: 'btn btn-primary' %>
-      <%= link_to 'Cancel', root_path, class: 'btn btn-secondary' %>
+      <%= link_to "#{t(:cancel)}", root_path, class: 'btn btn-secondary' %>
     </div>
   <% end %>
 </div>
