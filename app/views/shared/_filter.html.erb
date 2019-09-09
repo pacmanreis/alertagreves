@@ -1,0 +1,23 @@
+<div class="filter" >
+  <ul>
+    <li><%= link_to "All strikes", strikes_path(category_id: "all") %></li>
+    <% @sectors.each do |sector| %>
+      <li>
+        <div data-toggle="collapse" href="#collapseExample-<%= sector.id %>">
+          <%= sector.name %>
+        </div>
+        <div class="collapse" id="collapseExample-<%= sector.id %>">
+          <ul>
+            <% sector.categories.each do |category| %>
+              <li>
+                <div class="card">
+                  <%= link_to category.name, strikes_path(category_id: category.id) %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

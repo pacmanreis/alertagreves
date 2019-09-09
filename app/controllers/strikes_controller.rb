@@ -3,9 +3,16 @@ class StrikesController < ApplicationController
   before_action :check_if_admin, only: [:new, :create, :destroy, :update, :edit, :approval]
 
   def index
-    @strikes = policy_scope(Strike).where("start_date >= :date",
-                                          date: Date.today).order(:start_date)
+    @sectors = Sector.all
     @reminder = Reminder.new
+    
+    if params[:category_id] && params[:category_id] != "all"
+      @strikes = policy_scope(Strike).where("start_date >= :date AND category_id = :category_id",
+                                            date: Date.today, category_id: params[:category_id]).order(:start_date)
+    else
+      @strikes = policy_scope(Strike).where("start_date >= :date",
+                                            date: Date.today).order(:start_date)
+    end
   end
 
   def new

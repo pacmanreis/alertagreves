@@ -19,7 +19,10 @@ User.create(email: "admin@gmail.com",
 
 puts ''
 Sector.create(name: 'Transportation')
-Sector.create(name: 'Public')
+Sector.create(name: 'Health')
+Sector.create(name: 'School')
+Sector.create(name: 'Records')
+Sector.create(name: 'Justice')
 
 # 1..6
 Category.create(name: 'Train', sector_id: 1)
@@ -29,8 +32,20 @@ Category.create(name: 'Taxi', sector_id: 1)
 Category.create(name: 'Plane', sector_id: 1)
 Category.create(name: 'Bus', sector_id: 1)
 
-# 7
-Category.create(name: 'Records', sector_id: 2)
+# 7..8
+Category.create(name: 'Doctors', sector_id: 2)
+Category.create(name: 'Nurses', sector_id: 2)
+
+# 9..10
+Category.create(name: 'Teachers', sector_id: 3)
+Category.create(name: 'School helpers', sector_id: 3)
+
+# 11..
+Category.create(name: 'Registry clerk', sector_id: 4)
+
+# 12..
+Category.create(name: 'Judges', sector_id: 5)
+Category.create(name: 'Justice clerks', sector_id: 5)
 
 Union.create(name: 'British Airline Pilots Association',
              initials: 'BALPA',

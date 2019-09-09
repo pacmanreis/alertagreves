@@ -32,52 +32,56 @@
     </div>
     <%= render 'shared/flashes' %>
     <div class="main-display">
-    <div class="menu">
-      <ul class="navbar-nav mr-auto menu-desktop">
-        <% unless user_signed_in? %>
-          <li>
-            <%= link_to "#{t(:login)}", new_user_session_path %>
-          </li>
-          <li>
-            <%= link_to "#{t(:sign_up)}", new_user_registration_path %>
-          </li>
-        <% end %>
 
-        <% if user_signed_in? %>
-
-          <% unless current_user.admin %>
+      <div class="menu">
+        <ul class="navbar-nav mr-auto menu-desktop">
+          <% unless user_signed_in? %>
             <li>
-              <%= link_to "#{t(:submit_strike)}", new_submitted_strike_path %>
+              <%= link_to "#{t(:login)}", new_user_session_path %>
+            </li>
+            <li>
+              <%= link_to "#{t(:sign_up)}", new_user_registration_path %>
             </li>
           <% end %>
 
-          <% if current_user.admin %>
+          <% if user_signed_in? %>
+            <% unless current_user.admin %>
+              <li>
+                <%= link_to "#{t(:submit_strike)}", new_submitted_strike_path %>
+              </li>
+            <% end %>
+
+            <% if current_user.admin %>
+              <li>
+                <%= link_to "#{t(:add_strike)}", new_strike_path %>
+              </li>
+              <li>
+                <%= link_to "#{t(:approve_strikes)} (#{SubmittedStrike.where("status = 'Pending'").count})", submitted_strikes_path %>
+              </li>
+            <% end %>
+
             <li>
-              <%= link_to "#{t(:add_strike)}", new_strike_path %>
+                <%= link_to "#{t(:reminders)} (#{Reminder.where(user_id: current_user.id).count})", reminders_path %>
             </li>
             <li>
-              <%= link_to "#{t(:approve_strikes)} (#{SubmittedStrike.where("status = 'Pending'").count})", submitted_strikes_path %>
+                <%= link_to "#{t(:settings)}", edit_user_registration_path %>
+            </li>
+            <li>
+                <%= link_to "#{t(:about_us)}", root_path %>
+            </li>
+            <li>
+              <%= link_to "#{t(:logout)}", destroy_user_session_path, method: :delete %>
             </li>
           <% end %>
+        </ul>
+      </div>
 
-          <li>
-              <%= link_to "#{t(:reminders)} (#{Reminder.where(user_id: current_user.id).count})", reminders_path %>
-          </li>
-          <li>
-              <%= link_to "#{t(:settings)}", edit_user_registration_path %>
-          </li>
-          <li>
-              <%= link_to "#{t(:about_us)}", root_path %>
-          </li>
-          <li>
-            <%= link_to "#{t(:logout)}", destroy_user_session_path, method: :delete %>
-          </li>
-        <% end %>
-    </div>
-    <div>
-    <%= yield %>
-    </div>
-    <div class="filter">WIP - FILTER OPTIONS HERE?</div>
+      <div>
+        <%= yield %>
+      </div>
+      
+      <%= render "shared/filter" if controller_name == "strikes" && action_name == "index" %>
+    
     </div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
