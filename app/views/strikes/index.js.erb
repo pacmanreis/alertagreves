@@ -1,0 +1,6 @@
+function refreshIndexCards(innerHTML) {
+  const indexCards = document.getElementById('strikes-container');
+  indexCards.innerHTML = innerHTML;
+}
+
+refreshIndexCards('<%= j render "shared/card", strikes: @strikes %>');
