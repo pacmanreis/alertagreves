@@ -9,8 +9,8 @@ class StrikesController < ApplicationController
     @grouped_strikes = {
       ongoing: ongoing,
       tomorrow: tomorrow,
-      this_week: this_week - ongoing,
-      next_week: next_week,
+      this_week: this_week - ongoing - tomorrow,
+      next_week: next_week - tomorrow,
       following: following
     }
 
