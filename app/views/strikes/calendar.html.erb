@@ -1,0 +1,9 @@
+<%= month_calendar events: @strikes do |date, meetings| %>
+  <%= date.day %>
+
+  <% meetings.each do |meeting| %>
+    <div>
+      <%= link_to "Strike", strike_path(meeting.id) %>
+    </div>
+  <% end %>
+<% end %>
