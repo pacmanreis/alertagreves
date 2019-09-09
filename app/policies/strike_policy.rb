@@ -37,6 +37,10 @@ class StrikePolicy < ApplicationPolicy
     user_is_admin?
   end
 
+  def calendar?
+    true
+  end
+
   private
 
   def user_is_admin?

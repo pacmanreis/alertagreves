@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :strikes do
       collection do
         get 'search'
+        get 'calendar'
         post 'approval/:id', to: 'strikes#approval', as: :approval
       end
     end

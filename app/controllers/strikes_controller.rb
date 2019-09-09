@@ -1,5 +1,5 @@
 class StrikesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :search]
+  skip_before_action :authenticate_user!, only: [:index, :search, :calendar]
   before_action :check_if_admin, only: [:new, :create, :destroy, :update, :edit, :approval]
 
   def index
@@ -80,6 +80,11 @@ class StrikesController < ApplicationController
     authorize @strike
     @strike.update(strike_params)
     redirect_to root_path
+  end
+
+  def calendar
+    @strikes = Strike.all
+    authorize @strikes
   end
 
   private
