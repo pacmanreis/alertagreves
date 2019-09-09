@@ -20,9 +20,16 @@ User.create(email: "admin@gmail.com",
 puts ''
 Sector.create(name: 'Transportation')
 Sector.create(name: 'Health')
-Sector.create(name: 'School')
+Sector.create(name: 'Education')
+Sector.create(name: 'Finances')
 Sector.create(name: 'Records')
 Sector.create(name: 'Justice')
+Sector.create(name: 'General')
+Sector.create(name: 'Other')
+Sector.create(name: 'Administration')
+Sector.create(name: 'Central Administration')
+Sector.create(name: 'Agricultural')
+Sector.create(name: 'Local Administration')
 
 # 1..6
 Category.create(name: 'Train', sector_id: 1)
@@ -31,6 +38,17 @@ Category.create(name: 'Ship', sector_id: 1)
 Category.create(name: 'Taxi', sector_id: 1)
 Category.create(name: 'Plane', sector_id: 1)
 Category.create(name: 'Bus', sector_id: 1)
+Category.create(name: 'Health', sector_id: 2)
+Category.create(name: 'Education', sector_id: 3)
+Category.create(name: 'Finances', sector_id: 4)
+Category.create(name: 'Records', sector_id: 5)
+Category.create(name: 'Justice', sector_id: 6)
+Category.create(name: 'General', sector_id: 7)
+Category.create(name: 'Other', sector_id: 8)
+Category.create(name: 'Administration', sector_id: 9)
+Category.create(name: 'Central Administration', sector_id: 10)
+Category.create(name: 'Agricultural', sector_id: 11)
+Category.create(name: 'Local Administration', sector_id: 12)
 
 # 7..8
 Category.create(name: 'Doctors', sector_id: 2)
@@ -148,3 +166,61 @@ Strike.create(organization: 'Expressos',
 
 
 puts 'Done!'
+
+puts 'Started Scraping'
+
+require 'open-uri'
+require 'nokogiri'
+require 'pry-byebug'
+require 'csv'
+
+url = "https://www.dgaep.gov.pt/index.cfm?&OBJID=32B5C008-D957-4C3E-B00A-2ECE2208212A&ComDest=0&Tab=4"
+
+html_file = open(url).read
+html_doc = Nokogiri::HTML(html_file)
+
+public_strikes = []
+
+html_doc.search('tr td').each do |element|
+  public_strikes << element.text.strip
+end
+
+csv_options = { col_sep: ',', force_quotes: true, quote_char: '"' }
+filepath    = 'public_strikes.csv'
+
+pstrikes = public_strikes.each_slice(5).to_a
+
+pstrikes.each do |strike|
+  cat = 13
+
+  if strike[4] == "Finanças"
+    cat = 9
+    elsif strike[4] == "Justiça"
+      cat = 11
+    elsif strike[4] == "Saúde"
+      cat = 7
+    elsif strike[4] == "Educação"
+      cat = 8
+    elsif strike[4] == "Todas"
+      cat = 12
+    elsif strike[4] == "Outra"
+      cat = 13
+    elsif strike[4] == "Administração"
+      cat = 15
+    elsif strike[4] == "Administração Central"
+      cat = 15
+    elsif strike[4] == "Agricultura"
+      cat = 16
+    elsif strike[4] == "Administração Local"
+      cat = 17
+  end
+
+  Strike.create(organization: strike[3].gsub("Setorial - ", '').gsub("Setorial ", '').gsub("(", '').gsub(")", ''),
+                description: "Sindicatos - #{strike[0]}",
+                start_date: strike[2],
+                end_date: strike[2],
+                union_id: 1,
+                category_id: cat)
+end
+
+puts 'Done'
