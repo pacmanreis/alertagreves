@@ -5,10 +5,13 @@ class StrikesController < ApplicationController
   def index
     @sectors = Sector.all
     @reminder = Reminder.new
-    
     if params[:category_id] && params[:category_id] != "all"
       @strikes = policy_scope(Strike).where("start_date >= :date AND category_id = :category_id",
                                             date: Date.today, category_id: params[:category_id]).order(:start_date)
+      respond_to do |format|
+        format.html { redirect_to strikes_path }
+        format.js
+      end
     else
       @strikes = policy_scope(Strike).where("start_date >= :date",
                                             date: Date.today).order(:start_date)
