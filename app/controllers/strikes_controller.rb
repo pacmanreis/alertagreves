@@ -5,16 +5,18 @@ class StrikesController < ApplicationController
   def index
     @sectors = Sector.all
     @reminder = Reminder.new
-    if params[:category_id] && params[:category_id] != "all"
-      @strikes = policy_scope(Strike).where("start_date >= :date AND category_id = :category_id",
-                                            date: Date.today, category_id: params[:category_id]).order(:start_date)
-      respond_to do |format|
-        format.html { redirect_to strikes_path }
-        format.js
-      end
-    else
-      @strikes = policy_scope(Strike).where("start_date >= :date",
-                                            date: Date.today).order(:start_date)
+
+    @grouped_strikes = {
+      ongoing: ongoing,
+      tomorrow: tomorrow,
+      this_week: this_week - ongoing,
+      next_week: next_week,
+      following: following
+    }
+
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
@@ -81,6 +83,57 @@ class StrikesController < ApplicationController
   end
 
   private
+
+  def category_filter?
+    params[:category_id] && params[:category_id] != "all"
+  end
+
+  def ongoing
+    return @ongoing if @ongoing.present?
+
+    @ongoing = policy_scope(Strike).where(start_date: Date.today - 100..Date.today)
+    @ongoing = @ongoing.where(end_date: Date.today..Float::INFINITY)
+    @ongoing = @ongoing.where(category_id: params[:category_id]) if category_filter?
+
+    @ongoing.order(:end_date)
+  end
+
+  def tomorrow
+    return @tomorrow if @tomorrow.present?
+
+    @tomorrow = policy_scope(Strike).where(start_date: Date.tomorrow)
+    @tomorrow = @tomorrow.where(category_id: params[:category_id]) if category_filter?
+
+    @tomorrow.order(:start_date)
+  end
+
+  def this_week
+    return @this_week if @this_week.present?
+
+    date_range = Date.tomorrow.beginning_of_week..Date.tomorrow.end_of_week
+    @this_week = policy_scope(Strike).where(start_date: date_range)
+    @this_week = @this_week.where(category_id: params[:category_id]) if category_filter?
+
+    @this_week.order(:start_date)
+  end
+
+  def next_week
+    return @next_week if @next_week.present?
+
+    date_range = Date.today.beginning_of_week.next_week..Date.today.end_of_week.next_week
+    @next_week = policy_scope(Strike).where(start_date: date_range)
+    @next_week = @next_week.where(category_id: params[:category_id]) if category_filter?
+
+    @next_week.order(:start_date)
+  end
+
+  def following
+    date_range = Date.today.beginning_of_week.next_week.next_week..Float::INFINITY
+    following = policy_scope(Strike).where(start_date: date_range)
+    following = following.where(category_id: params[:category_id]) if category_filter?
+
+    following.order(:start_date)
+  end
 
   def strike_params
     if params[:strike][:union_attributes][:name].blank?

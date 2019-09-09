@@ -3,4 +3,6 @@ function refreshIndexCards(innerHTML) {
   indexCards.innerHTML = innerHTML;
 }
 
-refreshIndexCards('<%= j render "shared/card", strikes: @strikes %>');
+refreshIndexCards(
+  '<%= j render "strikes/filtered_list", strikes: @grouped_strikes %>'
+);
