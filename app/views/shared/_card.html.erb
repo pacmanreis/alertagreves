@@ -1,7 +1,7 @@
 
 <div id="strikes-container" class="container-fluid">
   <div class="row ">
-    <% @strikes.each do |strike| %>
+    <% strikes.each do |strike| %>
       <div class="col-xs-12 col-sm-12 col-lg-12">
         <div id="accordion">
             <div class="card-design">
@@ -63,7 +63,7 @@
                         <%= f.hidden_field :strike_id, value: strike.id %>
                         <%= button_tag type: "submit", class: "hidden-btn" do %>
                           <i type="submit" class="fas fa-bell <%= color %>"></i>
-                         <% end %>
+                        <% end %>
                       <% end %>
                     <% end %>
                   <% else %>
