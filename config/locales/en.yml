@@ -48,3 +48,19 @@ en:
   Friday: "Friday"
   Saturday: "Saturday"
   Sunday: "Sunday"
+  strike: "Strike"
+  organization: "Organization"
+  union: "Union"
+  details: "Details"
+  edit: "Edit"
+  delete: "Delete"
+  search_news: "Search News"
+  cancel: "Cancel"
+  select_union: "Select Union below or create one here"
+
+activerecord:
+  attributes:
+      strike:
+        description: "Details"
+      submitted_strike:
+        description: "Details"

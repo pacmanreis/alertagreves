@@ -17,3 +17,35 @@ pt:
   Friday: "Sexta-feira"
   Saturday: "Sábado"
   Sunday: "Domingo"
+  strike: "Greve"
+  organization: "Organização"
+  union: "Sindicato"
+  details: "Detalhes"
+  edit: "Editar"
+  delete: "Apagar"
+  search_news: "Procurar Noticias"
+  cancel: "Cancelar"
+  select_union: "Selecione Sindicato abaixo ou crie um aqui"
+
+  activerecord:
+    models:
+      strike: "Greve"
+      submitted_strike: "Greve"
+    attributes:
+      strike:
+        organization: "Organização"
+        category: "Sector"
+        description: "Detalhes"
+        union: "Sindicato"
+        start_date: "Inicio"
+        end_date: "Fim"
+      submitted_strike:
+        organization: "Organização"
+        category: "Categoria"
+        description: "Detalhes"
+        union: "Sindicato"
+        start_date: "Inicio"
+        end_date: "Fim"
+      union:
+        name: "Nome"
+        initials: "Sigla"
