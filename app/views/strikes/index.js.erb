@@ -1,0 +1,8 @@
+function refreshIndexCards(innerHTML) {
+  const indexCards = document.getElementById('strikes-container');
+  indexCards.innerHTML = innerHTML;
+}
+
+refreshIndexCards(
+  '<%= j render "strikes/filtered_list", strikes: @grouped_strikes %>'
+);

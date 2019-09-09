@@ -1,0 +1,41 @@
+<div id="strikes-container" class="container-fluid">
+   <% if strikes[:ongoing].any? %>
+    <hr class="hr-text" data-content="Ongoing Strikes">
+
+    <% strikes[:ongoing].each do |strike| %>
+      <%= render 'shared/card', strike: strike %>
+    <% end %>
+  <% end %>
+
+  <% if strikes[:tomorrow].any? %>
+    <hr class="hr-text" data-content="Starting Tomorrow">
+
+    <% strikes[:tomorrow].each do |strike| %>
+      <%= render 'shared/card', strike: strike %>
+    <% end %>
+  <% end %>
+
+  <% if strikes[:this_week].any? %>
+    <hr class="hr-text" data-content="Starting this week">
+
+    <% strikes[:this_week].each do |strike| %>
+      <%= render 'shared/card', strike: strike %>
+    <% end %>
+  <% end %>
+
+ <% if strikes[:next_week].any? %>
+    <hr class="hr-text" data-content="Starting next week">
+
+  <% strikes[:next_week].each do |strike| %>
+    <%= render 'shared/card', strike: strike %>
+  <% end %>
+ <% end %>
+
+  <% if strikes[:following].any? %>
+    <hr class="hr-text" data-content="Following Strikes">
+
+    <% strikes[:following].each do |strike| %>
+      <%= render 'shared/card', strike: strike %>
+    <% end %>
+  <% end %>
+</div>

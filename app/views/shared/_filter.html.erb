@@ -1,6 +1,6 @@
 <div class="filter" >
   <ul>
-    <li><%= link_to "All strikes", strikes_path(category_id: "all") %></li>
+    <li><%= link_to "All strikes", strikes_path(category_id: "all"), remote: true %></li>
     <% @sectors.each do |sector| %>
       <li>
         <div data-toggle="collapse" href="#collapseExample-<%= sector.id %>">
@@ -11,7 +11,7 @@
             <% sector.categories.each do |category| %>
               <li>
                 <div class="card">
-                  <%= link_to category.name, strikes_path(category_id: category.id) %>
+                  <%= link_to category.name, strikes_path(category_id: category.id), remote: true %>
                 </div>
               </li>
             <% end %>
