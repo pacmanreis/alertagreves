@@ -9,7 +9,11 @@
                 <div class="logo">
                   <i class="fas fa-<%=strike.category.name.downcase%>"></i>
                 </div>
-                <h3><strong><%= strike.organization %> Strike</strong></h3>
+                <% if locale == :en %>
+                  <h3><strong><%= strike.organization %> Strike</strong></h3>
+                <% elsif locale == :pt %>
+                  <h3><strong>Greve <%= strike.organization %></strong></h3>
+                <% end %>
               </div>
 
               <div class="dates">
@@ -26,14 +30,15 @@
           </div>
 
           <div id="collapse-<%=strike.id %>" class="collapse" aria-labelledby="heading" data-parent="#accordion">
-            <p><strong>Union: </strong><%= strike.union.name%></p>
-            <p><strong>Description: </strong><%= strike.description %></p>
+            <p><strong><%= t :categories %>: </strong><%= strike.category.name%></p>
+            <p><strong><%= t :sector %>: </strong><%= strike.category.sector.name%></p>
+            <p><strong><%= t :details %>: </strong><%= strike.description %></p>
 
             <div class="text-center">
               <% if user_signed_in? %>
                 <% if current_user.admin %>
-                  <%= link_to "Edit", edit_strike_path(strike), class: "btn btn-primary btn-sm" %>
-                  <%= link_to 'Delete', strike_path(strike.id), method: :delete, class: 'btn btn-danger btn-sm' %>
+                  <%= link_to "#{t(:edit)}", edit_strike_path(strike), class: "btn btn-primary btn-sm" %>
+                  <%= link_to "#{t(:delete)}", strike_path(strike.id), method: :delete, class: 'btn btn-danger btn-sm' %>
                 <% end %>
               <% end %>
               <%= link_to "Search for news", "https://news.google.com/search?q=greve+#{strike.organization}", class: "btn btn-success btn-sm text-white" %>
