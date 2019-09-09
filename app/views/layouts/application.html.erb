@@ -27,6 +27,10 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
+    <!-- FB Share -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_PT/sdk.js#xfbml=1&version=v4.0"></script>
+    <!-- end -->
     <div class="nav-top">
       <%= render 'shared/navbar' %>
     </div>
@@ -77,6 +81,7 @@
     <div>
     <%= yield %>
     </div>
+
     <div class="filter">WIP - FILTER OPTIONS HERE?</div>
     </div>
     <%= javascript_include_tag 'application' %>
