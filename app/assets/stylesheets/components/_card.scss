@@ -51,18 +51,33 @@
         width: 100%;
         margin-bottom: -10px;
         padding-bottom: 0px;
-      }
-
-      :hover {
+        font-weight: 400;
+        color: #060606;
         text-decoration: none;
+
+        .chevron{
+          position: absolute;
+          bottom: 80px;
+          left: calc(50% - 15px);
+          transform-origin: 50%;
+          transform: rotate(-180deg);
+          transition: transform 500ms;
+          padding: 0px 2px;
+        }
+
+        .chevron-card.expanded .chevron {
+          transform: rotate(0deg);
+        }
+
+        .text-center{
+            margin-bottom: 16px;
+        }
       }
 
       .category {
         display: flex;
         align-items: center;
         overflow: hidden;
-        text-decoration: none;
-        color: black;
         justify-content: center;
 
         .logo {
@@ -70,7 +85,7 @@
 
           .fas {
             border-radius: 50%;
-            padding: 6px;
+            padding: 6px 6px 6px 0px;
             font-size: 20px;
             width: 40px;
             height: 40px;
@@ -80,23 +95,20 @@
         }
       }
 
-      .dates {
-        color: black;
-      }
-
       .action-buttons {
         display: flex;
         justify-content: space-around;
-        color: black;
-
-        .fa-black {
-          color: black;
-        }
 
         .hidden-btn {
           background: transparent;
           border: none;
         }
+
+        .fas {
+          color: black;
+          padding: 1px 7px 2px
+        }
+
         .green {
             color: #27AE60;
         }

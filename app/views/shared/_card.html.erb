@@ -4,72 +4,80 @@
       <div class="card-design">
         <div class="all-content">
           <div class="card-top" id="heading">
-            <button class="btn btn-link card-top-content" data-toggle="collapse" data-target="#collapse-<%=strike.id %>" aria-expanded="true" aria-controls="collapseOne">
-              <div class="category">
-                <div class="logo">
-                  <i class="fas fa-<%=strike.category.name.downcase%>"></i>
+            <button class="btn btn-link card-top-content" data-toggle="collapse" data-target="#collapse-<%=strike.id %>" aria-expanded="true" aria-controls="collapseOne" >
+              <div class="chevron-card" onclick="this.classList.toggle('expanded')">
+                <div class="category">
+                  <div class="logo">
+                    <i class="fas fa-<%=strike.category.name.downcase%>"></i>
+                  </div>
+                  <% if locale == :en %>
+                    <h3><strong><%= strike.organization %> Strike</strong></h3>
+                  <% elsif locale == :pt %>
+                    <h3><strong>Greve <%= strike.organization %></strong></h3>
+                  <% end %>
                 </div>
-                <% if locale == :en %>
-                  <h3><strong><%= strike.organization %> Strike</strong></h3>
-                <% elsif locale == :pt %>
-                  <h3><strong>Greve <%= strike.organization %></strong></h3>
-                <% end %>
+                <div class="dates">
+                  <% if strike.start_date == strike.end_date%>
+                    <p><strong>On: </strong><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
+                  <% else %>
+                    <p><strong>From: </strong><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
+                    <% if !strike.end_date.nil? %>
+                      <p><strong>To: </strong><%= t strike.end_date.strftime("%A") %>, <%= strike.end_date %></p>
+                    <% end %>
+                  <%end %>
+                  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 35" width="30"><path d="M5 30L50 5l45 25" fill="none" stroke="#000" stroke-width="5"/></svg>
+                </div>
               </div>
 
-              <div class="dates">
-                <% if strike.start_date == strike.end_date%>
-                  <p><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
-                <% else %>
-                  <p><strong>From: </strong><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
-                  <% if !strike.end_date.nil? %>
-                    <p><strong>To: </strong><%= t strike.end_date.strftime("%A") %>, <%= strike.end_date %></p>
+              <div id="collapse-<%=strike.id %>" class="collapse" aria-labelledby="heading" data-parent="#accordion">
+                <p><strong><%= t :categories %>: </strong><%= strike.category.name%></p>
+                <p><strong><%= t :sector %>: </strong><%= strike.category.sector.name%></p>
+                <p><strong><%= t :details %>: </strong><%= strike.description %></p>
+
+                <div class="text-center">
+                  <% if user_signed_in? %>
+                    <% if current_user.admin %>
+                      <%= link_to "#{t(:edit)}", edit_strike_path(strike), class: "btn btn-primary btn-sm" %>
+                      <%= link_to "#{t(:delete)}", strike_path(strike.id), method: :delete, class: 'btn btn-danger btn-sm' %>
+                    <% end %>
                   <% end %>
-                <%end %>
+                </div>
               </div>
             </button>
-          </div>
 
-          <div id="collapse-<%=strike.id %>" class="collapse" aria-labelledby="heading" data-parent="#accordion">
-            <p><strong><%= t :categories %>: </strong><%= strike.category.name%></p>
-            <p><strong><%= t :sector %>: </strong><%= strike.category.sector.name%></p>
-            <p><strong><%= t :details %>: </strong><%= strike.description %></p>
-
-            <div class="text-center">
+            <div><hr class="hr-text"></div>
+            <div class="action-buttons">
               <% if user_signed_in? %>
-                <% if current_user.admin %>
-                  <%= link_to "#{t(:edit)}", edit_strike_path(strike), class: "btn btn-primary btn-sm" %>
-                  <%= link_to "#{t(:delete)}", strike_path(strike.id), method: :delete, class: 'btn btn-danger btn-sm' %>
-                <% end %>
-              <% end %>
-              <%= link_to "Search for news", "https://news.google.com/search?q=greve+#{strike.organization}", class: "btn btn-success btn-sm text-white" %>
-            </div>
-          </div>
-
-          <div><hr class="hr-text"></div>
-
-          <div class="action-buttons">
-            <% if user_signed_in? %>
-              <% user_reminder = current_user.reminders.find_by(strike: strike) %>
-              <% if user_reminder %>
-                <% color = "green" %>
-                <%= link_to reminder_path(user_reminder), method: :delete do %>
-                  <i class="fas fa-bell <%= color %>"></i>
+                <% user_reminder = current_user.reminders.find_by(strike: strike) %>
+                <% if user_reminder %>
+                  <% color = "green" %>
+                  <%= link_to reminder_path(user_reminder), method: :delete do %>
+                    <i class="fas fa-bell <%= color %>"></i>
+                  <% end %>
+                <% else %>
+                  <%= simple_form_for Reminder.new do |f| %>
+                    <%= f.hidden_field :strike_id, value: strike.id %>
+                    <%= button_tag type: "submit", class: "hidden-btn" do %>
+                      <i class="fas fa-bell-slash"></i>
+                     <% end %>
+                  <% end %>
                 <% end %>
               <% else %>
-                <%= simple_form_for Reminder.new do |f| %>
-                  <%= f.hidden_field :strike_id, value: strike.id %>
-                  <%= button_tag type: "submit", class: "hidden-btn" do %>
-                    <i class="fas fa-bell"></i>
-                   <% end %>
+                <%= link_to user_session_path do %>
+                  <i class="fas fa-bell fa-black-slash"></i>
                 <% end %>
               <% end %>
-            <% else %>
-              <%= link_to user_session_path do %>
-                <i class="fas fa-bell fa-black"></i>
-              <% end %>
-            <% end %>
-            <div><i class="fas fa-calendar-plus"></i></div>
-            <div data-href="https://www.alertagreves.com" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alertagreves.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fas fa-share"></i></a></div>
+              <div>
+                <%= link_to "https://news.google.com/search?q=greve+#{strike.organization}" do %>
+                  <i class="fas fa-newspaper"></i>
+                <% end %>
+              </div>
+              <div>
+                <%= link_to "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alertagreves.com%2F&amp;src=sdkpreparse" do %>
+                  <i class="fas fa-share"></i>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
