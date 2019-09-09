@@ -1,1 +1,46 @@
-<%= render 'shared/card', strike: @strike %>
+<div id="strikes-container" class="container-fluid">
+
+   <% if @ongoing.any? %>
+    <hr class="hr-text" data-content="Ongoing Strikes">
+
+    <% @ongoing.each do |strike| %>
+      <%= render 'shared/card', strike: strike %>
+    <% end %>
+  <% end %>
+
+  <% if @tomorrow.any? %>
+    <hr class="hr-text" data-content="Starting Tomorrow">
+
+    <% @tomorrow.each do |strike| %>
+      <%= render 'shared/card', strike: strike %>
+    <% end %>
+  <% end %>
+
+  <% if @this_week.any? %>
+    <hr class="hr-text" data-content="Starting this week">
+
+    <% @this_week.each do |strike| %>
+      <%= render 'shared/card', strike: strike %>
+    <% end %>
+  <% end %>
+
+ <% if @next_week.any? %>
+    <hr class="hr-text" data-content="Starting next week">
+
+  <% @next_week.each do |strike| %>
+    <%= render 'shared/card', strike: strike %>
+  <% end %>
+ <% end %>
+
+  <% if @following.any? %>
+    <hr class="hr-text" data-content="Following Strikes">
+
+    <% @following.each do |strike| %>
+      <%= render 'shared/card', strike: strike %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= render 'shared/footer' %>
+
+

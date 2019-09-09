@@ -1,92 +1,73 @@
-
-<div id="strikes-container" class="container-fluid">
-  <div class="row ">
-    <% @strikes.each do |strike| %>
-      <div class="col-xs-12 col-sm-12 col-lg-12">
-        <div id="accordion">
-            <div class="card-design">
-              <div class="all-content">
-                <%#= link_to strike_path(strike.id) do %>
-                <div class="card-top" id="heading">
-                  <button class="btn btn-link card-top-content" data-toggle="collapse" data-target="#collapse-<%=strike.id %>" aria-expanded="true" aria-controls="collapseOne">
-                    <div class="category">
-                      <div class="logo">
-                        <i class="fas fa-<%=strike.category.name.downcase%>"></i>
-                      </div>
-                      <h3><strong><%= strike.category.name %> Strike</strong></h3>
-                    </div>
-                    <div class="dates">
-                      <% if strike.start_date == strike.end_date%>
-                        <p><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
-                      <% else %>
-                        <p><strong>From: </strong><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
-                        <% if !strike.end_date.nil? %>
-                          <p><strong>To: </strong><%= t strike.end_date.strftime("%A") %>, <%= strike.end_date %></p>
-                        <% end %>
-                      <%end %>
-                    </div>
-                  </button>
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-lg-12">
+    <div id="accordion">
+      <div class="card-design">
+        <div class="all-content">
+          <div class="card-top" id="heading">
+            <button class="btn btn-link card-top-content" data-toggle="collapse" data-target="#collapse-<%=strike.id %>" aria-expanded="true" aria-controls="collapseOne">
+              <div class="category">
+                <div class="logo">
+                  <i class="fas fa-<%=strike.category.name.downcase%>"></i>
                 </div>
-                <%#end %>
-                <div id="collapse-<%=strike.id %>" class="collapse" aria-labelledby="heading" data-parent="#accordion">
-                    <p><strong>Organization: </strong><%= strike.organization %></p>
-                    <p><strong>Union: </strong><%= strike.union.name%></p>
-                    <p><strong>Description: </strong><%= strike.description %></p>
-                    <div class="text-center">
-                      <% if user_signed_in? %>
-                        <% if current_user.admin %>
-                          <%= link_to "Edit", edit_strike_path(strike), class: "btn btn-primary btn-sm" %>
-                          <%= link_to 'Delete', strike_path(strike.id), method: :delete, class: 'btn btn-danger btn-sm' %>
-                        <% end %>
-                      <% end %>
-                      <%= link_to "Search for news", "https://news.google.com/search?q=greve+#{strike.organization}", class: "btn btn-success btn-sm text-white" %>
-                    </div>
-                </div>
-                <hr width="80%">
-                <div class="action-buttons">
-                  <% if user_signed_in? %>
-                    <% user_reminder = current_user.reminders.find_by(strike: strike) %>
-                    <% if user_reminder %>
-                      <% color = "green" %>
-                      <%= link_to reminder_path(user_reminder), method: :delete do %>
-                        <i type="submit" class="fas fa-bell <%= color %>"></i>
-                      <% end %>
-                    <% else %>
-                      <% color = "" %>
-                      <%= simple_form_for @reminder do |f| %>
-                        <%= f.hidden_field :strike_id, value: strike.id %>
-                        <%= button_tag type: "submit", class: "hidden-btn" do %>
-                          <i type="submit" class="fas fa-bell <%= color %>"></i>
-                         <% end %>
-                      <% end %>
-                    <% end %>
-                  <% else %>
-                    <%= link_to user_session_path do %>
-                      <i type="submit" class="fas fa-bell"></i>
-                    <% end %>
-                  <% end %>
-                  <div><i class="fas fa-calendar-plus"></i></div>
-                  <div><i class="fas fa-share"></i></div>
-                </div>
+                <h3><strong><%= strike.organization %> Strike</strong></h3>
               </div>
+
+              <div class="dates">
+                <% if strike.start_date == strike.end_date%>
+                  <p><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
+                <% else %>
+                  <p><strong>From: </strong><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
+                  <% if !strike.end_date.nil? %>
+                    <p><strong>To: </strong><%= t strike.end_date.strftime("%A") %>, <%= strike.end_date %></p>
+                  <% end %>
+                <%end %>
+              </div>
+            </button>
+          </div>
+
+          <div id="collapse-<%=strike.id %>" class="collapse" aria-labelledby="heading" data-parent="#accordion">
+            <p><strong>Union: </strong><%= strike.union.name%></p>
+            <p><strong>Description: </strong><%= strike.description %></p>
+
+            <div class="text-center">
+              <% if user_signed_in? %>
+                <% if current_user.admin %>
+                  <%= link_to "Edit", edit_strike_path(strike), class: "btn btn-primary btn-sm" %>
+                  <%= link_to 'Delete', strike_path(strike.id), method: :delete, class: 'btn btn-danger btn-sm' %>
+                <% end %>
+              <% end %>
+              <%= link_to "Search for news", "https://news.google.com/search?q=greve+#{strike.organization}", class: "btn btn-success btn-sm text-white" %>
             </div>
           </div>
+
+          <div><hr class="hr-text"></div>
+
+          <div class="action-buttons">
+            <% if user_signed_in? %>
+              <% user_reminder = current_user.reminders.find_by(strike: strike) %>
+              <% if user_reminder %>
+                <% color = "green" %>
+                <%= link_to reminder_path(user_reminder), method: :delete do %>
+                  <i class="fas fa-bell <%= color %>"></i>
+                <% end %>
+              <% else %>
+                <%= simple_form_for @reminder do |f| %>
+                  <%= f.hidden_field :strike_id, value: strike.id %>
+                  <%= button_tag type: "submit", class: "hidden-btn" do %>
+                    <i class="fas fa-bell"></i>
+                   <% end %>
+                <% end %>
+              <% end %>
+            <% else %>
+              <%= link_to user_session_path do %>
+                <i class="fas fa-bell fa-black"></i>
+              <% end %>
+            <% end %>
+            <div><i class="fas fa-calendar-plus"></i></div>
+            <div><i class="fas fa-share"></i></div>
+          </div>
+        </div>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
-
-<style>
-  .green {
-    color: green;
-  }
-
-  #strikes-container {
-    margin-top: 10px;
-  }
-  .card-design {
-      box-shadow: 0px 1px 4px 1px rgba(0,0,0,0.26);
-      border-radius: 3px;
-      margin-bottom: 6px;
-    }
-</style>

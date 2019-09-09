@@ -3,8 +3,13 @@ class StrikesController < ApplicationController
   before_action :check_if_admin, only: [:new, :create, :destroy, :update, :edit, :approval]
 
   def index
-    @strikes = policy_scope(Strike).where("start_date >= :date",
-                                          date: Date.today).order(:start_date)
+    @ongoing = Strike.where(start_date: Date.today - 100..Date.today)
+                     .where(end_date: Date.today..Date.today + 100).order(:end_date)
+    @tomorrow = policy_scope(Strike).where(start_date: Date.tomorrow).order(:start_date)
+    @this_week = Strike.where(start_date: Date.tomorrow.beginning_of_week..Date.tomorrow.end_of_week).order(:start_date) - @tomorrow - @ongoing
+    @next_week = Strike.where(start_date: Date.today.beginning_of_week.next_week..Date.today.end_of_week.next_week).order(:start_date)
+    @following = Strike.where(start_date: Date.today.beginning_of_week.next_week.next_week..Date.today + 100).order(:start_date)
+
     @reminder = Reminder.new
   end
 
