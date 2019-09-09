@@ -10,7 +10,11 @@
                   <div class="logo">
                     <i class="fas fa-<%=strike.category.name.downcase%>"></i>
                   </div>
-                  <h3><strong><%= strike.organization %> Strike</strong></h3>
+                  <% if locale == :en %>
+                    <h3><strong><%= strike.organization %> Strike</strong></h3>
+                  <% elsif locale == :pt %>
+                    <h3><strong>Greve <%= strike.organization %></strong></h3>
+                  <% end %>
                 </div>
                 <div class="dates">
                   <% if strike.start_date == strike.end_date%>
@@ -23,22 +27,24 @@
                   <%end %>
                   <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 35" width="30"><path d="M5 30L50 5l45 25" fill="none" stroke="#000" stroke-width="5"/></svg>
                 </div>
+              </div>
 
-                <div id="collapse-<%=strike.id %>" class="collapse" aria-labelledby="heading" data-parent="#accordion">
-                  <p><strong>Union: </strong><%= strike.union.name%></p>
-                  <p><strong>Description: </strong><%= strike.description %></p>
+              <div id="collapse-<%=strike.id %>" class="collapse" aria-labelledby="heading" data-parent="#accordion">
+                <p><strong><%= t :categories %>: </strong><%= strike.category.name%></p>
+                <p><strong><%= t :sector %>: </strong><%= strike.category.sector.name%></p>
+                <p><strong><%= t :details %>: </strong><%= strike.description %></p>
 
-                  <div class="text-center">
-                    <% if user_signed_in? %>
-                      <% if current_user.admin %>
-                        <%= link_to "Edit", edit_strike_path(strike), class: "btn btn-primary btn-sm" %>
-                        <%= link_to 'Delete', strike_path(strike.id), method: :delete, class: 'btn btn-danger btn-sm' %>
-                      <% end %>
+                <div class="text-center">
+                  <% if user_signed_in? %>
+                    <% if current_user.admin %>
+                      <%= link_to "#{t(:edit)}", edit_strike_path(strike), class: "btn btn-primary btn-sm" %>
+                      <%= link_to "#{t(:delete)}", strike_path(strike.id), method: :delete, class: 'btn btn-danger btn-sm' %>
                     <% end %>
-                  </div>
+                  <% end %>
                 </div>
               </div>
             </button>
+
             <div><hr class="hr-text"></div>
             <div class="action-buttons">
               <% if user_signed_in? %>
@@ -49,7 +55,7 @@
                     <i class="fas fa-bell <%= color %>"></i>
                   <% end %>
                 <% else %>
-                  <%= simple_form_for @reminder do |f| %>
+                  <%= simple_form_for Reminder.new do |f| %>
                     <%= f.hidden_field :strike_id, value: strike.id %>
                     <%= button_tag type: "submit", class: "hidden-btn" do %>
                       <i class="fas fa-bell-slash"></i>

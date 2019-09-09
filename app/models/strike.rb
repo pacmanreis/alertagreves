@@ -20,4 +20,9 @@ class Strike < ApplicationRecord
   def user_has_reminders?(user)
     self.reminders.where(user: user).any?
   end
+
+  # Simple_Calendar
+  def start_time
+    self.start_date
+  end
 end
