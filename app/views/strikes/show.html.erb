@@ -1,12 +1,5 @@
-<div class="form-container">
-  <h1><%= @strike.category.name.capitalize %> strike</h1>
+<h1 class="text-center h4">SHOW</h1>
 
-  <p>Today we are witnesing strike by <strong><%= @strike.organization %></strong> which is devastating!</p>
-  <p><%= @strike.description %></p>
-
-  <div class="text-center">
-    <%= link_to 'Delete', strike_path(@strike), method: :delete, class: 'btn btn-danger' %>
-    <%= link_to 'Edit', edit_strike_path, class: 'btn btn-warning' %>
-    <%= link_to 'Cancel', root_path, class: 'btn btn-secondary' %>
-  </div>
+<div id="strikes-container">
+  <%= render 'shared/card', strike: @strike %>
 </div>

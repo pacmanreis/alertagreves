@@ -1,6 +1,11 @@
 <h1 class="text-center h4">YOUR REMINDERS</h1>
-<% if @strikes.any? %>
-  <%= render 'shared/card', strike: @strike %>
-<% else %>
-  <h3 class="text-center my-5 h4">No reminders found</h3>
-<% end %>
+
+<div id="strikes-container">
+  <% if @reminders.any? %>
+    <% @reminders.each do |reminder| %>
+      <%= render 'shared/card', strike: reminder.strike %>
+    <% end %>
+  <% else %>
+    <h3 class="text-center my-5 h4">No reminders found</h3>
+  <% end %>
+</div>
