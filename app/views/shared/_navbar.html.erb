@@ -12,6 +12,10 @@
     </div>
   </div>
 
+  <div class="filter_toggler">
+
+  <div class="toggler-desktop"><%= link_to mobile_filter_strikes_path do %><i class="fas fa-filter"></i><% end %></div>
+
     <button class="custom-toggler navbar-toggler toggler-desktop" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -72,6 +76,7 @@
         <% end %>
       </ul>
     </div>
+  </div>
 
   <div class="search-desktop">
     <%= form_tag search_strikes_path, method: :get do %>

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     root to: 'strikes#index'
     resources :strikes do
       collection do
+        get 'mobile_filter'
         get 'search'
         get 'calendar'
         post 'approval/:id', to: 'strikes#approval', as: :approval
