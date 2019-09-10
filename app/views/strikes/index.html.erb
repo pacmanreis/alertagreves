@@ -1,5 +1,9 @@
+
+
 <div id="strikes-container" class="container-fluid">
-  <%= render 'strikes/filtered_list', strikes: @grouped_strikes %>
+  <div class="accordion" id="accordionExample">
+    <%= render 'strikes/filtered_list', strikes: @grouped_strikes %>
+  </div>
 </div>
 
 <%= render 'shared/footer' %>
