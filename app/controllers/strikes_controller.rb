@@ -1,9 +1,9 @@
 class StrikesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :search, :calendar]
+  skip_before_action :authenticate_user!, only: [:index, :search, :calendar, :mobile_filter]
   before_action :check_if_admin, only: [:new, :create, :destroy, :update, :edit, :approval]
 
   def index
-    @sectors = Sector.all
+    @categories = Category.all
 
     @grouped_strikes = {
       ongoing: ongoing,
@@ -83,6 +83,10 @@ class StrikesController < ApplicationController
   def calendar
     @strikes = Strike.all
     authorize @strikes
+  end
+
+  def mobile_filter
+    @categories = policy_scope(Category)
   end
 
   private
