@@ -1,120 +1,117 @@
-#strikes-container {
-    margin-top: 10px;
+.card-design {
+  background-color: white;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 1px 4px 1px rgba(0,0,0,0.26);
+  border-radius: 3px;
+  margin-bottom: 6px;
 
-  .card-design {
-    background-color: white;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0px 1px 4px 1px rgba(0,0,0,0.26);
-    border-radius: 3px;
-    margin-bottom: 6px;
+  .all-content {
+    width: -webkit-fill-available;
 
-    .all-content {
-      width: -webkit-fill-available;
-
-      .hr-text {
-        line-height: 1em;
-        position: relative;
-        outline: 0;
-        border: 0;
-        color: black;
-        text-align: center;
-        height: 1.5em;
-        opacity: .5;
-        &:before {
-          content: '';
-          // use the linear-gradient for the fading effect
-          // use a solid background color for a solid bar
-          background: linear-gradient(to right, transparent, #818078, transparent);
-          position: absolute;
-          left: 0;
-          top: 50%;
-          width: 100%;
-          height: 1px;
-        }
-        &:after {
-          content: attr(data-content);
-          position: relative;
-          display: inline-block;
-          color: black;
-
-          padding: 0 .5em;
-          line-height: 1.5em;
-          // this is really the only tricky part, you need to specify the background color of the container element...
-          color: #818078;
-          background-color: #F4F4F4;
-        }
-      }
-
-      .card-top-content {
+    .hr-text {
+      line-height: 1em;
+      position: relative;
+      outline: 0;
+      border: 0;
+      color: black;
+      text-align: center;
+      height: 1.5em;
+      opacity: .5;
+      z-index: 100;
+      &:before {
+        content: '';
+        // use the linear-gradient for the fading effect
+        // use a solid background color for a solid bar
+        background: linear-gradient(to right, transparent, #818078, transparent);
+        position: absolute;
+        left: 0;
+        top: 50%;
         width: 100%;
-        margin-bottom: -10px;
-        padding-bottom: 0px;
-        font-weight: 400;
-        color: #060606;
-        text-decoration: none;
+        height: 1px;
+      }
+      &:after {
+        content: attr(data-content);
+        position: relative;
+        display: inline-block;
+        color: black;
+        padding: 0 .5em;
+        line-height: 1.5em;
+        // this is really the only tricky part, you need to specify the background color of the container element...
+        color: #818078;
+        background-color: #F4F4F4;
+      }
+    }
 
-        .chevron{
-          position: absolute;
-          bottom: 80px;
+    .card-top {
+      width: 100%;
+      padding-bottom: 0px;
+      font-weight: 400;
+      color: #060606;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+
+      .heading {
+        .chevron {
           left: calc(50% - 15px);
           transform-origin: 50%;
-          transform: rotate(-180deg);
+          transform: rotate(180deg);
           transition: transform 500ms;
           padding: 0px 2px;
         }
 
-        .chevron-card.expanded .chevron {
+        &[aria-expanded="true"] .chevron {
           transform: rotate(0deg);
         }
-
-        .text-center{
-            margin-bottom: 16px;
-        }
       }
 
-      .category {
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-        justify-content: center;
-
-        .logo {
-          width: 40px;
-
-          .fas {
-            border-radius: 50%;
-            padding: 6px 6px 6px 0px;
-            font-size: 20px;
-            width: 40px;
-            height: 40px;
-            text-align: center;
-            margin-top: 5vh;
-          }
-        }
+      .text-center{
+          margin-bottom: 16px;
       }
+    }
 
-      .action-buttons {
-        display: flex;
-        justify-content: space-around;
+    .category {
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      justify-content: center;
 
-        .hidden-btn {
-          background: transparent;
-          border: none;
-          color: black;
-          padding: 0px;
-        }
+      .logo {
+        width: 40px;
 
         .fas {
-          color: black;
-          padding: 1px 7px 2px;
+          border-radius: 50%;
+          padding: 6px 6px 6px 0px;
+          font-size: 20px;
+          width: 40px;
+          height: 40px;
+          text-align: center;
+          margin-top: 5vh;
         }
+      }
+    }
 
+    .action-buttons {
+      display: flex;
+      justify-content: space-around;
 
-        .green {
-            color: #27AE60;
-        }
+      .hidden-btn {
+        background: transparent;
+        border: none;
+        color: black;
+        padding: 0px;
+      }
+
+      .fas {
+        color: black;
+        padding: 1px 7px 2px;
+      }
+
+      .green {
+          color: #27AE60;
       }
     }
   }
