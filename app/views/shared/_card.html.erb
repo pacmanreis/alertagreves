@@ -55,11 +55,11 @@
                     <i class="fas fa-bell <%= color %>"></i>
                   <% end %>
                 <% else %>
-                  <%= simple_form_for Reminder.new do |f| %>
+                  <%= simple_form_for(Reminder.new, remote: true) do |f| %>
                     <%= f.hidden_field :strike_id, value: strike.id %>
                     <%= button_tag type: "submit", class: "hidden-btn" do %>
                       <i class="fas fa-bell-slash"></i>
-                     <% end %>
+                    <% end %>
                   <% end %>
                 <% end %>
               <% else %>
@@ -68,7 +68,7 @@
                 <% end %>
               <% end %>
               <div>
-                <%= link_to "https://news.google.com/search?q=greve+#{strike.organization}" do %>
+                <%= link_to "https://news.google.pt/search?q=greve+#{strike.organization}" do %>
                   <i class="fas fa-newspaper"></i>
                 <% end %>
               </div>
