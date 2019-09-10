@@ -3,7 +3,7 @@ class StrikesController < ApplicationController
   before_action :check_if_admin, only: [:new, :create, :destroy, :update, :edit, :approval]
 
   def index
-    @sectors = Sector.all
+    @categories = Category.all
 
     @grouped_strikes = {
       ongoing: ongoing,
