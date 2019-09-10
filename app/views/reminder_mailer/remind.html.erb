@@ -6,8 +6,8 @@
 <ul>
   <% @reminders.each do |reminder| %>
     <li>
-      There is <%= reminder.strike.sector %> in <%= reminder.strike.country %>.
-      Strike is starting on <%= reminders.strikes.start_date %>.
+      There is <%= reminder.strike.category %> in <%= reminder.strike.country %>.
+      Strike is starting on <%= reminder.strike.start_date %>.
     </li>
   <% end %>
 </ul>
