@@ -41,6 +41,10 @@ class StrikePolicy < ApplicationPolicy
     true
   end
 
+  def mobile_filter?
+    true
+  end
+
   private
 
   def user_is_admin?
