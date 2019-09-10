@@ -1,6 +1,7 @@
 <h1 class="text-center h4">YOUR REMINDERS</h1>
 
 <div id="strikes-container">
+  <div class="accordion" id="accordionExample">
   <% if @reminders.any? %>
     <% @reminders.each do |reminder| %>
       <%= render 'shared/card', strike: reminder.strike %>
@@ -8,4 +9,5 @@
   <% else %>
     <h3 class="text-center my-5 h4">No reminders found</h3>
   <% end %>
+</div>
 </div>
