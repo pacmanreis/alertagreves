@@ -1,13 +1,15 @@
 <h1>Hi <%= @user.email %></h1>
 
 <p>
-  We are reminding you that this week u will have this strikes:
+  we are reminding you that this week u will have this strikes:
 </p>
 <ul>
   <% @reminders.each do |reminder| %>
     <li>
-      <%= reminder.strike.description %>
-      <%= reminder.strike.id %>
+      There is <%= reminder.strike.sector %> in <%= reminder.strike.country %>.
+      Strike is starting on <%= reminders.strikes.start_date %>.
     </li>
   <% end %>
 </ul>
+
+<p>Thank you for using Alerta Greves</p>
