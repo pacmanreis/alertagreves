@@ -7,13 +7,23 @@ Sector.destroy_all
 
 puts 'Started Seeding'
 User.create!(
-  email: "test@gmail.com",
+  email: "user@gmail.com",
   password: 123_456,
   admin: false
 )
 
-User.create(email: "admin@gmail.com",
-  password: "testadmin",
+User.create(email: "pacmanreis@gmail.com",
+  password: "123456",
+  admin: true
+  )
+
+User.create(email: "bokac279@gmail.com",
+  password: "123456",
+  admin: true
+  )
+
+User.create(email: "fgaspar9@icloud.com",
+  password: "123456",
   admin: true
   )
 
@@ -31,7 +41,7 @@ Sector.create(name: 'Central Administration')
 Sector.create(name: 'Agricultural')
 Sector.create(name: 'Local Administration')
 
-# 1..6
+# 1..17
 Category.create(name: 'Train', sector_id: 1)
 Category.create(name: 'Subway', sector_id: 1)
 Category.create(name: 'Ship', sector_id: 1)
@@ -50,18 +60,18 @@ Category.create(name: 'Central Administration', sector_id: 10)
 Category.create(name: 'Agricultural', sector_id: 11)
 Category.create(name: 'Local Administration', sector_id: 12)
 
-# 7..8
+# 18..19
 Category.create(name: 'Doctors', sector_id: 2)
 Category.create(name: 'Nurses', sector_id: 2)
 
-# 9..10
+# 19..20
 Category.create(name: 'Teachers', sector_id: 3)
 Category.create(name: 'School helpers', sector_id: 3)
 
-# 11..
+# 21..
 Category.create(name: 'Registry clerk', sector_id: 4)
 
-# 12..
+# 22..23
 Category.create(name: 'Judges', sector_id: 5)
 Category.create(name: 'Justice clerks', sector_id: 5)
 
@@ -73,41 +83,68 @@ Union.create(name: 'Sindicato Nacional dos Registos',
              initials: 'SNR',
              url: 'https://www.facebook.com/SindicatoNacionaldosRegistos/')
 
+Union.create(name: 'Sindicato Nacional do Pessoal de Aviação Civil',
+             initials: 'SNPVAC',
+             url: 'https://www.snpvac.pt/')
+
 # 1..11
-Strike.create(organization: 'Ryanair',
-              description: 'Os pilotos da Ryanair no Reino Unido estão em protesto contra as condições laborais e salariais praticadas pela companhia.',
-              start_date: '2019-09-02',
-              end_date: '2019-09-02',
-              union_id: 1,
-              category_id: 5)
 
-Strike.create(organization: 'CP',
-              description: 'Para exigir melhorias salariais.',
-              start_date: '2019-09-27 00:00:00',
-              end_date: '2019-09-27 23:59:59',
-              union_id: 1,
-              category_id: 1)
+# Real Strikes
 
 Strike.create(organization: 'Ryanair',
-              description: 'Os pilotos da Ryanair no Reino Unido estão em protesto contra as condições laborais e salariais praticadas pela companhia.',
-              start_date: '2019-09-03',
-              end_date: '2019-09-03',
+              start_date: '2019-09-18',
+              end_date: '2019-09-18',
               union_id: 1,
               category_id: 5)
 
 Strike.create(organization: 'Ryanair',
-              description: 'Os pilotos da Ryanair no Reino Unido estão em protesto contra as condições laborais e salariais praticadas pela companhia.',
-              start_date: '2019-09-04',
-              end_date: '2019-09-04',
+              start_date: '2019-09-19',
+              end_date: '2019-09-19',
               union_id: 1,
               category_id: 5)
 
-Strike.create(organization: 'Expressos',
-              description: 'Para exigir melhorias salariais.',
-              start_date: '2019-09-27 00:00:00',
-              end_date: '2019-09-27 23:59:59',
+Strike.create(organization: 'Ryanair',
+              start_date: '2019-09-21',
+              end_date: '2019-09-21',
               union_id: 1,
-              category_id: 6)
+              category_id: 5)
+
+Strike.create(organization: 'Ryanair',
+              start_date: '2019-09-23',
+              end_date: '2019-09-23',
+              union_id: 1,
+              category_id: 5)
+
+Strike.create(organization: 'Ryanair',
+              start_date: '2019-09-25',
+              end_date: '2019-09-25',
+              union_id: 1,
+              category_id: 5)
+
+Strike.create(organization: 'Ryanair',
+              start_date: '2019-09-27',
+              end_date: '2019-09-27',
+              union_id: 1,
+              category_id: 5)
+
+Strike.create(organization: 'Ryanair',
+              start_date: '2019-09-29',
+              end_date: '2019-09-29',
+              union_id: 1,
+              category_id: 5)
+
+
+Strike.create(organization: 'Ryanair',
+              start_date: '2019-08-20',
+              end_date: '2019-08-25',
+              union_id: 3,
+              category_id: 5)
+
+Strike.create(organization: 'Ryanair',
+              start_date: '2019-09-27',
+              end_date: '2019-08-27',
+              union_id: 3,
+              category_id: 5)
 
 Strike.create(organization: 'British Airways',
               description: 'Para exigir melhorias salariais.',
@@ -116,13 +153,12 @@ Strike.create(organization: 'British Airways',
               union_id: 1,
               category_id: 5)
 
-Strike.create(organization: 'Uber',
+Strike.create(organization: 'British Airways',
               description: 'Para exigir melhorias salariais.',
               start_date: '2019-09-10',
               end_date: '2019-09-10',
               union_id: 1,
-              category_id: 4)
-
+              category_id: 5)
 
 Strike.create(organization: 'British Airways',
               description: 'Para exigir melhorias salariais.',
@@ -131,41 +167,40 @@ Strike.create(organization: 'British Airways',
               union_id: 1,
               category_id: 5)
 
-
-Strike.create(organization: 'TAP',
-              description: 'Para exigir melhorias salariais.',
+Strike.create(organization: 'Registos',
+              description: 'Em defesa de remunerações, promoções e abertura de concursos.',
               start_date: '2019-09-09',
               end_date: '2019-09-09',
-              union_id: 1,
-              category_id: 5)
+              union_id: 2,
+              category_id: 10)
+
+Strike.create(organization: 'Registos',
+              description: 'Em defesa de remunerações, promoções e abertura de concursos.',
+              start_date: '2019-09-17',
+              end_date: '2019-09-17',
+              union_id: 2,
+              category_id: 10)
+
+Strike.create(organization: 'Registos',
+              description: 'Em defesa de remunerações, promoções e abertura de concursos.',
+              start_date: '2019-09-24',
+              end_date: '2019-09-24',
+              union_id: 2,
+              category_id: 10)
 
 
-Strike.create(organization: 'Metro',
-              description: 'Defende um sistema remuneratório, progressão e promoções na carreira e abertura de novos concursos internos e externos.',
-              start_date: '2019-09-16',
-              end_date: '2019-09-16',
-              union_id: 1,
-              category_id: 2)
+Strike.create(organization: 'Trabalhadores da Tapada Nacional de Mafra ',
+              description: 'Contra a falta de condições de trabalho.',
+              start_date: '2019-09-11',
+              end_date: '2019-09-11',
+              union_id: 2,
+              category_id: 17)
 
-Strike.create(organization: 'Shipping PT',
-              description: 'Defende um sistema remuneratório, progressão e promoções na carreira e abertura de novos concursos internos e externos.',
-              start_date: '2019-09-23',
-              end_date: '2019-09-23',
-              union_id: 1,
-              category_id: 3)
-
-
-
-Strike.create(organization: 'Expressos',
-              description: 'Defende um sistema remuneratório, progressão e promoções na carreira e abertura de novos concursos internos e externos.',
-              start_date: '2019-09-30',
-              end_date: '2019-09-30',
-              union_id: 1,
-              category_id: 6)
-
-
+# Put Fake Strikes Below if you want to do tests
 
 puts 'Done!'
+
+# Scraping below
 
 puts 'Started Scraping'
 
