@@ -21,7 +21,6 @@ class StrikesController < ApplicationController
 
   def new
     @strike = Strike.new
-    @strike.build_union
     authorize @strike
   end
 
@@ -31,7 +30,6 @@ class StrikesController < ApplicationController
     if @strike.save
       redirect_to root_path
     else
-      @strike.build_union
       render :new
     end
   end
@@ -41,7 +39,6 @@ class StrikesController < ApplicationController
     @strike = Strike.new(organization: @sub_strike.organization,
                          description: @sub_strike.description,
                          category: @sub_strike.category,
-                         union: @sub_strike.union,
                          start_date: @sub_strike.start_date,
                          end_date: @sub_strike.end_date)
     authorize @strike
@@ -70,7 +67,6 @@ class StrikesController < ApplicationController
   def edit
     @strike = Strike.find(params[:id])
     authorize @strike
-    @union = Union.new
   end
 
   def update
@@ -143,20 +139,18 @@ class StrikesController < ApplicationController
   end
 
   def strike_params
-    if params[:strike][:union_attributes][:name].blank?
+    if params[:strike][:name].blank?
       params.require(:strike).permit(:category_id,
                                     :organization,
                                     :description,
                                     :start_date,
-                                    :end_date,
-                                    :union_id)
+                                    :end_date)
     else
       params.require(:strike).permit(:category_id,
                                     :organization,
                                     :description,
                                     :start_date,
-                                    :end_date,
-                                    union_attributes: [:id, :name, :initials, :url])
+                                    :end_date)
     end
   end
 
