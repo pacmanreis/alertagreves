@@ -45,30 +45,30 @@
             <% user_reminder = current_user.reminders.find_by(strike: strike) %>
             <% if user_reminder %>
               <% color = "green" %>
-              <%= link_to reminder_path(user_reminder), method: :delete, remote: true do %>
-                <i class="fas fa-bell <%= color %>"> <span class="action-text">Reminder</span></i>
+              <%= link_to reminder_path(user_reminder), method: :delete, remote: true, class: "action-text" do %>
+                <i class="fas fa-bell <%= color %>"></i><span class="action-text">Reminder</span>
               <% end %>
             <% else %>
               <%= simple_form_for(Reminder.new, remote: true) do |f| %>
                 <%= f.hidden_field :strike_id, value: strike.id %>
                 <%= button_tag type: "submit", class: "hidden-btn" do %>
-                  <i class="fas fa-bell-slash"> <span class="action-text">Reminder</span></i>
+                  <i class="fas fa-bell-slash"></i><span class="action-text">Reminder</span>
                 <% end %>
               <% end %>
             <% end %>
           <% else %>
-            <%= link_to user_session_path do %>
-              <i class="fas fa-bell fa-black-slash"> <span class="action-text">Reminder</span></i>
+            <%= link_to user_session_path, class: "action-text" do %>
+              <i class="fas fa-bell fa-black-slash"></i><span>Reminder</span>
             <% end %>
           <% end %>
           <div>
-            <%= link_to "https://news.google.com/search?q=greve+#{strike.organization}", target: :_blank do %>
-              <i class="fas fa-newspaper"> <span class="action-text">News</span></i>
+            <%= link_to "https://news.google.com/search?q=greve+#{strike.organization}", target: :_blank, class: "action-text" do %>
+              <i class="fas fa-newspaper"></i><span class="action-text">News</span>
             <% end %>
           </div>
           <div>
-            <%= link_to "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alertagreves.com%2F&amp;src=sdkpreparse", target: :_blank do %>
-              <i class="fas fa-share"> <span class="action-text">Share</span></i>
+            <%= link_to "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alertagreves.com%2F&amp;src=sdkpreparse", target: :_blank, class: "action-text" do %>
+              <i class="fas fa-share"></i><span class="action-text">Share</span>
             <% end %>
           </div>
         </div>

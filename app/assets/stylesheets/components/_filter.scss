@@ -1,13 +1,19 @@
 .filter {
   display: none;
 }
+
 .filter-container {
   max-width: fit-content;
   margin-left: 70px;
-  overflow:scroll;
   top: 14vh;
   margin-bottom: 7vh;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
+.filter-container::-webkit-scrollbar {
+     display: none;
+  }
 
 .filter-mobile {
   text-align: center;
