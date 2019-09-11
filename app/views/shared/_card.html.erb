@@ -15,7 +15,23 @@
                 <h3><strong>Greve <%= strike.organization %></strong></h3>
               <% end %>
             </div>
-
+            <div><hr class="hr-text"></div>
+            <div class="action-buttons">
+              <% if user_signed_in? %>
+                <% user_reminder = current_user.reminders.find_by(strike: strike) %>
+                <% if user_reminder %>
+                  <% color = "green" %>
+                  <%= link_to reminder_path(user_reminder), method: :delete, remote: true do %>
+                    <i class="fas fa-bell <%= color %>"></i>
+                  <% end %>
+                <% else %>
+                  <%= simple_form_for(Reminder.new, remote: true) do |f| %>
+                    <%= f.hidden_field :strike_id, value: strike.id %>
+                    <%= button_tag type: "submit", class: "hidden-btn" do %>
+                      <i class="fas fa-bell-slash"></i>
+                    <% end %>
+                  <% end %>
+                <% end %>
 
             <div class="dates">
               <% if strike.start_date == strike.end_date%>
