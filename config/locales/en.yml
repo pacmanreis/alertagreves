@@ -55,9 +55,14 @@ en:
   details: "Details"
   edit: "Edit"
   delete: "Delete"
-  search_news: "Search News"
+  reminder: "Reminder"
+  news: "News"
+  share: "Share"
   cancel: "Cancel"
   select_union: "Select Union below or create one here"
+  on_: "On"
+  from: "From"
+  to: "To"
 
 activerecord:
   attributes:

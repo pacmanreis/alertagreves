@@ -15,17 +15,17 @@
             </div>
             <div class="dates">
               <% if strike.start_date == strike.end_date%>
-                <p><strong>On: </strong><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
+                <p><strong><%= t :on_ %>: </strong><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
               <% else %>
-                <p><strong>From: </strong><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
+                <p><strong><%= t :from %>: </strong><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
                 <% if !strike.end_date.nil? %>
-                  <p><strong>To: </strong><%= t strike.end_date.strftime("%A") %>, <%= strike.end_date %></p>
+                  <p><strong><%= t :to %>: </strong><%= t strike.end_date.strftime("%A") %>, <%= strike.end_date %></p>
                 <% end %>
               <%end %>
             </div>
             <div id="collapse<%= strike.id %>" class="collapse" aria-labelledby="heading<%= strike.id %>" data-parent="#accordionExample">
-              <p><strong><%= t :categories %>: </strong><%= strike.category.name%></p>
-              <p><strong><%= t :sector %>: </strong><%= strike.category.sector.name%></p>
+              <p><strong><%= t :categories %>: </strong><%= strike.category.name %></p>
+              <p><strong><%= t :sector %>: </strong><%= strike.category.sector.name %></p>
               <p><strong><%= t :details %>: </strong><%= strike.description %></p>
               <div class="text-center">
                 <% if user_signed_in? %>
@@ -46,29 +46,29 @@
             <% if user_reminder %>
               <% color = "green" %>
               <%= link_to reminder_path(user_reminder), method: :delete, remote: true, class: "action-text" do %>
-                <i class="fas fa-bell <%= color %>"></i><span class="action-text">Reminder</span>
+                <i class="fas fa-bell <%= color %>"></i><span class="action-text"><%= t :reminder %></span>
               <% end %>
             <% else %>
               <%= simple_form_for(Reminder.new, remote: true) do |f| %>
                 <%= f.hidden_field :strike_id, value: strike.id %>
                 <%= button_tag type: "submit", class: "hidden-btn" do %>
-                  <i class="fas fa-bell-slash"></i><span class="action-text">Reminder</span>
+                  <i class="fas fa-bell-slash"></i><span class="action-text"><%= t :reminder %></span>
                 <% end %>
               <% end %>
             <% end %>
           <% else %>
             <%= link_to user_session_path, class: "action-text" do %>
-              <i class="fas fa-bell fa-black-slash"></i><span>Reminder</span>
+              <i class="fas fa-bell fa-black-slash"></i><span><%= t :reminder %></span>
             <% end %>
           <% end %>
           <div>
-            <%= link_to "https://news.google.com/search?q=greve+#{strike.organization}", target: :_blank, class: "action-text" do %>
-              <i class="fas fa-newspaper"></i><span class="action-text">News</span>
+            <%= link_to "https://news.google.pt/search?q=greve+#{strike.organization}", target: :_blank, class: "action-text" do %>
+              <i class="fas fa-newspaper"></i><span class="action-text"><%= t :news %></span>
             <% end %>
           </div>
           <div>
             <%= link_to "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alertagreves.com%2F&amp;src=sdkpreparse", target: :_blank, class: "action-text" do %>
-              <i class="fas fa-share"></i><span class="action-text">Share</span>
+              <i class="fas fa-share"></i><span class="action-text"><%= t :share %></span>
             <% end %>
           </div>
         </div>

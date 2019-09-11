@@ -24,9 +24,14 @@ pt:
   details: "Detalhes"
   edit: "Editar"
   delete: "Apagar"
-  search_news: "Procurar Noticias"
+  reminder: "Aviso"
+  news: "Noticias"
+  share: "Partilhar"
   cancel: "Cancelar"
   select_union: "Selecione Sindicato abaixo ou crie um aqui"
+  on_: "Em"
+  from: "De"
+  to: "A"
 
   activerecord:
     models:
