@@ -28,10 +28,15 @@ pt:
   news: "Noticias"
   share: "Partilhar"
   cancel: "Cancelar"
-  select_union: "Selecione Sindicato abaixo ou crie um aqui"
   on_: "Em"
   from: "De"
   to: "A"
+  footer: "Estás actualizado com as greves por hoje"
+  ongoing: "Em Curso"
+  tomorrow: "Amanhã"
+  this_week: "Esta Semana"
+  next_week: "Próxima Semana"
+  upcoming: "Outras Agendadas"
 
   activerecord:
     models:
