@@ -1,11 +1,13 @@
 <h1 class="text-center h4">YOUR RESULTS</h1>
 
 <div id="strikes-container">
-  <% if @strikes.any? %>
-    <% @strikes.each do |strike| %>
-      <%= render 'shared/card', strike: strike %>
+  <div id="accordionExample">
+    <% if @strikes.any? %>
+      <% @strikes.each do |strike| %>
+        <%= render 'shared/card', strike: strike %>
+      <% end %>
+    <% else %>
+      <h3 class="text-center my-5 h4">No results found</h3>
     <% end %>
-  <% else %>
-    <h3 class="text-center my-5 h4">No results found</h3>
-  <% end %>
+  </div>
 </div>
