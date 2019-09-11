@@ -1,12 +1,54 @@
 .filter {
   display: none;
 }
+.filter-container {
+  max-width: fit-content;
+  margin-left: 70px;
+  overflow:scroll;
+  top: 14vh;
+  margin-bottom: 7vh;
+}
 
 @include media-breakpoint-up(lg) {
   .filter {
     display: block;
     height: 90vh;
     position: sticky;
-    top: 60px;
+  }
+
+  h5 {
+    text-align: center;
+  }
+  .list {
+    text-align: center;
+    margin: 20px;
+
   }
 }
+
+.extremes_buttons {
+  background-color: grey;
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 0px 1px 4px 1px rgba(0,0,0,0.26);
+  text-align: -webkit-center;
+
+  a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    justify-content: center;
+  }
+}
+    .sub-category {
+      background-color: #26AE60;
+      padding: 10px;
+      border-radius: 3px;
+      box-shadow: 0px 1px 4px 1px rgba(0,0,0,0.26);
+      margin-bottom: 6px;
+
+      a{
+      color: white;
+      text-decoration: none;
+      }
+    }
