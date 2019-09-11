@@ -3,7 +3,7 @@
 
   <% strikes.each do |strike| %>
     <div>
-      <%= link_to "#{strike.category.name}", strike_path(strike.id) %>
+      <%= link_to "#{t strike.category.name}", strike_path(strike.id) %>
     </div>
   <% end %>
 <% end %>

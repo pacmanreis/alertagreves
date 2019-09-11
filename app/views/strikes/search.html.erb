@@ -1,4 +1,4 @@
-<h1 class="text-center h4">YOUR RESULTS</h1>
+<h1 class="text-center h4"><%= t :results %></h1>
 
 <div id="strikes-container">
   <div id="accordionExample">
@@ -7,7 +7,7 @@
         <%= render 'shared/card', strike: strike %>
       <% end %>
     <% else %>
-      <h3 class="text-center my-5 h4">No results found</h3>
+      <h3 class="text-center my-5 h4"><%= t :results_found %></h3>
     <% end %>
   </div>
 </div>

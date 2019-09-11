@@ -24,8 +24,8 @@
               <%end %>
             </div>
             <div id="collapse<%= strike.id %>" class="collapse" aria-labelledby="heading<%= strike.id %>" data-parent="#accordionExample">
-              <p><strong><%= t :categories %>: </strong><%= strike.category.name %></p>
-              <p><strong><%= t :sector %>: </strong><%= strike.category.sector.name %></p>
+              <p><strong><%= t :categories %>: </strong><%= t "#{strike.category.name}" %></p>
+              <p><strong><%= t :sector %>: </strong><%= t "#{strike.category.sector.name}" %></p>
               <p><strong><%= t :details %>: </strong><%= strike.description %></p>
               <div class="text-center">
                 <% if user_signed_in? %>

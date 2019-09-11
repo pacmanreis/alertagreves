@@ -1,5 +1,5 @@
 <div class="filter filter-container" >
-  <h5>Filter by:</h5>
+  <h5><%= t :filter %></h5>
   <div class="list">
     <% @categories.each do |category| %>
       <% if category.strikes.present? && (Strike.where("start_date >= :date AND category_id = :category",
@@ -8,7 +8,7 @@
                                                       date: Date.today, category: category.id).present?) %>
         <%= link_to strikes_path(category_id: category.id), class: "nav-link" do %>
           <div class="sub-category">
-            <%= category.name %>
+            <%= t "#{category.name}" %>
           </div>
         <% end %>
       <% end %>
@@ -16,7 +16,7 @@
 
     <%= link_to strikes_path(category_id: "all"), class: "nav-link" do %>
       <div class="extremes_buttons">
-        Remove Filter
+        <%= t :remove_filter %>
       </div>
     <% end %>
 
@@ -24,7 +24,7 @@
 
     <%= link_to calendar_strikes_path, class: "nav-link" do %>
       <div class="extremes_buttons">
-        Calendar View
+        <%= t :calendar %>
       </div>
     <% end %>
   </div>
