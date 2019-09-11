@@ -1,15 +1,27 @@
-<h1>Hi <%= @user.email %></h1>
+<div class="container">
+  <h1>Alerta Greves</h1>
+  <h3>Hi <%= @user.email %></h3>
 
-<p>
-  we are reminding you that this week u will have this strikes:
-</p>
-<ul>
-  <% @reminders.each do |reminder| %>
-    <li>
-      There is <%= reminder.strike.category %> in <%= reminder.strike.country %>.
-      Strike is starting on <%= reminder.strike.start_date %>.
-    </li>
-  <% end %>
-</ul>
+  <p>We are letting you know that next week you have <%= link_to "strikes", reminders_url %> happening in your area.</p>
+</div>
 
-<p>Thank you for using Alerta Greves</p>
+
+<style>
+  h1 {
+  text-align: center;
+  background: #27AE60;
+  padding: 15px 0;
+  color: white;
+  }
+
+  h3 {
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .container {
+    margin: 0 auto;
+    width: 700px;
+  }
+
+</style>
