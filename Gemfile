@@ -16,6 +16,7 @@ gem 'sidekiq-failures', '~> 1.0'
 gem 'rails-i18n', '~> 5.1'
 gem 'letter_opener', group: :development
 gem "simple_calendar", "~> 2.0"
+gem 'omniauth-facebook'
 
 gem 'autoprefixer-rails'
 gem 'country_select'
