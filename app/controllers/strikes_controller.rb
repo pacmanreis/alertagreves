@@ -89,6 +89,11 @@ class StrikesController < ApplicationController
     @categories = policy_scope(Category)
   end
 
+  def about_us
+    @strikes = Strike.all
+    authorize @strikes
+  end
+
   private
 
   def category_filter?

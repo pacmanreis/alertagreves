@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         get 'search'
         get 'calendar'
         post 'approval/:id', to: 'strikes#approval', as: :approval
+        get :about_us
       end
     end
     resources :submitted_strikes, except: [:show]
