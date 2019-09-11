@@ -1,13 +1,13 @@
-<div class="filter-container" >
-  <h5>Filter by:</h5>
+<div class="filter-mobile">
   <div class="list">
+    <hr class="hr-text" data-content="Filter by:">
     <% @categories.each do |category| %>
       <% if category.strikes.present? && (Strike.where("start_date >= :date AND category_id = :category",
                                                       date: Date.today, category: category.id).present? ||
                                                       Strike.where("start_date <= :date AND end_date >= :date AND category_id = :category",
                                                       date: Date.today, category: category.id).present?) %>
         <div class="sub-category">
-         <%= link_to category.name, strikes_path(category_id: category.id) %>
+          <%= link_to category.name, strikes_path(category_id: category.id) %>
         </div>
       <% end %>
     <% end %>

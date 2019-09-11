@@ -9,6 +9,10 @@
   margin-bottom: 7vh;
 }
 
+.filter-mobile {
+  text-align: center;
+}
+
 @include media-breakpoint-up(lg) {
   .filter {
     display: block;
