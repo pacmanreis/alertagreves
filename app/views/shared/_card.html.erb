@@ -10,12 +10,11 @@
                 <i class="fas fa-<%=strike.category.name.downcase%>"></i>
               </div>
               <% if locale == :en %>
-                <h3><strong><%= strike.organization %> Strike</strong></h3>
+                <h4><strong><%= strike.organization %> Strike</strong></h4>
               <% elsif locale == :pt %>
-                <h3><strong>Greve <%= strike.organization %></strong></h3>
+                <h4><strong>Greve <%= strike.organization %></strong></h4>
               <% end %>
             </div>
-            <div><hr class="hr-text"></div>
             
             <div class="dates">
               <% if strike.start_date == strike.end_date%>
@@ -54,25 +53,29 @@
             <% if user_reminder %>
               <% color = "green" %>
               <%= link_to reminder_path(user_reminder), method: :delete, remote: true do %>
-                <i class="fas fa-bell <%= color %>"></i>
+                <i class="fas fa-bell <%= color %>"> <span class="action-text">Reminder</span></i>
               <% end %>
             <% else %>
               <%= simple_form_for(Reminder.new, remote: true) do |f| %>
                 <%= f.hidden_field :strike_id, value: strike.id %>
                 <%= button_tag type: "submit", class: "hidden-btn" do %>
-                  <i class="fas fa-bell-slash"></i>
+                  <i class="fas fa-bell-slash"> <span class="action-text">Reminder</span></i>
                 <% end %>
               <% end %>
             <% end %>
+          <% else %>
+            <%= link_to user_session_path do %>
+              <i class="fas fa-bell fa-black-slash"> <span class="action-text">Reminder</span></i>
+            <% end %>
           <% end %>
           <div>
-            <%= link_to "https://news.google.com/search?q=greve+#{strike.organization}", :target => "_blank" do %>
-              <i class="fas fa-newspaper"></i>
+            <%= link_to "https://news.google.com/search?q=greve+#{strike.organization}", target: :_blank do %>
+              <i class="fas fa-newspaper"> <span class="action-text">News</span></i>
             <% end %>
           </div>
           <div>
-            <%= link_to "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alertagreves.com%2F&amp;src=sdkpreparse" do %>
-              <i class="fas fa-share"></i>
+            <%= link_to "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alertagreves.com%2F&amp;src=sdkpreparse", target: :_blank do %>
+              <i class="fas fa-share"> <span class="action-text">Share</span></i>
             <% end %>
           </div>
         </div>
