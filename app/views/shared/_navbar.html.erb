@@ -32,6 +32,9 @@
         <li class="nav-item">
           <%= link_to "#{t(:sign_up)}", new_user_registration_path, class: "nav-link" %>
         </li>
+        <li class="nav-item">
+            <%= link_to "#{t(:about_us)}", about_us_strikes_path, class: "nav-link" %>
+        </li>
       <% end %>
 
       <% if user_signed_in? %>
@@ -58,7 +61,7 @@
             <%= link_to "#{t(:settings)}", edit_user_registration_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-            <%= link_to "#{t(:about_us)}", root_path, class: "nav-link" %>
+            <%= link_to "#{t(:about_us)}", about_us_strikes_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "#{t(:logout)}", destroy_user_session_path, method: :delete, class: "nav-link" %>

@@ -6,15 +6,15 @@ Rails.application.routes.draw do
     root to: 'strikes#index'
     resources :strikes do
       collection do
+        get 'about_us'
         get 'mobile_filter'
         get 'search'
         get 'calendar'
         post 'approval/:id', to: 'strikes#approval', as: :approval
-        get :about_us
+
       end
     end
     resources :submitted_strikes, except: [:show]
-    resources :unions, only: :create
     resources :reminders, only: [:index, :create, :destroy]
   end
 

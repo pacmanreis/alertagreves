@@ -54,6 +54,12 @@
                 <%= "#{t(:sign_up)}" %>
               <% end %>
             </li>
+            <li>
+                <%= link_to about_us_strikes_path do %>
+                  <i class="fas fa-info-circle"></i>
+                  <%= "#{t(:about_us)}" %>
+                <% end %>
+            </li>
           <% end %>
 
           <% if user_signed_in? %>
