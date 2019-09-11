@@ -6,16 +6,15 @@
 
           <div class="heading" id="heading<%= strike.id %>" data-toggle="collapse" data-target="#collapse<%= strike.id %>" aria-expanded="false" aria-controls="collapse<%= strike.id %>">
             <div class="category">
-              <div class="logo">
-                <i class="fas fa-<%=strike.category.name.downcase%>"></i>
-              </div>
-              <% if locale == :en %>
-                <h4><strong><%= strike.organization %> Strike</strong></h4>
-              <% elsif locale == :pt %>
-                <h4><strong>Greve <%= strike.organization %></strong></h4>
-              <% end %>
+              <h4><strong>
+                <% if locale == :en %>
+                  <%= strike.organization %> Strike
+                <% elsif locale == :pt %>
+                  Greve <%= strike.organization %>
+                <% end %>
+              </strong></h4>
             </div>
-            
+
             <div class="dates">
               <% if strike.start_date == strike.end_date%>
                 <p><strong>On: </strong><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
