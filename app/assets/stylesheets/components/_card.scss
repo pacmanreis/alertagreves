@@ -122,6 +122,12 @@ margin-bottom: 5px;
       .action-text {
         font-weight: normal;
         padding-left: 3px;
+        text-decoration: none;
+        color: black;
+      }
+
+      .action-text:hover {
+        text-decoration: none;
       }
     }
   }

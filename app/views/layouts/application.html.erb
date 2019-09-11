@@ -112,7 +112,6 @@
       <div id="cards-container">
         <%= yield %>
       </div>
-
       <%= render "shared/filter" if controller_name == "strikes" && action_name == "index" %>
     </div>
     <%= javascript_include_tag 'application' %>
