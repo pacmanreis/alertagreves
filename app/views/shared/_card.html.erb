@@ -51,7 +51,7 @@
                 <% user_reminder = current_user.reminders.find_by(strike: strike) %>
                 <% if user_reminder %>
                   <% color = "green" %>
-                  <%= link_to reminder_path(user_reminder), method: :delete do %>
+                  <%= link_to reminder_path(user_reminder), method: :delete, remote: true do %>
                     <i class="fas fa-bell <%= color %>"></i>
                   <% end %>
                 <% else %>
