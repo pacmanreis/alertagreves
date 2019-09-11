@@ -14,68 +14,70 @@
 
   <div class="filter_toggler">
 
-  <div class="toggler-desktop"><%= link_to mobile_filter_strikes_path do %><i class="fas fa-filter"></i><% end %></div>
+    <div class="toggler-desktop"><%= link_to mobile_filter_strikes_path do %>
+      <i class="fas fa-filter"></i><% end %>
+    </div>
 
     <button class="custom-toggler navbar-toggler toggler-desktop" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+  </div>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <% unless user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "#{t(:login)}", new_user_session_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "#{t(:sign_up)}", new_user_registration_path, class: "nav-link" %>
-          </li>
-        <% end %>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <% unless user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "#{t(:login)}", new_user_session_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "#{t(:sign_up)}", new_user_registration_path, class: "nav-link" %>
+        </li>
+      <% end %>
 
-        <% if user_signed_in? %>
+      <% if user_signed_in? %>
 
-          <% unless current_user.admin %>
-            <li class="nav-item">
-              <%= link_to "#{t(:submit_strike)}", new_submitted_strike_path, class: "nav-link" %>
-            </li>
-          <% end %>
-
-          <% if current_user.admin %>
-            <li class="nav-item">
-              <%= link_to "#{t(:add_strike)}", new_strike_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "#{t(:approve_strikes)} (#{SubmittedStrike.where("status = 'Pending'").count})", submitted_strikes_path, class: "nav-link" %>
-            </li>
-          <% end %>
-
+        <% unless current_user.admin %>
           <li class="nav-item">
-              <%= link_to "#{t(:reminders)} (#{Reminder.where(user_id: current_user.id).count})", reminders_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-              <%= link_to "#{t(:settings)}", edit_user_registration_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-              <%= link_to "#{t(:about_us)}", root_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "#{t(:logout)}", destroy_user_session_path, method: :delete, class: "nav-link" %>
+            <%= link_to "#{t(:submit_strike)}", new_submitted_strike_path, class: "nav-link" %>
           </li>
         <% end %>
 
-        <%= form_tag search_strikes_path, method: :get do %>
-          <div class="input-group-append">
-            <span class="input-group-text lighten-3" id="basic-text1">
-              <i class="fas fa-search text-grey" aria-hidden="true"></i>
-            </span>
-            <%= text_field_tag :query,
-              params[:query],
-              class: "form-control my-0 py-1",
-              placeholder: "#{t(:search_strike)}"
-            %>
-          </div>
+        <% if current_user.admin %>
+          <li class="nav-item">
+            <%= link_to "#{t(:add_strike)}", new_strike_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "#{t(:approve_strikes)} (#{SubmittedStrike.where("status = 'Pending'").count})", submitted_strikes_path, class: "nav-link" %>
+          </li>
         <% end %>
-      </ul>
-    </div>
+
+        <li class="nav-item">
+            <%= link_to "#{t(:reminders)} (#{Reminder.where(user_id: current_user.id).count})", reminders_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "#{t(:settings)}", edit_user_registration_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "#{t(:about_us)}", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "#{t(:logout)}", destroy_user_session_path, method: :delete, class: "nav-link" %>
+        </li>
+      <% end %>
+
+      <%= form_tag search_strikes_path, method: :get do %>
+        <div class="input-group-append">
+          <span class="input-group-text lighten-3" id="basic-text1">
+            <i class="fas fa-search text-grey" aria-hidden="true"></i>
+          </span>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control my-0 py-1",
+            placeholder: "#{t(:search_strike)}"
+          %>
+        </div>
+      <% end %>
+    </ul>
   </div>
 
   <div class="search-desktop">
