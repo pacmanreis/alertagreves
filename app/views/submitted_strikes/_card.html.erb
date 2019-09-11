@@ -1,38 +1,35 @@
-<div id="strikes-container" class="container-fluid">
-  <div class="row ">
-    <% @strikes.each do |strike| %>
-      <div class="col-xs-12 col-sm-12 col-lg-12">
-        <div id="accordion">
-            <div class="card-design">
-              <div class="all-content">
-                <div class="card-top" id="heading">
-                  <button class="btn btn-link card-top-content" data-toggle="collapse" data-target="#collapse-<%=strike.id %>" aria-expanded="true" aria-controls="collapseOne">
-                    <div class="category">
-                      <div class="logo">
-                        <i class="fas fa-<%=strike.category.name.downcase%>"></i>
-                      </div>
-                      <h3><strong>
-                      <% if locale == :en %>
-                        <%= strike.category.name %> <%= "#{t(:strike)}" %>
-                        <% else %>
-                        <%= "#{t(:strike)}" %> <%= strike.category.name %>
-                        <% end %>
-                      </strong></h3>
-                    </div>
-                    <div class="dates">
-                      <% if strike.start_date == strike.end_date%>
-                        <p><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
-                      <% else %>
-                        <p><strong>From: </strong><%= strike.start_date %></p>
-                        <% if !strike.end_date.nil? %>
-                          <p><strong>To: </strong><%= strike.end_date %></p>
-                        <% end %>
-                      <%end %>
-                    </div>
-                  </button>
+<hr class="hr-text" data-content="Pending Strikes">
+<div class="row ">
+  <% @strikes.each do |strike| %>
+    <div class="col-xs-12 col-sm-12 col-lg-12">
+       <div class="card-design text-center">
+        <div class="all-content">
+          <div class="card-top">
+               <div class="category">
+                <h4><strong>
+                  <% if locale == :en %>
+                  <%= strike.organization %> Strike
+                  <% elsif locale == :pt %>
+                  Greve <%= strike.organization %>
+                  <% end %>
+                </strong></h4>
+              </div>
+
+                <div class="dates">
+                  <% if strike.start_date == strike.end_date%>
+                    <p><strong>On: </strong><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
+                  <% else %>
+                    <p><strong>From: </strong><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
+                    <% if !strike.end_date.nil? %>
+                      <p><strong>To: </strong><%= t strike.end_date.strftime("%A") %>, <%= strike.end_date %></p>
+                    <% end %>
+                  <%end %>
                 </div>
-                    <p><strong>Organization: </strong><%= strike.organization %></p>
-                    <p><strong>Description: </strong><%= strike.description %></p>
+              </div>
+
+              <p><strong><%= t :categories %>: </strong><%= strike.category.name%></p>
+              <p><strong><%= t :sector %>: </strong><%= strike.category.sector.name%></p>
+              <p><strong><%= t :details %>: </strong><%= strike.description %></p>
                     <div class="text-center">
                       <% if user_signed_in? %>
                       <%= link_to "Edit", edit_submitted_strike_path(strike), class: "btn btn-primary btn-sm" %>
@@ -43,7 +40,5 @@
               </div>
             </div>
           </div>
-      </div>
-    <% end %>
-  </div>
+  <% end %>
 </div>

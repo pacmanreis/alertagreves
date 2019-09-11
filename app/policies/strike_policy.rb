@@ -45,6 +45,10 @@ class StrikePolicy < ApplicationPolicy
     true
   end
 
+  def about_us?
+    true
+  end
+
   private
 
   def user_is_admin?
