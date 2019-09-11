@@ -6,17 +6,26 @@
                                                       date: Date.today, category: category.id).present? ||
                                                       Strike.where("start_date <= :date AND end_date >= :date AND category_id = :category",
                                                       date: Date.today, category: category.id).present?) %>
-        <div class="sub-category">
-          <%= link_to category.name, strikes_path(category_id: category.id) %>
-        </div>
+        <%= link_to strikes_path(category_id: category.id), class: "nav-link" do %>
+          <div class="sub-category">
+            <%= category.name %>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
-    <div class="extremes_buttons">
-      <%= link_to "Remove Filter", strikes_path(category_id: "all") %>
-    </div>
+
+    <%= link_to strikes_path(category_id: "all"), class: "nav-link" do %>
+      <div class="extremes_buttons">
+        Remove Filter
+      </div>
+    <% end %>
+
     <hr class="hr-text">
-    <div class="extremes_buttons">
-      <%= link_to 'Calendar View', calendar_strikes_path %>
-    </div>
+
+    <%= link_to calendar_strikes_path, class: "nav-link" do %>
+      <div class="extremes_buttons">
+        Calendar View
+      </div>
+    <% end %>
   </div>
 </div>
