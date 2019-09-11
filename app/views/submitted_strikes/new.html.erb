@@ -7,20 +7,8 @@
       <%= f.input :organization %>
       <%= f.association :category %>
       <%= f.input :description %>
-      <p><a href=# id="new-union">Select Union below or create one here</a></p>
-      <div id="union-select">
-        <%= f.association :union %>
-      </div>
-      <div id="new-union-form" class="d-none">
-        <%= f.simple_fields_for :union do |p| %>
-          <%= p.input :name, input_html: { class: "union-input-field" } %>
-          <%= p.input :initials, input_html: { class: "union-input-field" } %>
-          <%= p.input :url, input_html: { class: "union-input-field" } %>
-        <% end %>
-      </div>
-        <%= f.input :start_date %>
-        <%= f.input :end_date %>
-
+      <%= f.input :start_date %>
+      <%= f.input :end_date %>
     </div>
     <div class="form-actions text-center">
       <%= f.submit class: 'btn btn-primary' %>

@@ -30,7 +30,6 @@
               <p><strong><%= t :categories %>: </strong><%= strike.category.name%></p>
               <p><strong><%= t :sector %>: </strong><%= strike.category.sector.name%></p>
               <p><strong><%= t :details %>: </strong><%= strike.description %></p>
-
                     <div class="text-center">
                       <% if user_signed_in? %>
                       <%= link_to "Edit", edit_submitted_strike_path(strike), class: "btn btn-primary btn-sm" %>
