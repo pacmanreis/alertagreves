@@ -60,9 +60,14 @@ en:
   share: "Share"
   cancel: "Cancel"
   select_union: "Select Union below or create one here"
-  on_: "On"
   from: "From"
   to: "To"
+  footer: "You are all catched up for today"
+  ongoing: "Ongoing Strikes"
+  tomorrow: "Starting Tomorrow"
+  this_week: "Starting this Week"
+  next_week: "Starting next week"
+  upcoming: "Upcoming Strikes"
 
 activerecord:
   attributes:

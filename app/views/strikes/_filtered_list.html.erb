@@ -1,6 +1,6 @@
 <div class="accordion" id="accordionExample">
    <% if strikes[:ongoing].any? %>
-    <hr class="hr-text" data-content="Ongoing Strikes">
+    <hr class="hr-text" data-content="<%= t :ongoing %>">
 
     <% strikes[:ongoing].each do |strike| %>
       <%= render 'shared/card', strike: strike %>
@@ -8,7 +8,7 @@
   <% end %>
 
   <% if strikes[:tomorrow].any? %>
-    <hr class="hr-text" data-content="Starting Tomorrow">
+    <hr class="hr-text" data-content="<%= t :tomorrow %>">
 
     <% strikes[:tomorrow].each do |strike| %>
       <%= render 'shared/card', strike: strike %>
@@ -16,7 +16,7 @@
   <% end %>
 
   <% if strikes[:this_week].any? %>
-    <hr class="hr-text" data-content="Starting this week">
+    <hr class="hr-text" data-content="<%= t :this_week %>">
 
     <% strikes[:this_week].each do |strike| %>
       <%= render 'shared/card', strike: strike %>
@@ -24,7 +24,7 @@
   <% end %>
 
  <% if strikes[:next_week].any? %>
-    <hr class="hr-text" data-content="Starting next week">
+    <hr class="hr-text" data-content="<%= t :next_week %>">
 
   <% strikes[:next_week].each do |strike| %>
     <%= render 'shared/card', strike: strike %>
@@ -32,7 +32,7 @@
  <% end %>
 
   <% if strikes[:following].any? %>
-    <hr class="hr-text" data-content="Following Strikes">
+    <hr class="hr-text" data-content="<%= t :upcoming %>">
 
     <% strikes[:following].each do |strike| %>
       <%= render 'shared/card', strike: strike %>

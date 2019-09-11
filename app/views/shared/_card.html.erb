@@ -15,7 +15,7 @@
             </div>
             <div class="dates">
               <% if strike.start_date == strike.end_date%>
-                <p><strong><%= t :on_ %>: </strong><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
+                <p><strong></strong><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
               <% else %>
                 <p><strong><%= t :from %>: </strong><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
                 <% if !strike.end_date.nil? %>
