@@ -12,7 +12,7 @@ Rails.application.configure do
   # }
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => 'https://alertagreves.com/' }
+  config.action_mailer.default_url_options = { :host => 'https://alertagreves.com' }
 
   # Code is not reloaded between requests.
   config.cache_classes = true
