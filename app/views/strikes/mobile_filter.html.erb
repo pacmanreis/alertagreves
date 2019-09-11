@@ -1,18 +1,22 @@
-<div class="text-center">
-  <h5>Filter by category</h5>
-  <%= link_to "All strikes", strikes_path(category_id: "all") %>
-  <ul class="list-unstyled">
+<div class="filter-container" >
+  <h5>Filter by:</h5>
+  <div class="list">
     <% @categories.each do |category| %>
       <% if category.strikes.present? && (Strike.where("start_date >= :date AND category_id = :category",
                                                       date: Date.today, category: category.id).present? ||
                                                       Strike.where("start_date <= :date AND end_date >= :date AND category_id = :category",
                                                       date: Date.today, category: category.id).present?) %>
-        <li>
-          <%= link_to category.name, strikes_path(category_id: category.id) %>
-        </li>
+        <div class="sub-category">
+         <%= link_to category.name, strikes_path(category_id: category.id) %>
+        </div>
       <% end %>
     <% end %>
-  </ul>
-  <hr class="hr-text">
-  <%= link_to 'Calendar View', calendar_strikes_path %>
+    <div class="extremes_buttons">
+      <%= link_to "Remove Filter", strikes_path(category_id: "all") %>
+    </div>
+    <hr class="hr-text">
+    <div class="extremes_buttons">
+      <%= link_to 'Calendar View', calendar_strikes_path %>
+    </div>
+  </div>
 </div>
