@@ -1,5 +1,6 @@
-<div class="form-container">
-  <h2>Log in</h2>
+<div class="form-container p-0">
+  <p class="text-center h2 mt-4 mb-4"><strong><%= "#{t(:login)}" %></strong></p>
+
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
@@ -14,7 +15,15 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Log in", class: "btn btn-success btn-sm btn-block" %>
+      <%= f.button :submit, "Log in", class: "btn btn-primary btn-sm rounded " %>
+      <%- if devise_mapping.omniauthable? %>
+        <%- resource_class.omniauth_providers.each do |provider| %>
+          <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-primary btn-sm" do %>
+          <%= "Sign in with  #{OmniAuth::Utils.camelize(provider)} " %>
+          <i class="fab fa-facebook-square"></i>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
   <% end %>
   <%= render "devise/shared/links" %>

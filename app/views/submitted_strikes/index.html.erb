@@ -1,4 +1,4 @@
-<h1 class="text-center h4"><%= t :pending_strikes %></h1>
+<p class="text-center h2 mt-4 mb-4"><strong><%= t :pending_strikes %></strong></p>
 <% if @strikes.any? %>
   <%= render 'card', strike: @strike %>
 <% else %>

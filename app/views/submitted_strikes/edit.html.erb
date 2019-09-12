@@ -1,5 +1,6 @@
 <div class="form-container">
-  <p class="text-center h4">EDIT STRIKE</p>
+  <p class="text-center h2 mt-4 mb-4"><strong><%= "#{t(:edit_strike)}" %></strong></p>
+
 
   <%= simple_form_for @submitted_strike do |f| %>
     <div class="form-inputs">
@@ -10,9 +11,9 @@
       <%= f.input :end_date %>
     </div>
     <div class="form-actions text-center">
-      <%= link_to "Approve", approval_strikes_path(@submitted_strike.id), method: :post, class: "btn btn-success btn-sm text-white" %>
-      <%= f.submit class: 'btn btn-sm btn-primary' %>
-      <%= link_to 'Cancel', root_path, class: 'btn-sm btn-secondary' %>
+      <%= link_to "Approve", approval_strikes_path(@submitted_strike.id), method: :post, class: "btn btn-success btn-sm text-white rounded" %>
+      <%= f.submit class: 'btn btn-sm btn-primary rounded' %>
+      <%= link_to 'Cancel', root_path, class: 'btn btn-sm btn-secondary rounded' %>
     </div>
   <% end %>
 </div>
