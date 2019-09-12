@@ -1,5 +1,5 @@
-<div class="form-container">
-  <p class="text-center h4"><%= "#{t(:add_strike).upcase}" %></p>
+<div class="form-container p-0">
+  <p class="text-center h2 mt-4 mb-4"><strong><%= "#{t(:add_strike)}" %></strong></p>
 
   <%= simple_form_for @strike do |f| %>
     <div class="form-inputs">
@@ -10,8 +10,8 @@
       <%= f.input :end_date %>
     </div>
     <div class="form-actions text-center">
-      <%= f.submit class: 'btn btn-primary' %>
-      <%= link_to 'Cancel', root_path, class: 'btn btn-secondary' %>
+      <%= f.submit class: 'btn btn-primary rounded' %>
+      <%= link_to 'Cancel', root_path, class: 'btn btn-secondary rounded' %>
     </div>
   <% end %>
 </div>

@@ -1,5 +1,6 @@
 pt:
   add_strike: "Adicionar Greve"
+  edit_strike: "Alterar Greve"
   submit_strike: "Enviar Greve"
   approve_strikes: "Aprovar Greves"
   login: "Entrar"
@@ -58,9 +59,9 @@ pt:
   remove_filter: "Remover Filtro"
   calendar: "Calendário"
   filter: "Filtrar por:"
-  results: "OS RESULTADOS DA SUA BUSCA"
+  results: "Resultados Da Sua Busca"
   results_found: "Não foram encontradas greves"
-  pending_strikes: "GREVES POR APROVAR"
+  pending_strikes: "Greves Por Aprovar"
   about_description: "Este site foi feito durante as ultimas duas semanas num Bootcamp de 9 semanas no Le Wagon Lisboa. Criamos para ajudar reduzir o efeito das greves sobre as pessoas. Elas acontecem diariamente e se não estivermos informados, mais cedo ou mais tarde poderemos ser afectados quando nos é menos conveniente. Esperemos que gostem de usar este site tanto como nós o gostamos de o criar. Obrigado."
   contact: "Contacte-nos em"
 
