@@ -3,7 +3,7 @@
     <div class="calendar-heading ">
       <div class="month-switch"><%= link_to t('simple_calendar.previous', default: "<<<#{t(:previous)}"), calendar.url_for_previous_view %></div>
       <div><span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span></div>
-      <div class="month-switch"><%= link_to t('simple_calendar.next', default: "<<<#{t(:next)}"), calendar.url_for_next_view %></div>
+      <div class="month-switch"><%= link_to t('simple_calendar.next', default: "#{t(:next)}>>>"), calendar.url_for_next_view %></div>
     </div>
 
     <table class="table table-striped">
