@@ -6,7 +6,7 @@ Category.destroy_all
 Sector.destroy_all
 
 puts 'Started Seeding'
-User.create!!(
+User.create!(
   email: "user@gmail.com",
   password: "123456",
   admin: false
