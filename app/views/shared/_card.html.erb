@@ -67,7 +67,17 @@
             <% end %>
           </div>
           <div>
-            <%= link_to "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alertagreves.com%2F&amp;src=sdkpreparse", target: :_blank, class: "action-text" do %>
+<!-- good https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alertagreves.com%2Fstrikes%2F7%2F&amp%3Bsrc=sdkpreparse
+
+badd https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alertagreves.com%2Fstrikes%2F837%2F&amp%3Bsrc=sdkpreparse
+ -->
+
+
+
+            <% @url = "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.alertagreves.com/strikes/#{strike.id}%2F&amp;src=sdkpreparse" %>
+
+
+            <%= link_to @url, target: :_blank, class: "action-text" do %>
               <i class="fas fa-share"></i><span class="action-text"><%= t :share %></span>
             <% end %>
           </div>
