@@ -1,8 +1,17 @@
 function refreshIndexCards(innerHTML) {
-  const indexCards = document.getElementById('strikes-container');
+  const indexCards = document.getElementById("strikes-container");
   indexCards.innerHTML = innerHTML;
+}
+
+function refreshLeftMenu(innerHTML) {
+  const leftMenu = document.getElementById("dashboard");
+  leftMenu.innerHTML = innerHTML;
 }
 
 refreshIndexCards(
   '<%= j render "strikes/filtered_list", strikes: @grouped_strikes %>'
+);
+
+refreshLeftMenu (
+  '<%= j render "shared/left_menu" %>'
 );
