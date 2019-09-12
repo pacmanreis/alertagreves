@@ -5,6 +5,8 @@ pt:
   approve_strikes: "Aprovar Greves"
   login: "Entrar"
   sign_up: "Criar Conta"
+  sign_in: "Entrar com"
+  forgot_password: "Esqueceu-se da sua password?"
   logout: "Sair"
   about_us: "Sobre Nós"
   search_strike: "Procurar Greve"
