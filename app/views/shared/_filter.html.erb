@@ -6,7 +6,7 @@
                                                       date: Date.today, category: category.id).present? ||
                                                       Strike.where("start_date <= :date AND end_date >= :date AND category_id = :category",
                                                       date: Date.today, category: category.id).present?) %>
-        <%= link_to strikes_path(category_id: category.id), class: "nav-link" do %>
+        <%= link_to strikes_path(category_id: category.id), class: "nav-link", remote: true do %>
           <div class="sub-category">
             <%= t "#{category.name}" %>
           </div>
@@ -14,7 +14,7 @@
       <% end %>
     <% end %>
 
-    <%= link_to strikes_path(category_id: "all"), class: "nav-link" do %>
+    <%= link_to strikes_path(category_id: "all"), class: "nav-link", remote: true do %>
       <div class="extremes_buttons">
         <%= t :remove_filter %>
       </div>
