@@ -5,7 +5,6 @@
 .filter-container {
   max-width: fit-content;
   margin-left: 70px;
-  top: 14vh;
   margin-bottom: 7vh;
   overflow: scroll;
   -ms-overflow-style: none;
@@ -28,6 +27,7 @@
 
   h5 {
     text-align: center;
+    padding-top: 16px;
   }
   .list {
     text-align: center;

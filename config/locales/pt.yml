@@ -52,7 +52,7 @@ pt:
   Train: "Comboios"
   Subway: "Metro"
   Ship: "Barcos"
-  Taxi: "Taxiw"
+  Taxi: "Taxi"
   Plane: "Aviação"
   Bus: "Autocarros"
   remove_filter: "Remover Filtro"
