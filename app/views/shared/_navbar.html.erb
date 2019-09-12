@@ -27,61 +27,101 @@
     <ul class="navbar-nav mr-auto">
       <% unless user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "#{t(:calendar)}", calendar_strikes_path, class: "nav-link" %>
+        <%= link_to calendar_strikes_path, class: "nav-link" do%>
+          <i class="fas fa-calendar-alt"></i>
+          <%= "#{t(:calendar)}" %>
+        <% end %>
+      </li>
+        <li class="nav-item">
+          <%= link_to new_user_registration_path, class: "nav-link" do %>
+          <i class="fas fa-user-plus"></i>
+          <%= "#{t(:sign_up)}" %>
+        <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "#{t(:login)}", new_user_session_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "#{t(:sign_up)}", new_user_registration_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-            <%= link_to "#{t(:about_us)}", about_us_strikes_path, class: "nav-link" %>
-        </li>
+        <%= link_to new_user_registration_path, class: "nav-link" do %>
+          <i class="fas fa-user-plus"></i>
+          <%= "#{t(:sign_up)}" %>
+        <% end %>
+      </li>
+      <li class="nav-item">
+          <%= link_to about_us_strikes_path, class: "nav-link" do %>
+            <i class="fas fa-info-circle"></i>
+            <%= "#{t(:about_us)}" %>
+          <% end %>
+      </li>
       <% end %>
 
       <% if user_signed_in? %>
 
         <% unless current_user.admin %>
           <li class="nav-item">
-            <%= link_to "#{t(:calendar)}", calendar_strikes_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "#{t(:submit_strike)}", new_submitted_strike_path, class: "nav-link" %>
-          </li>
+          <%= link_to calendar_strikes_path, class: "nav-link" do%>
+            <i class="fas fa-calendar-alt"></i>
+            <%= "#{t(:calendar)}" %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_submitted_strike_path, class: "nav-link" do %>
+            <i class="fas fa-plus"></i>
+            <%= "#{t(:submit_strike)}"  %>
+          <% end %>
+        </li>
         <% end %>
 
         <% if current_user.admin %>
           <li class="nav-item">
-            <%= link_to "#{t(:calendar)}", calendar_strikes_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "#{t(:add_strike)}", new_strike_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "#{t(:approve_strikes)} (#{SubmittedStrike.where("status = 'Pending'").count})", submitted_strikes_path, class: "nav-link" %>
-          </li>
+          <%= link_to calendar_strikes_path, class: "nav-link" do%>
+          <i class="fas fa-calendar-alt"></i>
+          <%= "#{t(:calendar)}" %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_strike_path, class: "nav-link" do %>
+            <i class="fas fa-plus"></i>
+            <%= "#{t(:add_strike)}" %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to submitted_strikes_path, class: "nav-link" do %>
+            <i class="fas fa-spinner"></i>
+            <%= "#{t(:approve_strikes)} (#{SubmittedStrike.where("status = 'Pending'").count})" %>
+          <% end %>
+        </li>
         <% end %>
 
         <li class="nav-item">
-            <%= link_to "#{t(:reminders)} (#{Reminder.where(user_id: current_user.id).count})", reminders_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-            <%= link_to "#{t(:settings)}", edit_user_registration_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-            <%= link_to "#{t(:about_us)}", about_us_strikes_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "#{t(:logout)}", destroy_user_session_path, method: :delete, class: "nav-link" %>
-        </li>
+        <%= link_to reminders_path, class: "nav-link" do%>
+          <i class="fas fa-bell"></i>
+          <%= "#{t(:reminders)} (#{Reminder.where(user_id: current_user.id).count})" %>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to edit_user_registration_path, class: "nav-link" do %>
+          <i class="fas fa-cogs"></i>
+          <%= "#{t(:settings)}" %>
+        <% end %>
+      </li>
+      <li class="nav-item">
+          <%= link_to about_us_strikes_path, class: "nav-link" do %>
+            <i class="fas fa-info-circle"></i>
+            <%= "#{t(:about_us)}" %>
+          <% end %>
+      </li class="nav-item">
+      <li class="nav-item">
+        <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+          <i class="fas fa-sign-out-alt"></i>
+          <%= "#{t(:logout)}" %>
+        <% end %>
+      </li>
       <% end %>
 
       <%= form_tag search_strikes_path, method: :get do %>
         <div class="input-group-append">
-          <span class="input-group-text lighten-3" id="basic-text1">
-            <i class="fas fa-search text-grey" aria-hidden="true"></i>
-          </span>
+          <%= submit_tag "Search", class: "d-none hidden-submit-button"%>
+          <button class="input-group-text lighten-3" id="basic-text1">
+          <i class="fas fa-search text-grey" aria-hidden="true"></i>
+        </button>
           <%= text_field_tag :query,
             params[:query],
             class: "form-control my-0 py-1",
@@ -95,9 +135,10 @@
   <div class="search-desktop">
     <%= form_tag search_strikes_path, method: :get do %>
       <div class="input-group-append">
-        <span class="input-group-text lighten-3" id="basic-text1">
+        <%= submit_tag "Search", class: "d-none hidden-submit-button" %>
+        <button class="input-group-text lighten-3" id="basic-text1">
           <i class="fas fa-search text-grey" aria-hidden="true"></i>
-        </span>
+        </button>
         <%= text_field_tag :query,
           params[:query],
           class: "form-control my-0 py-1",
