@@ -2,6 +2,12 @@
   <ul class="navbar-nav mr-auto menu-desktop">
     <% unless user_signed_in? %>
       <li>
+        <%= link_to calendar_strikes_path do%>
+          <i class="fas fa-calendar-alt"></i>
+          <%= "#{t(:calendar)}" %>
+        <% end %>
+      </li>
+      <li>
         <%= link_to new_user_session_path do%>
           <i class="fas fa-sign-in-alt"></i>
           <%= "#{t(:login)}" %>
@@ -24,6 +30,12 @@
     <% if user_signed_in? %>
       <% unless current_user.admin %>
         <li>
+          <%= link_to calendar_strikes_path do%>
+            <i class="fas fa-calendar-alt"></i>
+            <%= "#{t(:calendar)}" %>
+          <% end %>
+        </li>
+        <li>
           <%= link_to new_submitted_strike_path do %>
             <i class="fas fa-plus"></i>
             <%= "#{t(:submit_strike)}"  %>
@@ -32,6 +44,12 @@
       <% end %>
 
       <% if current_user.admin %>
+        <li>
+          <%= link_to calendar_strikes_path do%>
+          <i class="fas fa-calendar-alt"></i>
+          <%= "#{t(:calendar)}" %>
+          <% end %>
+        </li>
         <li>
           <%= link_to new_strike_path do %>
             <i class="fas fa-plus"></i>

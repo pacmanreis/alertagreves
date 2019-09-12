@@ -27,6 +27,9 @@
     <ul class="navbar-nav mr-auto">
       <% unless user_signed_in? %>
         <li class="nav-item">
+          <%= link_to "#{t(:calendar)}", calendar_strikes_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
           <%= link_to "#{t(:login)}", new_user_session_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
@@ -41,11 +44,17 @@
 
         <% unless current_user.admin %>
           <li class="nav-item">
+            <%= link_to "#{t(:calendar)}", calendar_strikes_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
             <%= link_to "#{t(:submit_strike)}", new_submitted_strike_path, class: "nav-link" %>
           </li>
         <% end %>
 
         <% if current_user.admin %>
+          <li class="nav-item">
+            <%= link_to "#{t(:calendar)}", calendar_strikes_path, class: "nav-link" %>
+          </li>
           <li class="nav-item">
             <%= link_to "#{t(:add_strike)}", new_strike_path, class: "nav-link" %>
           </li>
