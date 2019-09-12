@@ -66,6 +66,9 @@
 
 .nav-link {
   color: white !important;
+  .fas {
+    padding: 0;
+  }
 }
 
 @include media-breakpoint-up(xs) {
