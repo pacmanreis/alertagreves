@@ -1,18 +1,14 @@
 .filter {
   display: none;
 }
-
 .filter-container {
   max-width: fit-content;
   margin-left: 70px;
-  margin-bottom: 7vh;
-  overflow: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  overflow:scroll;
+ height: 90vh;
+    position: sticky;
+    top: 80px;
 }
-.filter-container::-webkit-scrollbar {
-     display: none;
-  }
 
 .filter-mobile {
   text-align: center;
@@ -27,7 +23,6 @@
 
   h5 {
     text-align: center;
-    padding-top: 16px;
   }
   .list {
     text-align: center;
