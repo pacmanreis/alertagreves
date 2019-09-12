@@ -176,11 +176,6 @@ puts 'Done!'
 
 puts 'Started Scraping'
 
-require 'open-uri'
-require 'nokogiri'
-require 'pry-byebug'
-require 'csv'
-
 url = "https://www.dgaep.gov.pt/index.cfm?&OBJID=32B5C008-D957-4C3E-B00A-2ECE2208212A&ComDest=0&Tab=4"
 
 html_file = open(url).read
