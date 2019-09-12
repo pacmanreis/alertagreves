@@ -1,6 +1,6 @@
 <!-- app/views/offers/show.html.erb -->
-<% content_for :meta_title, "[#{@strike.category}] #{@strike.organization} is on #{DEFAULT_META["meta_product_name"]}" %>
-<% content_for :meta_description, "Date: #{@strike.start_date}\n#{@strike.description}" %>
+<% content_for :meta_title, "[#{@strike.category.name}] #{@strike.organization} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, "Date: #{@strike.start_date} #{@strike.description}" %>
 
 <% content_for :meta_image, image_path("meta_image.png") %>
 
