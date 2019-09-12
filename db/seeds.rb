@@ -1,9 +1,9 @@
-Reminder.destroy_all
-Strike.destroy_all
-User.destroy_all
-Union.destroy_all
-Category.destroy_all
-Sector.destroy_all
+# Reminder.destroy_all
+# Strike.destroy_all
+# User.destroy_all
+# Union.destroy_all
+# Category.destroy_all
+# Sector.destroy_all
 
 puts 'Started Seeding'
 User.create!(
@@ -217,11 +217,12 @@ pstrikes.each do |strike|
       cat = 17
   end
 
-  Strike.create!(organization: strike[3].gsub("Setorial - ", '').gsub("Setorial ", '').gsub("(", '').gsub(")", ''),
+  strike = Strike.new(organization: strike[3].gsub("Setorial - ", '').gsub("Setorial ", '').gsub("(", '').gsub(")", ''),
                 description: "Sindicatos - #{strike[0]}",
                 start_date: strike[2],
                 end_date: strike[2],
                 category_id: cat)
+  puts "#{strike.id} strikes created" if strike.save
 end
 
 puts 'Done'
