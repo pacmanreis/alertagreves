@@ -1,6 +1,7 @@
 <!-- app/views/offers/show.html.erb -->
 <% content_for :meta_title, "#{@strike.organization} is on #{DEFAULT_META["meta_product_name"]}" %>
-<% content_for :meta_description, @strike.description %>
+<% content_for :meta_description, "#{@strike.start_date} - #{@strike.description} - #{@strike.category}" %>
+
 <% content_for :meta_image, image_path("meta_image.png") %>
 
 <h1 class="text-center h4">SHOW</h1>
