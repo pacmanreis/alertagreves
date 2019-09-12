@@ -36,6 +36,8 @@ en:
   approve_strikes: "Pending Strikes"
   login: "Log In"
   sign_up: "Sign Up"
+  sign_in: "Sign in with"
+  forgot_password: "Forgot your password?"
   logout: "Log Out"
   about_us: "About Us"
   search_strike: "Search for a strike"

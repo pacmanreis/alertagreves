@@ -15,11 +15,11 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Log in", class: "btn btn-primary btn-sm rounded " %>
+      <%= f.button :submit, "#{t(:login)}", class: "btn btn-primary btn-sm rounded " %>
       <%- if devise_mapping.omniauthable? %>
         <%- resource_class.omniauth_providers.each do |provider| %>
           <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-primary btn-sm" do %>
-          <%= "Sign in with  #{OmniAuth::Utils.camelize(provider)} " %>
+          <%= "#{t(:sign_in)}  #{OmniAuth::Utils.camelize(provider)} " %>
           <i class="fab fa-facebook-square"></i>
           <% end %>
         <% end %>
