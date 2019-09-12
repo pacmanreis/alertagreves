@@ -1,0 +1,75 @@
+<div class="menu">
+  <ul class="navbar-nav mr-auto menu-desktop">
+    <% unless user_signed_in? %>
+      <li>
+        <%= link_to new_user_session_path do%>
+          <i class="fas fa-sign-in-alt"></i>
+          <%= "#{t(:login)}" %>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to new_user_registration_path do %>
+          <i class="fas fa-user-plus"></i>
+          <%= "#{t(:sign_up)}" %>
+        <% end %>
+      </li>
+      <li>
+          <%= link_to about_us_strikes_path do %>
+            <i class="fas fa-info-circle"></i>
+            <%= "#{t(:about_us)}" %>
+          <% end %>
+      </li>
+    <% end %>
+
+    <% if user_signed_in? %>
+      <% unless current_user.admin %>
+        <li>
+          <%= link_to new_submitted_strike_path do %>
+            <i class="fas fa-plus"></i>
+            <%= "#{t(:submit_strike)}"  %>
+          <% end %>
+        </li>
+      <% end %>
+
+      <% if current_user.admin %>
+        <li>
+          <%= link_to new_strike_path do %>
+            <i class="fas fa-plus"></i>
+            <%= "#{t(:add_strike)}" %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to submitted_strikes_path do %>
+            <i class="fas fa-spinner"></i>
+            <%= "#{t(:approve_strikes)} (#{SubmittedStrike.where("status = 'Pending'").count})" %>
+          <% end %>
+        </li>
+      <% end %>
+
+      <li>
+        <%= link_to reminders_path do%>
+          <i class="fas fa-bell"></i>
+          <%= "#{t(:reminders)} (#{Reminder.where(user_id: current_user.id).count})" %>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to edit_user_registration_path do %>
+          <i class="fas fa-cogs"></i>
+          <%= "#{t(:settings)}" %>
+        <% end %>
+      </li>
+      <li>
+          <%= link_to about_us_strikes_path do %>
+            <i class="fas fa-info-circle"></i>
+            <%= "#{t(:about_us)}" %>
+          <% end %>
+      </li>
+      <li>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fas fa-sign-out-alt"></i>
+          <%= "#{t(:logout)}" %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
