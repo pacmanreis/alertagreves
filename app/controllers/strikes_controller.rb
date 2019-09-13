@@ -128,7 +128,7 @@ class StrikesController < ApplicationController
   def next_week
     return @next_week if @next_week.present?
 
-    date_range = Date.today.beginning_of_week.next_week..Date.today.end_of_week.next_week
+    date_range = Date.today.beginning_of_week.next_week..Date.today.next_week.end_of_week
     @next_week = policy_scope(Strike).where(start_date: date_range)
     @next_week = @next_week.where(category_id: params[:category_id]) if category_filter?
 
