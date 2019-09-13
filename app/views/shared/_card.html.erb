@@ -31,7 +31,7 @@
                 <% if user_signed_in? %>
                   <% if current_user.admin %>
                     <%= link_to "#{t(:edit)}", edit_strike_path(strike), class: "btn btn-primary btn-sm" %>
-                    <%= link_to "#{t(:delete)}", strike_path(strike.id), method: :delete, class: 'btn btn-danger btn-sm' %>
+                    <%= link_to "#{t(:delete)}", strike_path(strike.id), data: { confirm: "#{t(:you_sure)}" }, method: :delete, class: 'btn btn-danger btn-sm' %>
                   <% end %>
                 <% end %>
               </div>

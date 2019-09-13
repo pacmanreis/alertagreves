@@ -16,11 +16,11 @@
 
                 <div class="dates">
                   <% if strike.start_date == strike.end_date%>
-                    <p><strong>On: </strong><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
+                    <p><strong></strong><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
                   <% else %>
-                    <p><strong>From: </strong><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
+                    <p><strong><%= t :from %>: </strong><%= t strike.start_date.strftime("%A") %>, <%= strike.start_date %></p>
                     <% if !strike.end_date.nil? %>
-                      <p><strong>To: </strong><%= t strike.end_date.strftime("%A") %>, <%= strike.end_date %></p>
+                      <p><strong><%= t :to %>: </strong><%= t strike.end_date.strftime("%A") %>, <%= strike.end_date %></p>
                     <% end %>
                   <%end %>
                 </div>
@@ -29,12 +29,13 @@
               <p><strong><%= t :categories %>: </strong><%= strike.category.name%></p>
               <p><strong><%= t :sector %>: </strong><%= strike.category.sector.name%></p>
               <p><strong><%= t :details %>: </strong><%= strike.description %></p>
+              <p><strong><%= t :created_by %>: </strong><%= strike.user.email%></p>
                     <div class="text-center">
                       <% if user_signed_in? %>
-                      <%= link_to "Edit", edit_submitted_strike_path(strike), class: "btn btn-primary btn-sm" %>
-                      <%= link_to 'Delete', submitted_strike_path(strike.id), method: :delete, data: { :confirm => "You Sure?"}, class: 'btn btn-danger btn-sm' %>
+                      <%= link_to "#{t(:edit)}", edit_submitted_strike_path(strike), class: "btn btn-primary btn-sm" %>
+                      <%= link_to "#{t(:delete)}", submitted_strike_path(strike.id), method: :delete, data: { :confirm => "#{t(:you_sure)}"}, class: 'btn btn-danger btn-sm' %>
                       <% end %>
-                      <%= link_to "Approve", approval_strikes_path(strike.id), method: :post, class: "btn btn-success btn-sm text-white" %>
+                      <%= link_to "#{t(:approve)}", approval_strikes_path(strike.id), method: :post, class: "btn btn-success btn-sm text-white" %>
                     </div>
               </div>
             </div>
