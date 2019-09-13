@@ -1,9 +1,9 @@
-# Reminder.destroy_all
-# Strike.destroy_all
-# User.destroy_all
-# Union.destroy_all
-# Category.destroy_all
-# Sector.destroy_all
+Reminder.destroy_all
+Strike.destroy_all
+User.destroy_all
+Union.destroy_all
+Category.destroy_all
+Sector.destroy_all
 
 puts 'Started Seeding'
 User.create!(
@@ -12,17 +12,7 @@ User.create!(
   admin: false
 )
 
-User.create!(email: "pacmanreis@gmail.com",
-  password: "123456",
-  admin: true
-  )
-
-User.create!(email: "bokac279@gmail.com",
-  password: "123456",
-  admin: true
-  )
-
-User.create!(email: "fgaspar9@icloud.com",
+User.create!(email: "admin@gmail.com",
   password: "123456",
   admin: true
   )
