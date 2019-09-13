@@ -6,8 +6,18 @@ pt:
   login: "Entrar"
   sign_up: "Criar Conta"
   sign_in: "Entrar com"
-  forgot_password: "Esqueceu-se da sua password?"
+  forgot_password: "Esqueceu-se da sua palavra-passe?"
+  pass_instructions: "Enviar instruções restaurar palavra-passe"
+  need_current_pass: "Necessitamos da sua palavra-passe actual para confirmar as mudanças"
+  new_password: "Coloque uma nova palavra-passe."
+  new_pass_confirm: "nova palavra-passe"
+  current_password: "palavrxa-passe actual"
+  update: "Actualizar"
+  unhappy: "Não está satisfeito?"
+  cancel_account: "Cancele a sua conta"
   logout: "Sair"
+  return: "Voltar"
+  edit_user: "Editar Preferências"
   about_us: "Sobre Nós"
   search_strike: "Procurar Greve"
   settings: "Preferências"
@@ -69,9 +79,19 @@ pt:
   pending_strikes: "Greves Por Aprovar"
   about_description: "Este site foi feito durante as ultimas duas semanas num Bootcamp de 9 semanas no Le Wagon Lisboa. Criamos para ajudar reduzir o efeito das greves sobre as pessoas. Elas acontecem diariamente e se não estivermos informados, mais cedo ou mais tarde poderemos ser afectados quando nos é menos conveniente. Esperemos que gostem de usar este site tanto como nós o gostamos de o criar. Obrigado."
   contact: "Contacte-nos em"
+  char_min: "carateres no minimo"
 
   previous: "Anterior"
   next: "Próximo"
+
+
+  simple_form:
+    labels:
+      defaults:
+        remember_me: 'Lembrar login'
+        password: 'Palavra-passe'
+        password_confirmation: 'Confirmar Password'
+        current_password: "Palavra-passe actual"
 
   activerecord:
     models:

@@ -1,5 +1,7 @@
 <div class="container form-mobile">
-  <h2 class="text-center mt-4"><strong>Edit <%= resource_name.to_s.humanize%></strong></h2>
+  <h2 class="text-center mt-4"><strong><%= t(:edit_user) %></strong></h2>
+
+<!-- Edit <%= resource_name.to_s.humanize%> -->
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
@@ -12,24 +14,24 @@
       <% end %>
 
       <%= f.input :current_password,
-                  hint: "We need your current password to confirm your changes",
+                  hint: "#{t(:need_current_pass)}",
                   required: true,
-                  input_html: { autocomplete: "current-password" } %>
+                  input_html: { autocomplete: "#{t(:current_password)}" } %>
       <%= f.input :password,
-                  hint: "Put yout new password.",
+                  hint: "#{t(:new_password)}",
                   required: false,
-                  input_html: { autocomplete: "new-password" } %>
+                  input_html: { autocomplete: "#{t(:new_pass_confirm)}" } %>
       <%= f.input :password_confirmation,
                   required: false,
-                  input_html: { autocomplete: "new-password" } %>
+                  input_html: { autocomplete: "#{t(:new_pass_confirm)}" } %>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Update", class:"btn-primary mt-3" %>
+      <%= f.button :submit, "#{t(:update)}", class:"btn-primary mt-3" %>
     </div>
   <% end %>
 
-  <p class="mt-3">Unhappy ? <%= link_to "Cancel your account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <p class="mt-3"><%= t :unhappy %> <%= link_to "#{t(:cancel_account)}", registration_path(resource_name), data: { confirm: "#{t(:you_sure)}" }, method: :delete %></p>
 
-  <%= link_to "Back", :back%>
+  <%= link_to "#{t(:return)}", :back%>
 </div>
