@@ -81,6 +81,12 @@
   }
 }
 
+@include media-breakpoint-up(lg) {
+  .toggler-tablet {
+    display: none;
+  }
+}
+
 @include media-breakpoint-up(sm) {
   .toggler-desktop {
     display: none;
