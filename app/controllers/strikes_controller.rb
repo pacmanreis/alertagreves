@@ -48,7 +48,7 @@ class StrikesController < ApplicationController
   end
 
   def search
-    @strikes = Strike.search_by_country_organization_description_and_union_id(params[:query])
+    @strikes = Strike.order(end_date: :desc).search_by_country_organization_description_and_union_id(params[:query])
     authorize @strikes
   end
 
