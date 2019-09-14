@@ -1,4 +1,4 @@
-<% content_for :meta_title, "#{@strike.category.name} (#{@strike.start_date}): Greve #{@strike.organization}" %>
+<% content_for :meta_title, "#{@strike.start_date.strftime("%A: %d/%m/%y")} - Greve #{@strike.organization}" %>
 <% content_for :meta_description, @strike.description %>
 
 <% content_for :meta_image, image_path("meta_image.png") %>
