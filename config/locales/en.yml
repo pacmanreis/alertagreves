@@ -111,8 +111,8 @@ en:
   about_description: "This website was made during the last two weeks of a 9 week cooding bootcamp at Lewagon Lisbon. We created it to help people avoiding strikes. These happen on a daily basis and if not informed, sooner or later we could be affected when least convinient. We hope you enjoy using it as much as we enjoyed creating it. Thank You."
   contact: "Contact us on"
   char_min: "characters minimum"
-  meta_title: "Alerta Greves - All strikes in one place"
-  meta_description: "Stay updated and get notified with all the latest strikes news."
+  meta_t: "Alerta Greves - All strikes in one place"
+  meta_d: "Stay updated and get notified with all the latest strikes news."
 
   previous: "Previous"
   next: "Next"
