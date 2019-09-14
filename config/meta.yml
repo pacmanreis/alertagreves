@@ -1,3 +1,5 @@
 meta_product_name: "Alerta Greves"
+meta_title: "Alerta Greves - Todas as greves num único local"
+meta_description: "Esteja actualizado e receba notificações sobre todas as greves."
 meta_image: "meta_image.png" # should exist in `app/assets/images/`
 # twitter_account: "@product_twitter_account"   # required for Twitter Cards
