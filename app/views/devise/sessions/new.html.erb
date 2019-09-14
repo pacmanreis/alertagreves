@@ -16,14 +16,14 @@
 
     <div class="form-actions">
       <%= f.button :submit, "#{t(:login)}", class: "btn btn-primary btn-sm rounded " %>
-      <%#- if devise_mapping.omniauthable? %>
-        <%#- resource_class.omniauth_providers.each do |provider| %>
-          <%#= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-primary btn-sm" do %>
-          <%#= "#{t(:sign_in)}  #{OmniAuth::Utils.camelize(provider)} " %>
-          <!-- <i class="fab fa-facebook-square"></i> -->
-          <%# end %>
-        <%# end %>
-      <%# end %>
+      <%- if devise_mapping.omniauthable? %>
+        <%- resource_class.omniauth_providers.each do |provider| %>
+          <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-primary btn-sm" do %>
+          <%= "#{t(:sign_in)}  #{OmniAuth::Utils.camelize(provider)} " %>
+          <i class="fab fa-facebook-square"></i>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
   <% end %>
   <%= render "devise/shared/links" %>
