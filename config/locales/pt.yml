@@ -80,8 +80,8 @@ pt:
   about_description: "Este site foi feito durante as ultimas duas semanas num Bootcamp de 9 semanas no Le Wagon Lisboa. Criamos para ajudar reduzir o efeito das greves sobre as pessoas. Elas acontecem diariamente e se não estivermos informados, mais cedo ou mais tarde poderemos ser afectados quando nos é menos conveniente. Esperemos que gostem de usar este site tanto como nós o gostamos de o criar. Obrigado."
   contact: "Contacte-nos em"
   char_min: "carateres no minimo"
-  meta_title: "Alerta Greves - Todas as greves num único local"
-  meta_description: "Esteja actualizado e receba notificações sobre todas as greves."
+  meta_t: "Alerta Greves - Todas as greves num único local"
+  meta_d: "Esteja actualizado e receba notificações sobre todas as greves."
 
   previous: "Anterior"
   next: "Próximo"
