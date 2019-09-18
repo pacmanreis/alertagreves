@@ -21,9 +21,9 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "#{t(:sign_up)}" %>
+      <%= f.button :submit, "#{t(:sign_up)}", class:"btn-primary mt-3 mb-3"%>
     </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
+<%= link_to "#{t(:login)}", new_session_path(resource_name), class: "btn" %>
 </div>
