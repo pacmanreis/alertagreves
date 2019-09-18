@@ -59,12 +59,14 @@ margin-bottom: 5px;
       cursor: pointer;
       position: relative;
 
+
+
       .heading {
         .chevron {
           left: calc(50% - 15px);
           transform-origin: 50%;
           transform: rotate(180deg);
-          transition: transform 500ms;
+          transition: transform 1000ms;
           padding: 0px 2px;
         }
 
