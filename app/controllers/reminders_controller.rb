@@ -9,7 +9,6 @@ class RemindersController < ApplicationController
     @reminder.user = current_user
     authorize @reminder
     @reminder.save
-
     redirect_to root_path, notice: "Reminder successfully created"
   end
 
@@ -17,7 +16,6 @@ class RemindersController < ApplicationController
     @reminder = Reminder.find(params[:id])
     authorize @reminder
     @reminder.destroy
-
     redirect_to root_path, status: :see_other, notice: "Reminder successfully removed"
   end
 end

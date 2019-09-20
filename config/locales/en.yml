@@ -113,6 +113,7 @@ en:
   char_min: "characters minimum"
   meta_t: "Alerta Greves - All strikes in one place"
   meta_d: "Stay updated and get notified with all the latest strikes news."
+  sub_strike_approval: "The strike was submitted for approval. Thank You."
 
   previous: "Previous"
   next: "Next"
