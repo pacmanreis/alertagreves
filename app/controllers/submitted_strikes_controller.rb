@@ -14,6 +14,7 @@ class SubmittedStrikesController < ApplicationController
     @submitted_strike = SubmittedStrike.new(submitted_strike_params)
     authorize @submitted_strike
     if @submitted_strike.save
+      flash[:notice] = t(:sub_strike_approval)
       redirect_to root_path
     else
       render :new

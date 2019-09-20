@@ -82,6 +82,7 @@ pt:
   char_min: "carateres no minimo"
   meta_t: "Alerta Greves - Todas as greves num único local"
   meta_d: "Esteja actualizado e receba notificações sobre todas as greves."
+  sub_strike_approval: "A greve foi submetida para aprovação. Obrigado"
 
   previous: "Anterior"
   next: "Próximo"
